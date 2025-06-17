@@ -9,7 +9,7 @@
 #       Connectivity Troubleshooter v2.0
 #       Enhanced with AI-Powered Assistance
 
-# RADICO - Connectivity Troubleshooter Script
+# RADICA - Connectivity Troubleshooter Script
 # Enhanced with tool verification, dependency resolution, and AI assistance
 #
 # For comprehensive usage examples, feature documentation, and function reference:
@@ -19,7 +19,7 @@
 AI_FEATURES_ENABLED=false
 SCRIPT_NAME="$(basename "$0")"
 LOGGING_ENABLED=true
-LOG_FILE="radico.LOG"
+LOG_FILE="RADICA.LOG"
 COLOR_PROFILE_SET=false
 LOG_FILE_SET=false
 
@@ -44,8 +44,8 @@ COLOR_PROFILES["dark"]="RED='\033[0;196m' GREEN='\033[0;82m' YELLOW='\033[0;226m
 # Function to load user color profiles from common locations
 load_user_color_profiles() {
     local profile_locations=(
-        "$HOME/.config/radico/colors"
-        "$HOME/.radico_colors"
+        "$HOME/.config/RADICA/colors"
+        "$HOME/.RADICA_colors"
         "$HOME/.config/terminal/colors"
         "$HOME/.local/share/color-schemes"
         "$HOME/.kde/share/apps/konsole"
@@ -896,7 +896,7 @@ while [[ $# -gt 0 ]]; do
                 echo -e "${GREEN}✓ Logging enabled to: $LOG_FILE${NC}"
                 shift 2
             else
-                LOG_FILE="radico.LOG"                          # Default to radico.LOG
+                LOG_FILE="RADICA.LOG"                          # Default to RADICA.LOG
                 echo -e "${GREEN}✓ Logging enabled to: $LOG_FILE (default)${NC}"
                 shift
             fi
@@ -941,7 +941,7 @@ fi
 # Setup logging if not configured via command line
 if [ "$LOG_FILE_SET" != true ]; then
     echo -e "\n${CYAN}=== Logging Configuration ===${NC}"
-    echo -e "${GREEN}✓ Logging is enabled by default for RADICO${NC}"
+    echo -e "${GREEN}✓ Logging is enabled by default for RADICA${NC}"
     echo -e "${BLUE}Current log file: $LOG_FILE${NC}"
     echo -e ""
     echo -e "${YELLOW}Options:${NC}"
@@ -979,7 +979,7 @@ if [ "$LOG_FILE_SET" != true ]; then
         # Create log file with header
         {
             echo "========================================"
-            echo "RADICO Connectivity Troubleshooter Log"
+            echo "RADICA Connectivity Troubleshooter Log"
             echo "Started: $(date)"
             echo "OS: $OS $VERSION"
             echo "========================================"

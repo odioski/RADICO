@@ -1,4 +1,4 @@
-# 🌐 RADICO - Network Connectivity Troubleshooter
+# 🌐 RADICA - Network Connectivity Troubleshooter
 # *This tool works...*
 
 
@@ -16,7 +16,7 @@
 
 ## 📚 Table of Contents
 
-1. [🎯 What is RADICO?](#-what-is-radico)
+1. [🎯 What is RADICA?](#-what-is-RADICA)
 2. [🎨 Color Profiles](#-color-profiles)
 3. [🤖 AI Services Integration](#-ai-services-integration)
 4. [📊 Logging System](#-logging-system)
@@ -27,15 +27,15 @@
 
 ---
 
-## 🎯 What is RADICO?
+## 🎯 What is RADICA?
 
-**RADICO** (radico Connectivity Troubleshooter) is a sophisticated Bash script designed to revolutionize network troubleshooting on Linux systems. Born from the brilliant mind of **Mr. Omar Daniels** and collaboratively enhanced with **GitHub Copilot**, RADICO transforms complex network diagnostics into an intuitive, AI-powered experience.
+**RADICA** (RADICA Connectivity Troubleshooter) is a sophisticated Bash script designed to revolutionize network troubleshooting on Linux systems. Born from the brilliant mind of **Mr. Omar Daniels** and collaboratively enhanced with **GitHub Copilot**, RADICA transforms complex network diagnostics into an intuitive, AI-powered experience.
 
 ### 🌟 The Vision
 
-Imagine having a network expert at your fingertips 24/7—someone who never gets tired, knows every Linux distribution, speaks the language of packets and protocols, and can instantly consult the world's leading AI minds for the most challenging problems. That's RADICO.
+Imagine having a network expert at your fingertips 24/7—someone who never gets tired, knows every Linux distribution, speaks the language of packets and protocols, and can instantly consult the world's leading AI minds for the most challenging problems. That's RADICA.
 
-### ✨ What Makes RADICO Revolutionary?
+### ✨ What Makes RADICA Revolutionary?
 
 - 🧠 **AI-First Approach**: Seamlessly integrates with OpenAI GPT-4, Anthropic Claude, Perplexity AI, and local Ollama
 - 🎨 **Accessibility Champion**: Five stunning color profiles including high-contrast for visual accessibility
@@ -44,9 +44,9 @@ Imagine having a network expert at your fingertips 24/7—someone who never gets
 - 🌐 **Universal Compatibility**: Works across Debian, RedHat, Arch, SUSE, and more
 - 🚀 **Zero Configuration**: Works out of the box, enhances with your preferences
 
-### 🎯 The RADICO Difference
+### 🎯 The RADICA Difference
 
-| Traditional Tools | RADICO Experience |
+| Traditional Tools | RADICA Experience |
 |-------------------|------------------|
 | Manual tool installation | Automatic detection & installation |
 | Static troubleshooting | AI-powered analysis & suggestions |
@@ -57,7 +57,7 @@ Imagine having a network expert at your fingertips 24/7—someone who never gets
 
 ### 🚀 Introduction
 
-**RADICO** stands at the intersection of traditional Linux networking tools and cutting-edge artificial intelligence. Whether you're a system administrator troubleshooting enterprise networks, a developer debugging connectivity issues, or a Linux enthusiast learning the ropes, RADICO adapts to your skill level and provides exactly the assistance you need.
+**RADICA** stands at the intersection of traditional Linux networking tools and cutting-edge artificial intelligence. Whether you're a system administrator troubleshooting enterprise networks, a developer debugging connectivity issues, or a Linux enthusiast learning the ropes, RADICA adapts to your skill level and provides exactly the assistance you need.
 
 ### 🌟 Key Features
 
@@ -74,7 +74,7 @@ Imagine having a network expert at your fingertips 24/7—someone who never gets
 
 ## 🎨 Color Profiles
 
-radico offers multiple visual themes to suit your environment and preferences:
+RADICA offers multiple visual themes to suit your environment and preferences:
 
 ### Built-in Profiles
 
@@ -88,11 +88,11 @@ radico offers multiple visual themes to suit your environment and preferences:
 
 ### Custom Profile Locations
 
-radico automatically scans these locations for user-defined color profiles:
+RADICA automatically scans these locations for user-defined color profiles:
 
 ```
-~/.config/radico/colors/
-~/.radico_colors
+~/.config/RADICA/colors/
+~/.RADICA_colors
 ~/.config/terminal/colors/
 ~/.local/share/color-schemes/
 ~/.kde/share/apps/konsole/
@@ -135,21 +135,21 @@ radico automatically scans these locations for user-defined color profiles:
 ### Features
 - ✅ **Enabled by Default**: Logging is active from the start for complete transparency
 - ✅ **Interactive Configuration**: Choose your log file name or disable if needed
-- ✅ **Custom Filenames**: Specify your own log file names or use default radico.LOG
+- ✅ **Custom Filenames**: Specify your own log file names or use default RADICA.LOG
 - ✅ **Clean Format**: Timestamped entries without color codes
 - ✅ **Complete Sessions**: Full audit trail of all operations
 - ✅ **Command Line Control**: Override logging behavior via switches
 
 ### Default Behavior
-RADICO enables logging by default to ensure you never lose important troubleshooting information. On startup, you'll see:
+RADICA enables logging by default to ensure you never lose important troubleshooting information. On startup, you'll see:
 
 ```
 === Logging Configuration ===
-✓ Logging is enabled by default for RADICO
-Current log file: radico.LOG
+✓ Logging is enabled by default for RADICA
+Current log file: RADICA.LOG
 
 Options:
-1) Keep current settings (radico.LOG)
+1) Keep current settings (RADICA.LOG)
 2) Change log file name  
 3) Disable logging for this session
 
@@ -159,7 +159,7 @@ Choose option (1-3, default: 1):
 ### Log File Structure
 ```
 ========================================
-RADICO Connectivity Troubleshooter Log
+RADICA Connectivity Troubleshooter Log
 Started: 2025-06-16 14:30:22
 OS: Ubuntu 22.04
 ========================================
@@ -176,11 +176,11 @@ OS: Ubuntu 22.04
 ### Basic Operations
 
 #### **Function**: `show_banner()` + OS Detection
-**Purpose**: Displays the radico banner and detects the operating system
+**Purpose**: Displays the RADICA banner and detects the operating system
 
 ```bash
 # Basic usage - shows banner, detects OS, offers color selection
-./radico
+./RADICA
 ```
 **Output**:
 ```
@@ -207,7 +207,7 @@ Available color profiles:
 
 ```bash
 # Professional look with custom logging
-./radico --color-profile professional --log-file network_analysis.log
+./RADICA --color-profile professional --log-file network_analysis.log
 ```
 **What happens**:
 1. Sets professional color scheme (muted colors)
@@ -221,7 +221,7 @@ Available color profiles:
 
 ```bash
 # Standard tool verification
-./radico
+./RADICA
 ```
 **Behind the scenes**:
 - Detects package manager (apt, yum, dnf, pacman, zypper)
@@ -239,7 +239,7 @@ Available color profiles:
 ```bash
 # Direct AI consultation with OpenAI GPT-4
 export OPENAI_API_KEY="sk-your-key-here"
-./radico --ai-help openai "WiFi connects but no internet access"
+./RADICA --ai-help openai "WiFi connects but no internet access"
 ```
 **Response format**:
 ```
@@ -259,7 +259,7 @@ Service: openai
 ```bash
 # Technical analysis with Anthropic Claude
 export ANTHROPIC_API_KEY="your-key-here"
-./radico --ai-help anthropic "Bluetooth device won't pair with Ubuntu"
+./RADICA --ai-help anthropic "Bluetooth device won't pair with Ubuntu"
 ```
 **Use case**: Complex protocol analysis, detailed configuration guidance
 
@@ -271,7 +271,7 @@ export ANTHROPIC_API_KEY="your-key-here"
 ```bash
 # Current information with web search
 export PERPLEXITY_API_KEY="your-key-here"
-./radico --ai-help perplexity "Network interface keeps dropping on kernel 6.5"
+./RADICA --ai-help perplexity "Network interface keeps dropping on kernel 6.5"
 ```
 **Advantage**: Gets latest driver updates, kernel bug reports, current solutions
 
@@ -282,7 +282,7 @@ export PERPLEXITY_API_KEY="your-key-here"
 
 ```bash
 # Privacy-focused local AI
-./radico --ai-help local "Cannot resolve DNS names"
+./RADICA --ai-help local "Cannot resolve DNS names"
 ```
 **Setup required**:
 ```bash
@@ -299,7 +299,7 @@ ollama pull llama2
 
 ```bash
 # Complete diagnostic session with AI and logging
-./radico --ai-enabled --color-profile dark --log-file debug_session.log
+./RADICA --ai-enabled --color-profile dark --log-file debug_session.log
 ```
 **Flow**:
 1. Sets dark theme for terminal compatibility
@@ -315,7 +315,7 @@ ollama pull llama2
 
 ```bash
 # High contrast for visual accessibility
-./radico --color-profile high-contrast --log-file accessibility_debug.log
+./RADICA --color-profile high-contrast --log-file accessibility_debug.log
 ```
 **Benefits**: 
 - Enhanced visibility for users with visual impairments
@@ -328,9 +328,9 @@ ollama pull llama2
 **Purpose**: Handle complex dependency issues
 
 ```bash
-# Let radico handle repository and dependency problems
-./radico
-# When packages are missing, radico will:
+# Let RADICA handle repository and dependency problems
+./RADICA
+# When packages are missing, RADICA will:
 # 1. Check package availability
 # 2. Resolve dependencies
 # 3. Suggest repository fixes
@@ -346,7 +346,7 @@ ollama pull llama2
 
 ```bash
 # Focused Ethernet diagnosis
-./radico --ai-enabled
+./RADICA --ai-enabled
 # Then select Ethernet diagnostics
 ```
 **Checks performed**:
@@ -362,7 +362,7 @@ ollama pull llama2
 
 ```bash
 # WiFi troubleshooting with AI assistance
-./radico --ai-help openai "WiFi interface not detected"
+./RADICA --ai-help openai "WiFi interface not detected"
 ```
 **Diagnostics include**:
 - Wireless interface detection
@@ -377,7 +377,7 @@ ollama pull llama2
 
 ```bash
 # Bluetooth issues with technical AI analysis
-./radico --ai-help anthropic "Bluetooth controller not responding"
+./RADICA --ai-help anthropic "Bluetooth controller not responding"
 ```
 **Covers**:
 - Bluetooth service status
@@ -393,25 +393,25 @@ ollama pull llama2
 
 ```bash
 # Quick start (interactive)
-./radico
+./RADICA
 
 # Silent operation with logging
-./radico --log-file
+./RADICA --log-file
 
 # AI-powered session
-./radico --ai-enabled --log-file ai_session.log
+./RADICA --ai-enabled --log-file ai_session.log
 
 # Accessibility mode
-./radico --color-profile high-contrast
+./RADICA --color-profile high-contrast
 
 # Professional presentation
-./radico --color-profile professional --ai-enabled
+./RADICA --color-profile professional --ai-enabled
 
 # Developer mode (dark theme + detailed logging)
-./radico --color-profile dark --log-file dev_debug.log
+./RADICA --color-profile dark --log-file dev_debug.log
 
 # Get immediate AI help
-./radico --ai-help local "describe your issue here"
+./RADICA --ai-help local "describe your issue here"
 ```
 
 ---
@@ -461,20 +461,20 @@ ollama pull llama2
 
 ### 🙏 Acknowledgments
 
-Special thanks to the open source community, Linux networking pioneers, and the AI researchers whose innovations make tools like RADICO possible.
+Special thanks to the open source community, Linux networking pioneers, and the AI researchers whose innovations make tools like RADICA possible.
 
 ---
 
 ## 🌟 Final Words
 
-**RADICO** isn't just another network troubleshooting script—it's a revolution in how we approach connectivity problems. From the moment you run `./radico`, you're not just executing commands; you're embarking on a guided journey through the layers of modern networking, powered by both time-tested Unix philosophy and cutting-edge artificial intelligence.
+**RADICA** isn't just another network troubleshooting script—it's a revolution in how we approach connectivity problems. From the moment you run `./RADICA`, you're not just executing commands; you're embarking on a guided journey through the layers of modern networking, powered by both time-tested Unix philosophy and cutting-edge artificial intelligence.
 
 ### 💫 The Philosophy
 
 *"Every network problem has a solution. Every solution has a story. Every story teaches us something new."*
 
-Whether you're dealing with a stubborn WiFi connection, mysterious packet loss, or complex enterprise networking challenges, RADICO is your companion in the digital troubleshooting journey.
+Whether you're dealing with a stubborn WiFi connection, mysterious packet loss, or complex enterprise networking challenges, RADICA is your companion in the digital troubleshooting journey.
 
 ---
 
-**🚀 RADICO - Making network troubleshooting Radicoy simple, beautifully intelligent! 🚀**
+**🚀 RADICA - Making network troubleshooting RADICAy simple, beautifully intelligent! 🚀**

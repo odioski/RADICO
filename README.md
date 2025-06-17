@@ -1,4 +1,4 @@
-# 🌟 RADICO
+# 🌟 RADICA
 ## Network Connectivity Troubleshooter v2.0
 
 ```
@@ -11,18 +11,18 @@
       Connectivity Troubleshooter v2.0
 ```
 
-> **RADICO** - *A comprehensive, AI-powered network troubleshooting solution for Linux systems* Network Connectivity Troubleshooter v2.0
+> **RADICA** - *A comprehensive, AI-powered network troubleshooting solution for Linux systems* Network Connectivity Troubleshooter v2.0
 
-[![Linux](https://img.shields.io/badge/Platform-Linux-blue.svg)](https://github.com/odioski/RADICO)]
-[![Version](https://img.shields.io/badge/Version-2.0-green.svg)](https://github.com/odioski/RADICO)]
+[![Linux](https://img.shields.io/badge/Platform-Linux-blue.svg)](https://github.com/odioski/RADICA)]
+[![Version](https://img.shields.io/badge/Version-2.0-green.svg)](https://github.com/odioski/RADICA)]
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)]
-[![AI Powered](https://img.shields.io/badge/AI-Powered-purple.svg)](https://github.com/odioski/RADICO)]
+[![AI Powered](https://img.shields.io/badge/AI-Powered-purple.svg)](https://github.com/odioski/RADICA)]
 
 ---
 
-## 🚀 What is RADICO?
+## 🚀 What is RADICA?
 
-**RADICO** is a revolutionary network connectivity troubleshooter that combines traditional diagnostic tools with cutting-edge AI technology. Whether you're dealing with Ethernet issues, WiFi problems, or Bluetooth connectivity challenges, RADICO has you covered across all major Linux distributions.
+**RADICA** is a revolutionary network connectivity troubleshooter that combines traditional diagnostic tools with cutting-edge AI technology. Whether you're dealing with Ethernet issues, WiFi problems, or Bluetooth connectivity challenges, RADICA has you covered across all major Linux distributions.
 
 ### ✨ Key Features
 
@@ -40,15 +40,15 @@
 
 ### Basic Usage
 ```bash
-# Download and run RADICO
-chmod +x radico
-./radico
+# Download and run RADICA
+chmod +x RADICA
+./RADICA
 
 # Enable AI features with dark color profile and logging
-./radico --ai-enabled --color-profile dark --log-file network_debug.log
+./RADICA --ai-enabled --color-profile dark --log-file network_debug.log
 
 # Get direct AI help
-./radico --ai-help openai "WiFi connects but no internet"
+./RADICA --ai-help openai "WiFi connects but no internet"
 ```
 
 ## Color Profiles
@@ -62,8 +62,8 @@ The script supports multiple color profiles for different preferences and termin
 - **dark**: Optimized for dark themes
 
 The script will also automatically detect and load color profiles from:
-- `~/.config/radico/colors/`
-- `~/.radico_colors`
+- `~/.config/RADICA/colors/`
+- `~/.RADICA_colors`
 - `~/.config/terminal/colors/`
 - `~/.local/share/color-schemes/`
 - `~/.kde/share/apps/konsole/`
@@ -74,7 +74,7 @@ The script will also automatically detect and load color profiles from:
 The script offers comprehensive logging capabilities:
 
 - **Interactive setup**: Choose whether to enable logging during startup
-- **Custom log files**: Specify your own log file name or use default `radico.log`
+- **Custom log files**: Specify your own log file name or use default `RADICA.log`
 - **Command line option**: Enable logging directly with `--log-file filename.log`
 - **Clean log format**: Timestamps and color-code-free entries for easy parsing
 - **Session tracking**: Complete record of troubleshooting steps and results
@@ -83,13 +83,13 @@ The script offers comprehensive logging capabilities:
 
 ```bash
 # Enable logging interactively (will prompt for log file name)
-./radico
+./RADICA
 
 # Specify log file via command line
-./radico --log-file my_network_debug.log
+./RADICA --log-file my_network_debug.log
 
 # Use default log file name
-./radico --log-file radico.log
+./RADICA --log-file RADICA.log
 ```
 
 ## Dependencies
@@ -142,12 +142,12 @@ Some diagnostic commands require elevated privileges. The script will:
 - **Gracefully handle** commands that need root access
 - **Suggest alternatives** when sudo isn't available
 
-> 💡 **Tip**: For best results, consider running with `sudo ./radico` or ensure your user is in the `sudo` group.
+> 💡 **Tip**: For best results, consider running with `sudo ./RADICA` or ensure your user is in the `sudo` group.
 
 ## Usage
 
 ```bash
-./radico [OPTIONS]
+./RADICA [OPTIONS]
 
 Options:
   --ai-enabled                Enable AI troubleshooting features
@@ -170,9 +170,9 @@ AI Services:
   local        Local Ollama
 
 Examples:
-  ./radico --ai-enabled --color-profile dark
-  ./radico --log-file debug_session.log
-  ./radico --ai-help openai "network interface down"
+  ./RADICA --ai-enabled --color-profile dark
+  ./RADICA --log-file debug_session.log
+  ./RADICA --ai-help openai "network interface down"
 ```
 
 ---
@@ -191,7 +191,7 @@ Examples:
 
 ## 🤖 AI Integration
 
-RADICO supports multiple AI providers for enhanced troubleshooting:
+RADICA supports multiple AI providers for enhanced troubleshooting:
 
 - **OpenAI GPT-4**: Advanced problem analysis
 - **Anthropic Claude**: Detailed technical explanations  
@@ -201,11 +201,11 @@ RADICO supports multiple AI providers for enhanced troubleshooting:
 ### AI Configuration
 ```bash
 # Set your preferred AI provider
-export RADICO_AI_PROVIDER="openai"
+export RADICA_AI_PROVIDER="openai"
 export OPENAI_API_KEY="your-api-key-here"
 
 # Or use local Ollama
-export RADICO_AI_PROVIDER="ollama"
+export RADICA_AI_PROVIDER="ollama"
 ```
 
 ---
@@ -213,10 +213,10 @@ export RADICO_AI_PROVIDER="ollama"
 ## 📸 Screenshots
 
 ### Main Interface
-![RADICO Main Interface](RADICO.png)
+![RADICA Main Interface](RADICA.png)
 
 ### Advanced Diagnostics
-![RADICO Advanced Mode](radico.LOG)
+![RADICA Advanced Mode](RADICA.LOG)
 
 ---
 
@@ -231,7 +231,7 @@ export RADICO_AI_PROVIDER="ollama"
 
 ## 🤝 Contributing
 
-We welcome contributions to RADICO! Here's how you can help:
+We welcome contributions to RADICA! Here's how you can help:
 
 1. **Fork** the repository
 2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
@@ -241,8 +241,8 @@ We welcome contributions to RADICO! Here's how you can help:
 
 ### Development Setup
 ```bash
-git clone https://github.com/odioski/RADICO.git
-cd RADICO
+git clone https://github.com/odioski/RADICA.git
+cd RADICA
 # Start developing!
 ```
 
@@ -250,8 +250,8 @@ cd RADICO
 
 ## 📞 Support
 
-- 🐛 **Issues**: [GitHub Issues](https://github.com/odioski/RADICO/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/odioski/RADICO/discussions)
+- 🐛 **Issues**: [GitHub Issues](https://github.com/odioski/RADICA/issues)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/odioski/RADICA/discussions)
 - 📧 **Email**: o.daniels.sr@outlook.com
 
 ---
@@ -264,7 +264,7 @@ MIT License - Feel free to modify and distribute.
 
 <div align="center">
 
-**⭐ Star this repository if RADICO helped you solve your network issues! ⭐**
+**⭐ Star this repository if RADICA helped you solve your network issues! ⭐**
 
 Made with ❤️ by [odioski](https://github.com/odioski)
 

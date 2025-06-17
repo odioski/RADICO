@@ -1,6 +1,6 @@
-# 🎨 ASCII Art Tutorial: Creating the RADICO Banner
+# 🎨 ASCII Art Tutorial: Creating the RADICA Banner
 
-## 📋 The RADICO Banner
+## 📋 The RADICA Banner
 
 ```
 ██████╗  █████╗ ██████╗ ██╗ ██████╗ █████╗ 
@@ -16,7 +16,7 @@
 
 ## 🧩 Understanding ASCII Art
 
-**ASCII Art** is the practice of creating images and designs using printable ASCII characters. The RADICO banner above uses **Unicode Box Drawing Characters** - a special subset of Unicode that provides various line and block characters perfect for creating structured text art.
+**ASCII Art** is the practice of creating images and designs using printable ASCII characters. The RADICA banner above uses **Unicode Box Drawing Characters** - a special subset of Unicode that provides various line and block characters perfect for creating structured text art.
 
 ### 🎯 Why Box Drawing Characters?
 
@@ -30,7 +30,7 @@ Box drawing characters are ideal for creating bold, readable text because they:
 
 ## 🔧 Character Breakdown: The Building Blocks
 
-### 📊 Characters Used in RADICO Banner
+### 📊 Characters Used in RADICA Banner
 
 | Character | Unicode | Name | Usage in Banner |
 |-----------|---------|------|-----------------|
@@ -73,7 +73,7 @@ Box drawing characters are ideal for creating bold, readable text because they:
 
 ### 📐 Step 1: Plan Your Layout
 
-1. **Determine letter height**: RADICO uses 6 rows (including foundation)
+1. **Determine letter height**: RADICA uses 6 rows (including foundation)
 2. **Calculate spacing**: Each letter needs consistent width
 3. **Map character placement**: Sketch rough outline first
 
@@ -126,7 +126,7 @@ Replace solid blocks with box drawing characters for refinement:
 **Recommended Tools:**
 1. **FIGlet** - Command-line ASCII art generator
    ```bash
-   figlet -f big RADICO
+   figlet -f big RADICA
    ```
 
 2. **ASCII Art Studio** - Windows GUI application
@@ -283,7 +283,7 @@ Offset copies with different characters:
 
 ---
 
-## 🌟 The RADICO Banner: A Masterpiece Analysis
+## 🌟 The RADICA Banner: A Masterpiece Analysis
 
 ### 🎭 Artistic Choices Explained
 
@@ -308,7 +308,7 @@ Offset copies with different characters:
 
 ## 🎓 Conclusion: ASCII Art as Functional Design
 
-The RADICO banner demonstrates that ASCII art isn't just decoration—it's **functional typography** that:
+The RADICA banner demonstrates that ASCII art isn't just decoration—it's **functional typography** that:
 
 - ✅ **Brands your application** with memorable visual identity
 - ✅ **Works universally** across all text-based environments  
@@ -318,7 +318,7 @@ The RADICO banner demonstrates that ASCII art isn't just decoration—it's **fun
 
 ### 💡 Your ASCII Journey Starts Here
 
-Every master ASCII artist started with simple blocks and basic characters. The RADICO banner is the result of careful iteration, testing, and refinement. Take inspiration from its techniques, but don't be afraid to experiment with your own style.
+Every master ASCII artist started with simple blocks and basic characters. The RADICA banner is the result of careful iteration, testing, and refinement. Take inspiration from its techniques, but don't be afraid to experiment with your own style.
 
 **Remember**: Great ASCII art combines **technical precision** with **artistic vision**. Master the characters, understand the spacing, test extensively, and most importantly—have fun creating!
 
