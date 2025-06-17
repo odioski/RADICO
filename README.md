@@ -11,8 +11,7 @@
       Connectivity Troubleshooter v2.0
 ```
 
-> **RADICO** - *A comprehensive, AI-powered network troubleshooting solution for Linux systems* Network Connectivity Troubleshooter v2.0
-
+> **RADICO** - *A comprehensive, AI-powered network troubleshooting solution for 
 ```
 ██████╗  █████╗ ██████╗ ██╗ ██████╗ █████╗ 
 ██╔══██╗██╔══██╗██╔══██╗██║██╔════╝██╔══██╗
