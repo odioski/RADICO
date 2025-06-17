@@ -1,0 +1,161 @@
+# RADICO | A Connectivity Troubleshooter v2.0
+# This tool works...
+
+A comprehensive network troubleshooting script with AI-powered assistance for Linux systems.
+
+## Features
+
+- **Multi-platform support**: Debian/Ubuntu, RedHat/CentOS/Fedora, Arch Linux, openSUSE
+- **Automated tool verification**: Checks and installs missing network utilities
+- **AI integration**: OpenAI GPT-4, Anthropic Claude, Perplexity AI, and local Ollama
+- **Comprehensive diagnostics**: Ethernet, WiFi, and Bluetooth troubleshooting
+- **Smart dependency resolution**: Handles package conflicts and missing repositories
+- **Customizable color profiles**: Choose from multiple color schemes or load your own
+- **Comprehensive logging**: Optional session logging with customizable log file names
+
+## Quick Start
+
+```bash
+# Basic usage
+./radicol
+
+# Enable AI features with dark color profile and logging
+./radicol --ai-enabled --color-profile dark --log-file network_debug.log
+
+# Get direct AI help
+./radicol --ai-help openai "WiFi connects but no internet"
+```
+
+## Color Profiles
+
+The script supports multiple color profiles for different preferences and terminal themes:
+
+- **default**: Standard terminal colors
+- **professional**: Muted professional colors  
+- **high-contrast**: High contrast colors for accessibility
+- **monochrome**: Grayscale colors
+- **dark**: Optimized for dark themes
+
+The script will also automatically detect and load color profiles from:
+- `~/.config/radicol/colors/`
+- `~/.radicol_colors`
+- `~/.config/terminal/colors/`
+- `~/.local/share/color-schemes/`
+- `~/.kde/share/apps/konsole/`
+- `~/.config/konsole/`
+
+## Logging
+
+The script offers comprehensive logging capabilities:
+
+- **Interactive setup**: Choose whether to enable logging during startup
+- **Custom log files**: Specify your own log file name or use default `radicol.log`
+- **Command line option**: Enable logging directly with `--log-file filename.log`
+- **Clean log format**: Timestamps and color-code-free entries for easy parsing
+- **Session tracking**: Complete record of troubleshooting steps and results
+
+### Logging Examples
+
+```bash
+# Enable logging interactively (will prompt for log file name)
+./radicol
+
+# Specify log file via command line
+./radicol --log-file my_network_debug.log
+
+# Use default log file name
+./radicol --log-file radicol.log
+```
+
+## Dependencies
+
+### Debian/Ubuntu (apt)
+```bash
+sudo apt install iproute2 net-tools ethtool iputils-ping traceroute dnsutils \
+wireless-tools iw rfkill wpasupplicant bluez curl jq
+```
+
+### RedHat/CentOS/Fedora (dnf/yum)
+```bash
+sudo dnf install iproute net-tools ethtool iputils traceroute bind-utils \
+wireless-tools iw rfkill wpa_supplicant bluez curl jq
+```
+
+### Arch Linux (pacman)
+```bash
+sudo pacman -S iproute2 net-tools ethtool iputils traceroute bind \
+wireless_tools iw rfkill wpa_supplicant bluez curl jq
+```
+
+### openSUSE (zypper)
+```bash
+sudo zypper install iproute2 net-tools ethtool iputils traceroute bind-utils \
+wireless-tools iw rfkill wpa_supplicant bluez curl jq
+```
+
+## AI Setup (Optional)
+
+```bash
+# OpenAI
+export OPENAI_API_KEY="your-api-key"
+
+# Anthropic Claude
+export ANTHROPIC_API_KEY="your-api-key"
+
+# Perplexity AI
+export PERPLEXITY_API_KEY="your-api-key"
+
+# Local AI (Ollama)
+curl -fsSL https://ollama.ai/install.sh | sh
+ollama pull llama2
+```
+
+## Permissions
+
+Some diagnostic commands require elevated privileges. The script will:
+- **Automatically request sudo** when needed for package installation
+- **Gracefully handle** commands that need root access
+- **Suggest alternatives** when sudo isn't available
+
+> 💡 **Tip**: For best results, consider running with `sudo ./radicol` or ensure your user is in the `sudo` group.
+
+## Usage
+
+```bash
+./radicol [OPTIONS]
+
+Options:
+  --ai-enabled                Enable AI troubleshooting features
+  --ai-help SERVICE QUERY     Get AI assistance
+  --color-profile PROFILE     Set color profile
+  --log-file FILENAME         Enable logging to specified file
+  --help, -h                  Show help message
+
+Color Profiles:
+  default       Standard terminal colors
+  professional  Muted professional colors
+  high-contrast High contrast colors
+  monochrome    Grayscale colors
+  dark         Dark theme optimized
+
+AI Services:
+  openai       OpenAI GPT-4
+  anthropic    Anthropic Claude  
+  perplexity   Perplexity AI
+  local        Local Ollama
+
+Examples:
+  ./radicol --ai-enabled --color-profile dark
+  ./radicol --log-file debug_session.log
+  ./radicol --ai-help openai "network interface down"
+```
+
+## License
+
+MIT License - Feel free to modify and distribute.
+
+---
+
+*Originally conceived by Mr. Omar Daniels*  
+*Developed collaboratively with GitHub Copilot*  
+*A practical approach to network troubleshooting with modern AI assistance*

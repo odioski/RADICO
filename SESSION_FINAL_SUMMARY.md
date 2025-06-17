@@ -1,10 +1,10 @@
-# RADICA Project - Final Session Summary
+# RADICO Project - Final Session Summary
 ## Date: June 16, 2025
 
 ### Project Overview
-**RADICA** - Enhanced Linux Network Troubleshooting Script
-- **Location**: `/home/mrod/RADICA/`
-- **Main Script**: `radical` (Bash script)
+**RADICO** - Enhanced Linux Network Troubleshooting Script
+- **Location**: `/home/mrod/RADICO/`
+- **Main Script**: `radicol` (Bash script)
 - **Status**: Fully enhanced with robust features and comprehensive documentation
 
 ### Session Accomplishments
@@ -12,7 +12,7 @@
 #### 1. Core Script Enhancements
 - **Default Logging**: Set `LOGGING_ENABLED=true` by default
 - **Interactive Logging Setup**: Added user menu for log file configuration
-- **Default Log File**: Changed to `RADICAL.LOG` (uppercase) for consistency
+- **Default Log File**: Changed to `RADICOL.LOG` (uppercase) for consistency
 - **Color Profile System**: Implemented robust color scheme selection
 - **Command-Line Options**: Added `--color-profile` and `--log-file` flags
 - **Session Persistence**: Color and logging settings persist throughout session
@@ -52,8 +52,8 @@
 
 ### File Structure
 ```
-/home/mrod/RADICA/
-├── radical                    # Main Bash script (1,200+ lines)
+/home/mrod/RADICO/
+├── radicol                    # Main Bash script (1,200+ lines)
 ├── NFO.md                     # Comprehensive documentation
 ├── ASCII ART.NFO.md          # ASCII art tutorial
 ├── README.md                  # Quick reference
@@ -68,7 +68,7 @@
 ```bash
 # Default configuration
 LOGGING_ENABLED=true
-LOG_FILE="RADICAL.LOG"
+LOG_FILE="RADICOL.LOG"
 
 # Interactive setup function
 setup_logging() {
@@ -131,25 +131,25 @@ call_ai_api() {
 
 #### Basic Execution
 ```bash
-./radical                              # Interactive mode with defaults
-./radical --color-profile dark         # Set dark theme
-./radical --log-file custom.log        # Custom log file
-./radical --ai-enabled                 # Enable AI features
+./radicol                              # Interactive mode with defaults
+./radicol --color-profile dark         # Set dark theme
+./radicol --log-file custom.log        # Custom log file
+./radicol --ai-enabled                 # Enable AI features
 ```
 
 #### AI Assistance
 ```bash
-./radical --ai-help openai "WiFi not connecting"
-./radical --ai-help local "Ethernet cable not detected"
+./radicol --ai-help openai "WiFi not connecting"
+./radicol --ai-help local "Ethernet cable not detected"
 ```
 
 #### Advanced Features
 ```bash
 # Professional mode with custom logging
-./radical --color-profile professional --log-file network-audit.log
+./radicol --color-profile professional --log-file network-audit.log
 
 # AI-enabled comprehensive diagnostics
-./radical --ai-enabled --color-profile high-contrast
+./radicol --ai-enabled --color-profile high-contrast
 ```
 
 ### Documentation Highlights
@@ -165,7 +165,7 @@ call_ai_api() {
 8. **Usage Examples** - 15+ real-world scenarios
 
 #### ASCII ART.NFO.md Contents
-- **RADICA Banner Analysis** - Character-by-character breakdown
+- **RADICO Banner Analysis** - Character-by-character breakdown
 - **Unicode vs ASCII** - Compatibility considerations
 - **Creation Tutorial** - Step-by-step banner design
 - **Character Tables** - Reference for custom banners
@@ -196,4 +196,4 @@ call_ai_api() {
 **Documentation Created**: 3 comprehensive guides
 **Features Implemented**: Default logging, color profiles, AI integration, tool verification, session persistence
 
-**RADICA is now a professional-grade, user-friendly network troubleshooting tool with comprehensive documentation and robust feature set.**
+**RADICO is now a professional-grade, user-friendly network troubleshooting tool with comprehensive documentation and robust feature set.**
