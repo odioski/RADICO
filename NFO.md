@@ -12,7 +12,7 @@
       Connectivity Troubleshooter v2.0
 ```
 
-> *"radico solutions for radico network problems"*
+> *"radico solutions for radical network problems"*
 
 ## 📚 Table of Contents
 

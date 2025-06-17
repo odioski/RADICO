@@ -216,7 +216,7 @@ export RADICO_AI_PROVIDER="ollama"
 ![RADICO Main Interface](RADICO.png)
 
 ### Advanced Diagnostics
-![RADICO Advanced Mode](RADICO2.png)
+![RADICO Advanced Mode](radico.LOG)
 
 ---
 

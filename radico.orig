@@ -1,19 +1,6 @@
 #!/bin/bash
 
-# ██████╗  █████╗ ██████╗ ██╗ ██████╗ █████╗ 
-# ██╔══██╗██╔══██╗██╔══██╗██║██╔════╝██╔══██╗
-# ██████╔╝███████║██║  ██║██║██║     ███████║
-# ██╔══██╗██╔══██║██║  ██║██║██║     ██╔══██║
-# ██║  ██║██║  ██║██████╔╝██║╚██████╗██║  ██║
-# ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝ ╚═════╝╚═╝  ╚═╝
-#       Connectivity Troubleshooter v2.0
-#       Enhanced with AI-Powered Assistance
 
-# RADICO - Connectivity Troubleshooter Script
-# Enhanced with tool verification, dependency resolution, and AI assistance
-#
-# For comprehensive usage examples, feature documentation, and function reference:
-# See NFO.md in the same directory as this script
 
 # Global configuration
 AI_FEATURES_ENABLED=false
@@ -126,38 +113,12 @@ load_user_color_profiles
 # Set default colors initially
 eval "${COLOR_PROFILES[default]}"
 
-# Function to display ASCII art banner
+# Function to display banner
 show_banner() {
-    echo -e "${CYAN}██████╗  █████╗ ██████╗ ██╗ ██████╗ █████╗${NC}"
-    echo -e "${CYAN}██╔══██╗██╔══██╗██╔══██╗██║██╔════╝██╔══██╗${NC}"
-    echo -e "${CYAN}██████╔╝███████║██║  ██║██║██║     ███████║${NC}"
-    echo -e "${CYAN}██╔══██╗██╔══██║██║  ██║██║██║     ██╔══██║${NC}"
-    echo -e "${CYAN}██║  ██║██║  ██║██████╔╝██║╚██████╗██║  ██║${NC}"
-    echo -e "${CYAN}╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝ ╚═════╝╚═╝  ╚═╝${NC}"
-    echo -e "${CYAN}      Connectivity Troubleshooter v2.0${NC}"
-    echo -e "${CYAN}      Enhanced with AI-Powered Assistance${NC}"
-}
-
-# Function to log ASCII art banner to file
-log_banner() {
-    if [ "$LOGGING_ENABLED" = true ]; then
-        local timestamp
-        timestamp=$(date '+%Y-%m-%d %H:%M:%S')
-        {
-            echo ""
-            echo "[$timestamp] =================================================="
-            echo "[$timestamp] ██████╗  █████╗ ██████╗ ██╗ ██████╗ █████╗ "
-            echo "[$timestamp] ██╔══██╗██╔══██╗██╔══██╗██║██╔════╝██╔══██╗"
-            echo "[$timestamp] ██████╔╝███████║██║  ██║██║██║     ███████║"
-            echo "[$timestamp] ██╔══██╗██╔══██║██║  ██║██║██║     ██╔══██║"
-            echo "[$timestamp] ██║  ██║██║  ██║██████╔╝██║╚██████╗██║  ██║"
-            echo "[$timestamp] ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝ ╚═════╝╚═╝  ╚═╝"
-            echo "[$timestamp]       Connectivity Troubleshooter v2.0"
-            echo "[$timestamp]       Enhanced with AI-Powered Assistance"
-            echo "[$timestamp] =================================================="
-            echo ""
-        } >> "$LOG_FILE"
-    fi
+    echo -e "${CYAN}================================================${NC}"
+    echo -e "${CYAN}    Connectivity Troubleshooter v2.0${NC}"
+    echo -e "${CYAN}    Enhanced with AI-Powered Assistance${NC}"
+    echo -e "${CYAN}================================================${NC}"
 }
 
 # Function to show usage information
@@ -187,6 +148,8 @@ show_usage() {
     echo -e ""
     echo -e "${YELLOW}📖 For detailed usage examples and function reference, see NFO.md${NC}"
 }
+
+show_banner
 
 # Detect OS
 if [ -f /etc/os-release ]; then
@@ -867,9 +830,6 @@ prompt_ai_features() {
 # COMMAND LINE ARGUMENT PARSING
 # ============================================================================
 
-# Show banner at script start
-show_banner
-
 # Parse command line arguments
 while [[ $# -gt 0 ]]; do
     case $1 in
@@ -930,8 +890,7 @@ done
 # MAIN EXECUTION FLOW
 # ============================================================================
 
-# Log banner to file
-log_banner
+show_banner
 
 # Offer color profile selection if not set via command line
 if [ "$COLOR_PROFILE_SET" != true ]; then
@@ -984,9 +943,6 @@ if [ "$LOG_FILE_SET" != true ]; then
             echo "OS: $OS $VERSION"
             echo "========================================"
         } > "$LOG_FILE"
-        
-        # Add ASCII banner to log file
-        log_banner
         
         echo -e "${GREEN}✓ Logging active: $LOG_FILE${NC}"
         
@@ -1315,10 +1271,6 @@ generate_connection_report() {
 
 # Start comprehensive diagnostics
 run_comprehensive_diagnostics
-
-# Show banner before final summary
-echo ""
-show_banner
 
 echo -e "\n${GREEN}=== Troubleshooting Complete ===${NC}"
 
