@@ -8,12 +8,15 @@
 ██╔══██╗██╔══██║██║  ██║██║██║     ██║   ██║
 ██║  ██║██║  ██║██████╔╝██║╚██████╗╚██████╔╝
 ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝ ╚═════╝ ╚═════╝ 
-...
+      Connectivity Troubleshooter v2.0
+```
 
-[![Linux](https://img.shields.io/badge/Platform-Linux-blue.svg)](https://github.com/odioski/RADICO)
-[![Version](https://img.shields.io/badge/Version-2.0-green.svg)](https://github.com/odioski/RADICO)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![AI Powered](https://img.shields.io/badge/AI-Powered-purple.svg)](https://github.com/odioski/RADICO)
+> **RADICO** - *A comprehensive, AI-powered network troubleshooting solution for Linux systems* Network Connectivity Troubleshooter v2.0
+
+[![Linux](https://img.shields.io/badge/Platform-Linux-blue.svg)](https://github.com/odioski/RADICO)]
+[![Version](https://img.shields.io/badge/Version-2.0-green.svg)](https://github.com/odioski/RADICO)]
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)]
+[![AI Powered](https://img.shields.io/badge/AI-Powered-purple.svg)](https://github.com/odioski/RADICO)]
 
 ---
 
@@ -38,14 +41,14 @@
 ### Basic Usage
 ```bash
 # Download and run RADICO
-chmod +x radicol
-./radicol
+chmod +x radico
+./radico
 
 # Enable AI features with dark color profile and logging
-./radicol --ai-enabled --color-profile dark --log-file network_debug.log
+./radico --ai-enabled --color-profile dark --log-file network_debug.log
 
 # Get direct AI help
-./radicol --ai-help openai "WiFi connects but no internet"
+./radico --ai-help openai "WiFi connects but no internet"
 ```
 
 ## Color Profiles
@@ -59,8 +62,8 @@ The script supports multiple color profiles for different preferences and termin
 - **dark**: Optimized for dark themes
 
 The script will also automatically detect and load color profiles from:
-- `~/.config/radicol/colors/`
-- `~/.radicol_colors`
+- `~/.config/radico/colors/`
+- `~/.radico_colors`
 - `~/.config/terminal/colors/`
 - `~/.local/share/color-schemes/`
 - `~/.kde/share/apps/konsole/`
@@ -71,7 +74,7 @@ The script will also automatically detect and load color profiles from:
 The script offers comprehensive logging capabilities:
 
 - **Interactive setup**: Choose whether to enable logging during startup
-- **Custom log files**: Specify your own log file name or use default `radicol.log`
+- **Custom log files**: Specify your own log file name or use default `radico.log`
 - **Command line option**: Enable logging directly with `--log-file filename.log`
 - **Clean log format**: Timestamps and color-code-free entries for easy parsing
 - **Session tracking**: Complete record of troubleshooting steps and results
@@ -80,13 +83,13 @@ The script offers comprehensive logging capabilities:
 
 ```bash
 # Enable logging interactively (will prompt for log file name)
-./radicol
+./radico
 
 # Specify log file via command line
-./radicol --log-file my_network_debug.log
+./radico --log-file my_network_debug.log
 
 # Use default log file name
-./radicol --log-file radicol.log
+./radico --log-file radico.log
 ```
 
 ## Dependencies
@@ -139,12 +142,12 @@ Some diagnostic commands require elevated privileges. The script will:
 - **Gracefully handle** commands that need root access
 - **Suggest alternatives** when sudo isn't available
 
-> 💡 **Tip**: For best results, consider running with `sudo ./radicol` or ensure your user is in the `sudo` group.
+> 💡 **Tip**: For best results, consider running with `sudo ./radico` or ensure your user is in the `sudo` group.
 
 ## Usage
 
 ```bash
-./radicol [OPTIONS]
+./radico [OPTIONS]
 
 Options:
   --ai-enabled                Enable AI troubleshooting features
@@ -167,9 +170,9 @@ AI Services:
   local        Local Ollama
 
 Examples:
-  ./radicol --ai-enabled --color-profile dark
-  ./radicol --log-file debug_session.log
-  ./radicol --ai-help openai "network interface down"
+  ./radico --ai-enabled --color-profile dark
+  ./radico --log-file debug_session.log
+  ./radico --ai-help openai "network interface down"
 ```
 
 ---

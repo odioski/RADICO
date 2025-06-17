@@ -10,7 +10,7 @@
       Connectivity Troubleshooter v2.0
 ```
 
-> *"Radicol solutions for radicol network problems"*
+> *"radico solutions for radico network problems"*
 
 ## 📚 Table of Contents
 
@@ -27,7 +27,7 @@
 
 ## 🎯 What is RADICO?
 
-**RADICO** (Radicol Connectivity Troubleshooter) is a sophisticated Bash script designed to revolutionize network troubleshooting on Linux systems. Born from the brilliant mind of **Mr. Omar Daniels** and collaboratively enhanced with **GitHub Copilot**, RADICO transforms complex network diagnostics into an intuitive, AI-powered experience.
+**RADICO** (radico Connectivity Troubleshooter) is a sophisticated Bash script designed to revolutionize network troubleshooting on Linux systems. Born from the brilliant mind of **Mr. Omar Daniels** and collaboratively enhanced with **GitHub Copilot**, RADICO transforms complex network diagnostics into an intuitive, AI-powered experience.
 
 ### 🌟 The Vision
 
@@ -72,7 +72,7 @@ Imagine having a network expert at your fingertips 24/7—someone who never gets
 
 ## 🎨 Color Profiles
 
-RADICOL offers multiple visual themes to suit your environment and preferences:
+radico offers multiple visual themes to suit your environment and preferences:
 
 ### Built-in Profiles
 
@@ -86,11 +86,11 @@ RADICOL offers multiple visual themes to suit your environment and preferences:
 
 ### Custom Profile Locations
 
-RADICOL automatically scans these locations for user-defined color profiles:
+radico automatically scans these locations for user-defined color profiles:
 
 ```
-~/.config/radicol/colors/
-~/.radicol_colors
+~/.config/radico/colors/
+~/.radico_colors
 ~/.config/terminal/colors/
 ~/.local/share/color-schemes/
 ~/.kde/share/apps/konsole/
@@ -133,7 +133,7 @@ RADICOL automatically scans these locations for user-defined color profiles:
 ### Features
 - ✅ **Enabled by Default**: Logging is active from the start for complete transparency
 - ✅ **Interactive Configuration**: Choose your log file name or disable if needed
-- ✅ **Custom Filenames**: Specify your own log file names or use default RADICOL.LOG
+- ✅ **Custom Filenames**: Specify your own log file names or use default radico.LOG
 - ✅ **Clean Format**: Timestamped entries without color codes
 - ✅ **Complete Sessions**: Full audit trail of all operations
 - ✅ **Command Line Control**: Override logging behavior via switches
@@ -144,10 +144,10 @@ RADICO enables logging by default to ensure you never lose important troubleshoo
 ```
 === Logging Configuration ===
 ✓ Logging is enabled by default for RADICO
-Current log file: RADICOL.LOG
+Current log file: radico.LOG
 
 Options:
-1) Keep current settings (RADICOL.LOG)
+1) Keep current settings (radico.LOG)
 2) Change log file name  
 3) Disable logging for this session
 
@@ -174,11 +174,11 @@ OS: Ubuntu 22.04
 ### Basic Operations
 
 #### **Function**: `show_banner()` + OS Detection
-**Purpose**: Displays the RADICOL banner and detects the operating system
+**Purpose**: Displays the radico banner and detects the operating system
 
 ```bash
 # Basic usage - shows banner, detects OS, offers color selection
-./radicol
+./radico
 ```
 **Output**:
 ```
@@ -205,7 +205,7 @@ Available color profiles:
 
 ```bash
 # Professional look with custom logging
-./radicol --color-profile professional --log-file network_analysis.log
+./radico --color-profile professional --log-file network_analysis.log
 ```
 **What happens**:
 1. Sets professional color scheme (muted colors)
@@ -219,7 +219,7 @@ Available color profiles:
 
 ```bash
 # Standard tool verification
-./radicol
+./radico
 ```
 **Behind the scenes**:
 - Detects package manager (apt, yum, dnf, pacman, zypper)
@@ -237,7 +237,7 @@ Available color profiles:
 ```bash
 # Direct AI consultation with OpenAI GPT-4
 export OPENAI_API_KEY="sk-your-key-here"
-./radicol --ai-help openai "WiFi connects but no internet access"
+./radico --ai-help openai "WiFi connects but no internet access"
 ```
 **Response format**:
 ```
@@ -257,7 +257,7 @@ Service: openai
 ```bash
 # Technical analysis with Anthropic Claude
 export ANTHROPIC_API_KEY="your-key-here"
-./radicol --ai-help anthropic "Bluetooth device won't pair with Ubuntu"
+./radico --ai-help anthropic "Bluetooth device won't pair with Ubuntu"
 ```
 **Use case**: Complex protocol analysis, detailed configuration guidance
 
@@ -269,7 +269,7 @@ export ANTHROPIC_API_KEY="your-key-here"
 ```bash
 # Current information with web search
 export PERPLEXITY_API_KEY="your-key-here"
-./radicol --ai-help perplexity "Network interface keeps dropping on kernel 6.5"
+./radico --ai-help perplexity "Network interface keeps dropping on kernel 6.5"
 ```
 **Advantage**: Gets latest driver updates, kernel bug reports, current solutions
 
@@ -280,7 +280,7 @@ export PERPLEXITY_API_KEY="your-key-here"
 
 ```bash
 # Privacy-focused local AI
-./radicol --ai-help local "Cannot resolve DNS names"
+./radico --ai-help local "Cannot resolve DNS names"
 ```
 **Setup required**:
 ```bash
@@ -297,7 +297,7 @@ ollama pull llama2
 
 ```bash
 # Complete diagnostic session with AI and logging
-./radicol --ai-enabled --color-profile dark --log-file debug_session.log
+./radico --ai-enabled --color-profile dark --log-file debug_session.log
 ```
 **Flow**:
 1. Sets dark theme for terminal compatibility
@@ -313,7 +313,7 @@ ollama pull llama2
 
 ```bash
 # High contrast for visual accessibility
-./radicol --color-profile high-contrast --log-file accessibility_debug.log
+./radico --color-profile high-contrast --log-file accessibility_debug.log
 ```
 **Benefits**: 
 - Enhanced visibility for users with visual impairments
@@ -326,9 +326,9 @@ ollama pull llama2
 **Purpose**: Handle complex dependency issues
 
 ```bash
-# Let RADICOL handle repository and dependency problems
-./radicol
-# When packages are missing, RADICOL will:
+# Let radico handle repository and dependency problems
+./radico
+# When packages are missing, radico will:
 # 1. Check package availability
 # 2. Resolve dependencies
 # 3. Suggest repository fixes
@@ -344,7 +344,7 @@ ollama pull llama2
 
 ```bash
 # Focused Ethernet diagnosis
-./radicol --ai-enabled
+./radico --ai-enabled
 # Then select Ethernet diagnostics
 ```
 **Checks performed**:
@@ -360,7 +360,7 @@ ollama pull llama2
 
 ```bash
 # WiFi troubleshooting with AI assistance
-./radicol --ai-help openai "WiFi interface not detected"
+./radico --ai-help openai "WiFi interface not detected"
 ```
 **Diagnostics include**:
 - Wireless interface detection
@@ -375,7 +375,7 @@ ollama pull llama2
 
 ```bash
 # Bluetooth issues with technical AI analysis
-./radicol --ai-help anthropic "Bluetooth controller not responding"
+./radico --ai-help anthropic "Bluetooth controller not responding"
 ```
 **Covers**:
 - Bluetooth service status
@@ -391,25 +391,25 @@ ollama pull llama2
 
 ```bash
 # Quick start (interactive)
-./radicol
+./radico
 
 # Silent operation with logging
-./radicol --log-file
+./radico --log-file
 
 # AI-powered session
-./radicol --ai-enabled --log-file ai_session.log
+./radico --ai-enabled --log-file ai_session.log
 
 # Accessibility mode
-./radicol --color-profile high-contrast
+./radico --color-profile high-contrast
 
 # Professional presentation
-./radicol --color-profile professional --ai-enabled
+./radico --color-profile professional --ai-enabled
 
 # Developer mode (dark theme + detailed logging)
-./radicol --color-profile dark --log-file dev_debug.log
+./radico --color-profile dark --log-file dev_debug.log
 
 # Get immediate AI help
-./radicol --ai-help local "describe your issue here"
+./radico --ai-help local "describe your issue here"
 ```
 
 ---
@@ -465,7 +465,7 @@ Special thanks to the open source community, Linux networking pioneers, and the 
 
 ## 🌟 Final Words
 
-**RADICO** isn't just another network troubleshooting script—it's a revolution in how we approach connectivity problems. From the moment you run `./radicol`, you're not just executing commands; you're embarking on a guided journey through the layers of modern networking, powered by both time-tested Unix philosophy and cutting-edge artificial intelligence.
+**RADICO** isn't just another network troubleshooting script—it's a revolution in how we approach connectivity problems. From the moment you run `./radico`, you're not just executing commands; you're embarking on a guided journey through the layers of modern networking, powered by both time-tested Unix philosophy and cutting-edge artificial intelligence.
 
 ### 💫 The Philosophy
 
@@ -475,4 +475,4 @@ Whether you're dealing with a stubborn WiFi connection, mysterious packet loss, 
 
 ---
 
-**🚀 RADICO - Making network troubleshooting radicolly simple, beautifully intelligent! 🚀**
+**🚀 RADICO - Making network troubleshooting Radicoy simple, beautifully intelligent! 🚀**

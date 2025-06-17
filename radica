@@ -10,7 +10,7 @@
 AI_FEATURES_ENABLED=false
 SCRIPT_NAME="$(basename "$0")"
 LOGGING_ENABLED=true
-LOG_FILE="RADICOL.LOG"
+LOG_FILE="radico.LOG"
 COLOR_PROFILE_SET=false
 LOG_FILE_SET=false
 
@@ -860,7 +860,7 @@ while [[ $# -gt 0 ]]; do
                 echo -e "${GREEN}✓ Logging enabled to: $LOG_FILE${NC}"
                 shift 2
             else
-                LOG_FILE="RADICOL.LOG"                          # Default to RADICOL.LOG
+                LOG_FILE="radico.LOG"                          # Default to radico.LOG
                 echo -e "${GREEN}✓ Logging enabled to: $LOG_FILE (default)${NC}"
                 shift
             fi

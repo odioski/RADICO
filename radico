@@ -10,7 +10,7 @@
 AI_FEATURES_ENABLED=false
 SCRIPT_NAME="$(basename "$0")"
 LOGGING_ENABLED=true
-LOG_FILE="RADICOL.LOG"
+LOG_FILE="radico.LOG"
 COLOR_PROFILE_SET=false
 LOG_FILE_SET=false
 
@@ -35,8 +35,8 @@ COLOR_PROFILES["dark"]="RED='\033[0;196m' GREEN='\033[0;82m' YELLOW='\033[0;226m
 # Function to load user color profiles from common locations
 load_user_color_profiles() {
     local profile_locations=(
-        "$HOME/.config/radicol/colors"
-        "$HOME/.radicol_colors"
+        "$HOME/.config/radico/colors"
+        "$HOME/.radico_colors"
         "$HOME/.config/terminal/colors"
         "$HOME/.local/share/color-schemes"
         "$HOME/.kde/share/apps/konsole"
@@ -860,7 +860,7 @@ while [[ $# -gt 0 ]]; do
                 echo -e "${GREEN}✓ Logging enabled to: $LOG_FILE${NC}"
                 shift 2
             else
-                LOG_FILE="RADICOL.LOG"                          # Default to RADICOL.LOG
+                LOG_FILE="radico.LOG"                          # Default to radico.LOG
                 echo -e "${GREEN}✓ Logging enabled to: $LOG_FILE (default)${NC}"
                 shift
             fi
