@@ -216,7 +216,7 @@ export RADICA_AI_PROVIDER="ollama"
 ![RADICA Main Interface](RADICA.png)
 
 ### Advanced Diagnostics
-![RADICA Advanced Mode](RADICA.LOG)
+![RADICA Advanced Mode](RADICA-LOG-EXAMPLE-LOCAL-BASH.png)
 
 ---
 
