@@ -8,21 +8,7 @@
 ██╔══██╗██╔══██║██║  ██║██║██║     ██║   ██║
 ██║  ██║██║  ██║██████╔╝██║╚██████╗╚██████╔╝
 ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝ ╚═════╝ ╚═════╝ 
-      Connectivity Troubleshooter v2.0
-```
-
-> **RADICO** - *A comprehensive, AI-powered network troubleshooting solution for 
-```
-██████╗  █████╗ ██████╗ ██╗ ██████╗ █████╗ 
-██╔══██╗██╔══██╗██╔══██╗██║██╔════╝██╔══██╗
-██████╔╝███████║██║  ██║██║██║     ███████║
-██╔══██╗██╔══██║██║  ██║██║██║     ██╔══██║
-██║  ██║██║  ██║██████╗██║╚██████╗██║  ██║
-╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝ ╚═════╝╚═╝  ╚═╝
-      Connectivity Troubleshooter v2.0
-```
-
-> **RADICO** - *A comprehensive, AI-powered network troubleshooting solution for Linux systems*
+...
 
 [![Linux](https://img.shields.io/badge/Platform-Linux-blue.svg)](https://github.com/odioski/RADICO)
 [![Version](https://img.shields.io/badge/Version-2.0-green.svg)](https://github.com/odioski/RADICO)
