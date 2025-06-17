@@ -259,7 +259,7 @@ snap install bash-language-server --classic
 
 Might want some AI...
 
-Gemini and Copilot desktop versions can be found at the SnapStore.
+Gemini and Copilot desktop versions can be found at the [Snapcraft Store](https://snapcraft.io).
 snap install copilot-desktop
 snap install gemini-desktop
 
