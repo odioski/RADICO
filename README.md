@@ -217,7 +217,7 @@ export RADICA_AI_PROVIDER="ollama"
 
 ### Advanced Diagnostics
 ![RADICA Advanced Mode](RADICA-LOG-EXAMPLE-LOCAL-BASH.png)
-
+Tiny example. Download [Radica Example Log.pdf](radica-example-log.pdf) to view the full current output.
 ---
 
 ## 📚 Documentation
