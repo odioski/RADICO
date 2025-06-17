@@ -243,6 +243,26 @@ We welcome contributions to RADICA! Here's how you can help:
 ```bash
 git clone https://github.com/odioski/RADICA.git
 cd RADICA
+
+# Additional tools...
+
+su
+
+Kate - Feature Rich Text Editor and IDE
+apt satisfy kate
+
+shfmt - Like shellcheck works well w/Kate troubleshooting Shell Scripts (bash,sh,zsh,etc.)
+apt install shfmt
+
+Bash LSP - Plugin for Kate, in conjuction with shfmt.
+snap install bash-language-server --classic
+
+Might want some AI...
+
+Gemini and Copilot desktop versions can be found at the SnapStore.
+snap install copilot-desktop
+snap install gemini-desktop
+
 # Start developing!
 ```
 
@@ -252,7 +272,7 @@ cd RADICA
 
 - 🐛 **Issues**: [GitHub Issues](https://github.com/odioski/RADICA/issues)
 - 💬 **Discussions**: [GitHub Discussions](https://github.com/odioski/RADICA/discussions)
-- 📧 **Email**: o.daniels.sr@outlook.com
+- 📧 **Email**: link92@bookmotives.com
 
 ---
 
