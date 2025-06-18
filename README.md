@@ -262,7 +262,7 @@ Might want some AI...
 Gemini and Copilot versions can be found at the [Snapcraft store](https://snapcraft.io).
 
 ```
-snap install copilot-desktop
+snap install Copilot-desktop
 snap install gemini-desktop
 
 # Start developing!
