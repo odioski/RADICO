@@ -249,18 +249,18 @@ cd RADICO
 
 su
 
-Kate - Feature Rich Text Editor and IDE
+# Kate - Feature Rich Text Editor and IDE
 apt satisfy kate
 
-shfmt - Like shellcheck works well w/Kate troubleshooting Shell Scripts (bash,sh,zsh,etc.)
+# shfmt - Like shellcheck works well w/Kate troubleshooting Shell Scripts (bash,sh,zsh,etc.)
 apt install shfmt
 
-Bash LSP - Plugin for Kate, in conjuction with shfmt.
+# Bash LSP - Plugin for Kate, in conjuction with shfmt.
 snap install bash-language-server --classic
-```
-Might want some AI...
-Gemini and Copilot versions can be found at the [Snapcraft store](https://snapcraft.io).
-```
+
+# Might want some AI...
+# Gemini and Copilot versions can be found at the [Snapcraft store](https://snapcraft.io).
+
 snap install copilot-desktop
 snap install gemini-desktop
 
