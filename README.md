@@ -242,8 +242,8 @@ We welcome contributions to RADICA! Here's how you can help:
 
 ### Development Setup
 ```bash
-git clone https://github.com/odioski/RADICA.git
-cd RADICA
+git clone https://github.com/odioski/RADICO.git
+cd RADICO
 
 # Additional tools...
 
