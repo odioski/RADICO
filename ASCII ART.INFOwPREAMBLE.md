@@ -1,3 +1,21 @@
+PREAMBLE:
+
+Several years ago I tried to inform some of the younger ones I was around at the time about what’s called ASCII Art. During the time I couldn’t recall the official term but had referenced back to when I was even younger during the elementary school years when I had first came across it. After creating this, ASCII ART.INFO.md for a personal project, I found via Copiilot an acurate description of the art form and it also provided some instructions on how to craft your own.
+
+The preceding was then compiled into what you see below, a short tutorial on building ASCII Art using RADICA an image for my latest app, the first of this repo RADICO, as an example. I’ll mention that the extended Unicode character set was something which was built way back in the 80’s when I first heard of it, possible even further since modern computing back then was fairly formed and close to a solid model of what Personal Computing would become for the next few decades by as early as the late 70s. Had forgotten about the term used to describe the artform  until now, but I do remember the extended/subset of Unicode being mentitoned. 
+
+Originally the idea behind the extended Unicode subset was readability or making the image stand out in a way which is legible for most. Something else I remembered being mentioned since many of us (only a couple of us) goofed around during computer class because many of us apsired to be artists. Our teacher informed us of these facts not just to build on our intellligence but also to communicate a kind of soft warning. Being all about that, especially this, doesn’t always receive a positive judgement from the perveyor. 
+
+Perhpas one may link ASCII art to the very early origins of pixel art but back then during that era, most computer generated images crafted by hand had that..., :the Pixel Art kind of look: so it wasn’t a definition then.
+
+Throughout the years I’ve come across many ASCII arts. Many who code in bash, or write shell scripts and those who code in general have a yearning creative side and it isn’t unusual to find one of these drawings in an README.md NFO.md or what have you. Hopefully this document will help or the reader will gain a heads up if they would like to draw one.
+
+Remember that using extended Unicode isn’t the only way, your imagination is your only limitation. There are many ASCII arts out there which use characters found on all standard 101 keyboards, QUERTY and some built for other languages. You’d be amazed by how technical and detailed some of those graphics are. The subset of Unicode detailed here explains the use of the block characters used to create the examples. 
+
+Enjoy, and happy hunting if you go looking for some.
+
+OD
+
 # 🎨 ASCII Art Tutorial: Creating the RADICA Banner
 
 ## 📋 The RADICA Banner

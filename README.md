@@ -11,7 +11,6 @@
       Connectivity Troubleshooter v2.0
 ```
 
-
 > **RADICA** - *A comprehensive, AI-powered network troubleshooting solution for Linux systems* Network Connectivity Troubleshooter v2.0
 
 [![Linux](https://img.shields.io/badge/Platform-Linux-blue.svg)](https://github.com/odioski/RADICA)]
