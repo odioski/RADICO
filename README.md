@@ -42,13 +42,13 @@
 ```bash
 # Download and run RADICA
 chmod +x RADICA
-./RADICA
+./radica
 
 # Enable AI features with dark color profile and logging
-./RADICA --ai-enabled --color-profile dark --log-file network_debug.log
+./radica --ai-enabled --color-profile dark --log-file network_debug.log
 
 # Get direct AI help
-./RADICA --ai-help openai "WiFi connects but no internet"
+./radica --ai-help openai "WiFi connects but no internet"
 ```
 
 ## Color Profiles
@@ -83,13 +83,13 @@ The script offers comprehensive logging capabilities:
 
 ```bash
 # Enable logging interactively (will prompt for log file name)
-./RADICA
+./radica
 
 # Specify log file via command line
-./RADICA --log-file my_network_debug.log
+./radica --log-file my_network_debug.log
 
 # Use default log file name
-./RADICA --log-file RADICA.log
+./radica --log-file RADICA.log
 ```
 
 ## Dependencies
@@ -142,12 +142,12 @@ Some diagnostic commands require elevated privileges. The script will:
 - **Gracefully handle** commands that need root access
 - **Suggest alternatives** when sudo isn't available
 
-> 💡 **Tip**: For best results, consider running with `sudo ./RADICA` or ensure your user is in the `sudo` group.
+> 💡 **Tip**: For best results, consider running with `sudo ./radica` or ensure your user is in the `sudo` group.
 
 ## Usage
 
 ```bash
-./RADICA [OPTIONS]
+./radica [OPTIONS]
 
 Options:
   --ai-enabled                Enable AI troubleshooting features
@@ -170,9 +170,9 @@ AI Services:
   local        Local Ollama
 
 Examples:
-  ./RADICA --ai-enabled --color-profile dark
-  ./RADICA --log-file debug_session.log
-  ./RADICA --ai-help openai "network interface down"
+  ./radica --ai-enabled --color-profile dark
+  ./radica --log-file debug_session.log
+  ./radica --ai-help openai "network interface down"
 ```
 
 ---

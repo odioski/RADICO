@@ -180,7 +180,7 @@ OS: Ubuntu 22.04
 
 ```bash
 # Basic usage - shows banner, detects OS, offers color selection
-./RADICA
+./radica
 ```
 **Output**:
 ```
@@ -207,7 +207,7 @@ Available color profiles:
 
 ```bash
 # Professional look with custom logging
-./RADICA --color-profile professional --log-file network_analysis.log
+./radica --color-profile professional --log-file network_analysis.log
 ```
 **What happens**:
 1. Sets professional color scheme (muted colors)
@@ -221,7 +221,7 @@ Available color profiles:
 
 ```bash
 # Standard tool verification
-./RADICA
+./radica
 ```
 **Behind the scenes**:
 - Detects package manager (apt, yum, dnf, pacman, zypper)
@@ -239,7 +239,7 @@ Available color profiles:
 ```bash
 # Direct AI consultation with OpenAI GPT-4
 export OPENAI_API_KEY="sk-your-key-here"
-./RADICA --ai-help openai "WiFi connects but no internet access"
+./radica --ai-help openai "WiFi connects but no internet access"
 ```
 **Response format**:
 ```
@@ -259,7 +259,7 @@ Service: openai
 ```bash
 # Technical analysis with Anthropic Claude
 export ANTHROPIC_API_KEY="your-key-here"
-./RADICA --ai-help anthropic "Bluetooth device won't pair with Ubuntu"
+./radica --ai-help anthropic "Bluetooth device won't pair with Ubuntu"
 ```
 **Use case**: Complex protocol analysis, detailed configuration guidance
 
@@ -271,7 +271,7 @@ export ANTHROPIC_API_KEY="your-key-here"
 ```bash
 # Current information with web search
 export PERPLEXITY_API_KEY="your-key-here"
-./RADICA --ai-help perplexity "Network interface keeps dropping on kernel 6.5"
+./radica --ai-help perplexity "Network interface keeps dropping on kernel 6.5"
 ```
 **Advantage**: Gets latest driver updates, kernel bug reports, current solutions
 
@@ -282,7 +282,7 @@ export PERPLEXITY_API_KEY="your-key-here"
 
 ```bash
 # Privacy-focused local AI
-./RADICA --ai-help local "Cannot resolve DNS names"
+./radica --ai-help local "Cannot resolve DNS names"
 ```
 **Setup required**:
 ```bash
@@ -299,7 +299,7 @@ ollama pull llama2
 
 ```bash
 # Complete diagnostic session with AI and logging
-./RADICA --ai-enabled --color-profile dark --log-file debug_session.log
+./radica --ai-enabled --color-profile dark --log-file debug_session.log
 ```
 **Flow**:
 1. Sets dark theme for terminal compatibility
@@ -315,7 +315,7 @@ ollama pull llama2
 
 ```bash
 # High contrast for visual accessibility
-./RADICA --color-profile high-contrast --log-file accessibility_debug.log
+./radica --color-profile high-contrast --log-file accessibility_debug.log
 ```
 **Benefits**: 
 - Enhanced visibility for users with visual impairments
@@ -329,7 +329,7 @@ ollama pull llama2
 
 ```bash
 # Let RADICA handle repository and dependency problems
-./RADICA
+./radica
 # When packages are missing, RADICA will:
 # 1. Check package availability
 # 2. Resolve dependencies
@@ -346,7 +346,7 @@ ollama pull llama2
 
 ```bash
 # Focused Ethernet diagnosis
-./RADICA --ai-enabled
+./radica --ai-enabled
 # Then select Ethernet diagnostics
 ```
 **Checks performed**:
@@ -362,7 +362,7 @@ ollama pull llama2
 
 ```bash
 # WiFi troubleshooting with AI assistance
-./RADICA --ai-help openai "WiFi interface not detected"
+./radica --ai-help openai "WiFi interface not detected"
 ```
 **Diagnostics include**:
 - Wireless interface detection
@@ -377,7 +377,7 @@ ollama pull llama2
 
 ```bash
 # Bluetooth issues with technical AI analysis
-./RADICA --ai-help anthropic "Bluetooth controller not responding"
+./radica --ai-help anthropic "Bluetooth controller not responding"
 ```
 **Covers**:
 - Bluetooth service status
@@ -393,25 +393,25 @@ ollama pull llama2
 
 ```bash
 # Quick start (interactive)
-./RADICA
+./radica
 
 # Silent operation with logging
-./RADICA --log-file
+./radica --log-file
 
 # AI-powered session
-./RADICA --ai-enabled --log-file ai_session.log
+./radica --ai-enabled --log-file ai_session.log
 
 # Accessibility mode
-./RADICA --color-profile high-contrast
+./radica --color-profile high-contrast
 
 # Professional presentation
-./RADICA --color-profile professional --ai-enabled
+./radica --color-profile professional --ai-enabled
 
 # Developer mode (dark theme + detailed logging)
-./RADICA --color-profile dark --log-file dev_debug.log
+./radica --color-profile dark --log-file dev_debug.log
 
 # Get immediate AI help
-./RADICA --ai-help local "describe your issue here"
+./radica --ai-help local "describe your issue here"
 ```
 
 ---
@@ -467,7 +467,7 @@ Special thanks to the open source community, Linux networking pioneers, and the 
 
 ## 🌟 Final Words
 
-**RADICA** isn't just another network troubleshooting script—it's a revolution in how we approach connectivity problems. From the moment you run `./RADICA`, you're not just executing commands; you're embarking on a guided journey through the layers of modern networking, powered by both time-tested Unix philosophy and cutting-edge artificial intelligence.
+**RADICA** isn't just another network troubleshooting script—it's a revolution in how we approach connectivity problems. From the moment you run `./radica`, you're not just executing commands; you're embarking on a guided journey through the layers of modern networking, powered by both time-tested Unix philosophy and cutting-edge artificial intelligence.
 
 ### 💫 The Philosophy
 
