@@ -233,11 +233,8 @@ Tiny example. Download [Radica Example Log.pdf](radica-example-log.pdf) to view 
 
 We welcome contributions to RADICA! Here's how you can help:
 
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
-3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
-4. **Push** to the branch (`git push origin feature/amazing-feature`)
-5. **Open** a Pull Request
+**Fork** the repository
+**Open** a Pull Request
 
 ### Development Setup
 ```bash
@@ -248,7 +245,7 @@ cd RADICO
 
 su
 
-# Kate - Feature Rich Text Editor and IDE
+# Kate - Feature Rich IDE
 apt satisfy kate
 
 # shfmt - Like shellcheck works well w/Kate troubleshooting Shell Scripts (bash,sh,zsh,etc.)
@@ -261,7 +258,7 @@ Might want some AI...
 Gemini and Copilot versions can be found at the [Snapcraft store](https://snapcraft.io).
 
 ```
-snap install Copilot-desktop
+snap install copilot-desktop
 snap install gemini-desktop
 
 # Start developing!
