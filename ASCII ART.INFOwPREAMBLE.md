@@ -10,7 +10,7 @@ Originally the idea behind the extended Unicode subset was readability or making
 
 Throughout the years I’ve come across many ASCII arts. Many who code in bash, or write shell scripts and those who code in general have a yearning creative side and it isn’t unusual to find one of these drawings in an README, NFO usually, or what have you. Hopefully this document will help or the reader will gain a heads up if they would like to draw one.
 
-Remember that using extended Unicode isn’t the only way, your imagination is your only limitation. There are many ASCII arts out there which use characters that can be found on all standard 101 keyboards, QUERRTY, and keyboards for perhapss less comprehended language constructs (layouts) offer their own selectionss. You’d be amazed by how technical, detailed, and visually appealing some of those graphics are. The subset of Unicode detailed here explains the use of the block characters used to create the examples. 
+Remember that using extended Unicode isn’t the only way, your imagination is your only limitation. There are many ASCII arts out there which use characters that can be found on all standard 101 keyboards, QUERTY, and keyboards for perhapss less comprehended language constructs (layouts) offer their own selections. You’d be amazed by how technical, detailed, and visually appealing some of those graphics are. The subset of Unicode detailed here explains the use of the block characters used to create the examples. 
 
 OD
 
