@@ -1,6 +1,6 @@
 PREAMBLE:
 
-Several years ago I tried to inform a few about ASCII art and what I knew about it and some simple techniques to explain how one is created. An ASCII art is the graphic which sometimes is part of the README which comes with some dev:admin cli tools. They're kind of cool since if you look closley the image is composed of charachters found on most keyboards. Like crossahatching with ink in the world of sketching some depth and shading can be visualized with the very detailed graphincs of this kind. Such is the atraction that comes across for most who enjoy such pictorials.
+Several years ago I tried to inform a few about ASCII art and what I knew about it and some simple techniques to explain how one is created. An ASCII art is the graphic which sometimes is part of the README which comes with some dev:admin cli tools. They're kind of cool since if you look close the image is composed of charachters found on most keyboards. Like crossahatching with ink in the world of sketching some depth and shading can be visualized with the very detailed graphincs of this kind. Such is the atraction that comes across for most who enjoy such pictorials.
 
 I couldn’t recall the official term but had referenced back to when I was even younger during the elementary school years when I had first came across it. That happened either in 1984 or 1985 while in computer classes when I learned a few fundamentals about software and what it is to the machine using it.
 
