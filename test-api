@@ -1,0 +1,43 @@
+# Function to call Gemini API
+call_gemini_api() {
+    local query="$1"
+
+    if [ -z "$GEMINI_API_KEY" ]; then
+        echo -e "${RED}Gemini API key not found. Set GEMINI_API_KEY environment variable.${NC}"
+        return 1
+    fi
+
+    echo -e "${YELLOW}🌟 Querying Gemini AI...${NC}"
+
+    local response
+    response=$(curl -s -w "\n%{http_code}" -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$GEMINI_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d "{
+            \"contents\": [
+                {\"role\": \"user\", \"parts\": [{\"text\": \"$query\"}]}
+            ],
+            \"generationConfig\": {
+                \"temperature\": 0.3,
+                \"maxOutputTokens\": 800
+            }
+        }")
+
+    local http_code="${response##*$'\n'}"
+    local json_response="${response%$'\n'*}"
+
+    if [ "$http_code" = "200" ]; then
+        if command_exists jq; then
+            echo "$json_response" | jq -r '.candidates[0].content.parts[0].text' 2>/dev/null || echo "$json_response"
+        else
+            echo "$json_response"
+        fi
+    else
+        echo -e "${RED}API Error (HTTP $http_code). Check your API key and quota.${NC}"
+        return 1
+    fi
+}
+
+call_gemini_api
+echo $json_response 
+# Example usage:
+# call_gemini_api "What is the capital of France?"  

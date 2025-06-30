@@ -180,6 +180,7 @@ show_usage() {
     echo -e "  dark           Dark theme optimized"
     echo -e ""
     echo -e "${BLUE}AI Services:${NC}"
+    echo -e "  gemini          Gemini AI (requires GEMINI_API_KEY)"
     echo -e "  openai          OpenAI GPT-4 (requires OPENAI_API_KEY)"
     echo -e "  anthropic       Anthropic Claude (requires ANTHROPIC_API_KEY)"
     echo -e "  perplexity      Perplexity AI (requires PERPLEXITY_API_KEY)"
@@ -548,7 +549,7 @@ check_package_availability() {
 
 # AI Module Configuration
 AI_MODULE_VERSION="1.0"
-SUPPORTED_AI_SERVICES=("openai" "anthropic" "perplexity" "local")
+SUPPORTED_AI_SERVICES=("gemini" "openai" "anthropic" "perplexity" "local")
 
 # Function to check if AI features are available
 check_ai_availability() {
@@ -569,6 +570,7 @@ check_ai_availability() {
     fi
     
     # Check API keys
+    [ -n "$GEMINI_API_KEY" ] && available_services+=("gemini") && echo -e "${GREEN}✓${NC} Gemini API key detected"
     [ -n "$OPENAI_API_KEY" ] && available_services+=("openai") && echo -e "${GREEN}✓${NC} OpenAI API key detected"
     [ -n "$ANTHROPIC_API_KEY" ] && available_services+=("anthropic") && echo -e "${GREEN}✓${NC} Anthropic API key detected"
     [ -n "$PERPLEXITY_API_KEY" ] && available_services+=("perplexity") && echo -e "${GREEN}✓${NC} Perplexity API key detected"
@@ -729,6 +731,45 @@ call_perplexity_api() {
     fi
 }
 
+# Function to call Gemini API
+call_gemini_api() {
+    local query="$1"
+
+    if [ -z "$GEMINI_API_KEY" ]; then
+        echo -e "${RED}Gemini API key not found. Set GEMINI_API_KEY environment variable.${NC}"
+        return 1
+    fi
+
+    echo -e "${YELLOW}🌟 Querying Gemini AI...${NC}"
+
+    local response
+    response=$(curl -s -w "\n%{http_code}" -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$GEMINI_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d "{
+            \"contents\": [
+                {\"role\": \"user\", \"parts\": [{\"text\": \"$query\"}]}
+            ],
+            \"generationConfig\": {
+                \"temperature\": 0.3,
+                \"maxOutputTokens\": 800
+            }
+        }")
+
+    local http_code="${response##*$'\n'}"
+    local json_response="${response%$'\n'*}"
+
+    if [ "$http_code" = "200" ]; then
+        if command_exists jq; then
+            echo "$json_response" | jq -r '.candidates[0].content.parts[0].text' 2>/dev/null || echo "$json_response"
+        else
+            echo "$json_response"
+        fi
+    else
+        echo -e "${RED}API Error (HTTP $http_code). Check your API key and quota.${NC}"
+        return 1
+    fi
+}
+
 # Function to call local Ollama
 call_local_ai() {
     local query="$1"
@@ -809,6 +850,7 @@ call_ai_api() {
 }
 
 # Function to display AI help and setup instructions
+# Gemini API Help:
 show_ai_help() {
     echo -e "${PURPLE}=== AI Troubleshooting Module Help ===${NC}"
     echo -e ""
@@ -824,6 +866,10 @@ show_ai_help() {
     echo -e "${GREEN}3. Perplexity AI${NC} - Real-time web search + AI"
     echo -e "   Setup: export PERPLEXITY_API_KEY='your-api-key'"
     echo -e "   Get key: https://www.perplexity.ai/settings/api"
+    echo -e ""
+    echo -e "${GREEN}5. Gemini AI (Google)${NC} - Fast, privacy-friendly, and free tier available"
+    echo -e "   Setup: export GEMINI_API_KEY='your-api-key'"
+    echo -e "   Get key: https://aistudio.google.com/app/apikey"
     echo -e ""
     echo -e "${GREEN}4. Local Ollama${NC} - Privacy-focused local AI"
     echo -e "   Setup: curl -fsSL https://ollama.ai/install.sh | sh"
