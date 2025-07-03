@@ -18,7 +18,7 @@ Remember that using extended Unicode isn’t the only way, your imagination is y
 
 OD
 
-Additionally, the older craft of cross-hatching with pen or ink can reproduce similiar effects like the layers I mentioned above. ASCII art uses alphabetic characters, symbols, and numerals found on your keyboard to create the same. Adjusting the size of the font before a character is used adds even more fine/precise detail. With enough skill or technique a sense of depth or shadow can be applied to the drawing depending on the artist's intentions, very much like cross-hatching.
+Additionally, the older craft of cross-hatching with pen or ink can reproduce similiar effects like the layers I mentioned above. ASCII art uses alphabetic characters, symbols, and numerals found on your keyboard to create the same. Adjusting the size of the font before a character is used adds even more fine/precise detail. With enough skill or technique a sense of depth or shadow can be applied to the drawing depending on the artist's intentions, very much like cross-hatching is accomplished.
 
 Have fun!
 
