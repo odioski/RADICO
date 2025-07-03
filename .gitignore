@@ -4,6 +4,8 @@
 /REPORTS/
 REPORTS/
 
+api-keys
+
 # Log files
 *.log
 *.LOG
