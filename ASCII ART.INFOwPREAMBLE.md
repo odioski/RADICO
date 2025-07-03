@@ -18,6 +18,10 @@ Remember that using extended Unicode isn’t the only way, your imagination is y
 
 OD
 
+Additionally, the older craft of cross-hatching with pen or ink can reproduce similiar effects like the layers I mentioned above. With enough skill or technique a sense of depth or shadow can be applied to the drawing depending on the artist's intentions.
+
+Have fun!
+
 # 🎨 ASCII Art Tutorial: Creating the RADICA Banner
 
 ## 📋 The RADICA Banner
