@@ -4,7 +4,7 @@ Several years ago I tried to inform a few about ASCII art and what I knew about 
 
 I couldn’t recall the official term but had referenced back to when I was even younger during the elementary school years when I had first came across it. That happened either in 1984 or 1985 while in computer classes when I learned a few fundamentals about software and what it is to the machine using it.
 
-Bare in mind, the README, INSTALL or any other MARKUP can't possibly allude to one thing or another other than the title of the files it contains, or hosts. Admittedly such experiences were found on the darker sides of code and the internet, but we learned to craft such graphics as children, long ago, when the world had a bit of trouble running about. For us it wasn't that serious though, just a recreational activity or treat after classwork was either completed or suspended.
+Bare in mind, the README, INSTALL or any other MARKUP can't possibly allude to one thing or another other than the contents of the file, *or the contents those individual files host.* As I mentioned, host or clients, guests, temporary visitors or new owners, they're all objects. Admittedly such experiences were found on the darker sides of code and the internet, but we learned to craft such graphics as children, long ago, when the world had a bit of trouble running about. *The Cold War*. For us though, still children, it wasn't that serious though, just a recreational activity or treat after classwork was either completed or suspended.
 
 After creating this, ASCII ART.INFO.md for a personal project, the repository you may currently be perusing... I found via Copiilot an acurate description of the *art form* and it also provided some instructions on how to craft your own.
 
