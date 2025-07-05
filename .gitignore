@@ -19,8 +19,9 @@ api-keys
 *~
 
 # System files
-.DS_Store
-Thumbs.db
+# .DS_Store
+# Thumbs.db
+# Hopefully, we'll notice
 
 # Editor files
 *.swp
@@ -28,3 +29,4 @@ Thumbs.db
 
 # Test files
 test_*.sh
+*test*
