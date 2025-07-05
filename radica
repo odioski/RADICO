@@ -211,7 +211,6 @@ echo -e "${BLUE}Detected OS:${NC} $OS $VERSION"
 
 # Will add siblings if ORACLE permits/grants permissions...
 
-
 declare -A TOOLS_DEBIAN=(
     ["ip"]="iproute2"
     ["ifconfig"]="net-tools"
