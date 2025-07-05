@@ -208,6 +208,10 @@ fi
 echo -e "${BLUE}Detected OS:${NC} $OS $VERSION"
 
 # Define required tools and their packages for different distributions
+
+# Will add siblings if ORACLE permits...
+
+
 declare -A TOOLS_DEBIAN=(
     ["ip"]="iproute2"
     ["ifconfig"]="net-tools"
@@ -470,9 +474,6 @@ check_tools() {
 }
 
 # Function to check package availability and dependencies
-
-# Current trouble with VM's, will add sibling distros later if ORACLE permits...
-
 
 check_package_availability() {
     local packages=("$@")
