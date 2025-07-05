@@ -209,7 +209,7 @@ echo -e "${BLUE}Detected OS:${NC} $OS $VERSION"
 
 # Define required tools and their packages for different distributions
 
-# Will add/define/declare siblings if ORACLE permits/grants permissions, is layered.
+# Will define/declare siblings if ORACLE permits/grants permissions, is layered.
 
 declare -A TOOLS_DEBIAN=(
     ["ip"]="iproute2"
