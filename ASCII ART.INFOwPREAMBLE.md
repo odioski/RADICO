@@ -12,17 +12,11 @@ The following was then compiled into what you see below, a short tutorial on bui
 
 Originally the idea behind the extended Unicode subset was readability or making the image stand out in a way which is legible for most. Very easy for one to link ASCII art to the very early origins of pixel art but back then during that era, most computer generated images crafted by hand had that..., :the Pixel Art kind of look: so it wasn’t definition then.
 
-Throughout the years I’ve come across many ASCII arts. Many who code in bash, or write shell scripts and those who code in general have a yearning creative side and it isn’t unusual to find one of these drawings in a README, NFO usually, or what have you. This document will help those who might be true beginners or inform beginners, as well as those who are advanced, or those who may be curious about tools which can simplify the process.
-
-<<<<<<< HEAD
-Remember that using extended Unicode isn’t the only way, your imagination is your only limitation. There are many ASCII arts out there which use characters that can be found on all standard 101 keyboards, QUERTY keyboards, and for perhaps less comprehended languages, keyboards, constructs (layouts) offer their own selections. You’d be amazed by how technical, detailed, very often layered, and visually appealing some of those graphics are. The subset of Unicode detailed here explains the use of the block characters used to create the examples. 
-=======
-Remember that using extended Unicode isn’t the only way, your imagination is your only limitation. There are many ASCII arts out there which use characters that can be found on all standard 101 keyboards, QUERTY keyboards, and for perhapss less comprehended languages, keyboards, constructs (layouts) offer their own selections. You’d be amazed by how technical, detailed, very often layered, and visually appealing some of those graphics are. The subset of Unicode detailed here explains the use of block characters to create the examples. 
->>>>>>> ff5ec958f59090e6cf6ed5ff815409da4a2c6157
+Throughout the years I’ve come across many ASCII arts. Many who code in bash, or write shell scripts and those who code in general have a yearning creative side and it isn’t unusual to find one of these drawings as part of a README, NFO usually, or what have you. This document will help those who might be true beginners or inform beginners, as well as those who are advanced, or those who may be curious about tools which can simplify the process.
 
 OD
 
-Additionally, the older craft of cross-hatching with pen or ink can reproduce similiar effects like the layers I mentioned above or a sense of depth and often shadow. ASCII art uses alphabetic characters, symbols, and numeric characters found on your keyboard to create the same. Adjusting the size of the font before a character is used and exercising some judgement (artist's discretion) on which characthers you choose gives even more fine/precise detail. With enough skill or technique a sense of depth or shadow can be applied to the drawing depending on the artist's intentions, very much like cross-hatching with simple pen and paper is accomplished.
+Additionally, the older craft of cross-hatching with pen or ink can reproduce similiar effects like the layers I mentioned above or a sense of depth and often shadow. ASCII art uses alphabetic characters, symbols, and numeric characters found on your keyboard to create the same. Adjusting the size of the font before a character is used and exercising some judgement (artist's discretion) on which characthers you choose gives even more fine/precise control. With enough skill or technique a sense of depth or shadow can be applied to the drawing depending on the artist's intentions, very much like cross-hatching with simple pen and paper is accomplished.
 
 Have fun!
 
