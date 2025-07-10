@@ -291,5 +291,5 @@ Made with ❤️ by [odioski](https://github.com/odioski)
 ---
 
 *Originally conceived by Mr. Omar Daniels*  
-*Developed collaboratively with GitHub Copilot*  
+*Developed collaboratively with GitHub Copilot (Anthropic Claude)*  
 *A practical approach to network troubleshooting with modern AI assistance*
