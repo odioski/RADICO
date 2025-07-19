@@ -17,7 +17,10 @@
 SCRIPT_NAME="$(basename "$0")"
 LOGGING_ENABLED=true
 LOG_FILE="RADICA.LOG"
-COLOR_PROFILE_SET=false
+COLOR_PROFILE_SET=fecho -e "\n${BLUE}=== Starting Connectivity Troubleshooting ===${NC}\n"
+
+# Enhanced connectivity troubleshooting sections
+run_ethernet_diagnostics() {…}
 LOG_FILE_SET=false
 
 # Color profile system - OPTION to choose color schemes
