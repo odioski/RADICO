@@ -11,23 +11,21 @@
       Connectivity Troubleshooter v2.0
 ```
 
-> **RADICA** - *A comprehensive, AI-powered network troubleshooting solution for Linux systems* Network Connectivity Troubleshooter v2.0
+> **RADICA** - *A comprehensive network troubleshooting solution for Linux systems*
 
 [![Linux](https://img.shields.io/badge/Platform-Linux-blue.svg)](https://github.com/odioski/RADICA)]
 [![Version](https://img.shields.io/badge/Version-2.0-green.svg)](https://github.com/odioski/RADICA)]
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)]
-[![AI Powered](https://img.shields.io/badge/AI-Powered-purple.svg)](https://github.com/odioski/RADICA)]
 
 ---
 
 ## 🚀 What is RADICA?
 
-**RADICA** is a revolutionary network connectivity troubleshooter that combines traditional diagnostic tools with cutting-edge AI technology. Whether you're dealing with Ethernet issues, WiFi problems, or Bluetooth connectivity challenges, RADICA has you covered across all major Linux distributions.
+**RADICA** is a revolutionary network connectivity troubleshooter. Whether you're dealing with Ethernet issues, WiFi problems, or Bluetooth connectivity challenges, RADICA has you covered across all major Linux distributions.
 
 ### ✨ Key Features
 
 - 🔧 **Multi-Platform Support**: Works seamlessly on Debian/Ubuntu, RedHat/CentOS/Fedora, Arch Linux, and openSUSE
-- 🤖 **AI-Powered Diagnostics**: Integration with OpenAI GPT-4, Anthropic Claude, Perplexity AI, and local Ollama
 - 🌐 **Comprehensive Coverage**: Ethernet, WiFi, and Bluetooth troubleshooting in one tool
 - 📦 **Smart Dependencies**: Automatically handles package conflicts and missing repositories
 - 🎨 **Customizable Interface**: Multiple color schemes and themes
@@ -45,10 +43,7 @@ chmod +x RADICA
 ./radica
 
 # Enable AI features with dark color profile and logging
-./radica --ai-enabled --color-profile dark --log-file network_debug.log
-
-# Get direct AI help
-./radica --ai-help openai "WiFi connects but no internet"
+./radica --color-profile dark --log-file network_debug.log
 ```
 
 ## Color Profiles
@@ -118,23 +113,6 @@ sudo zypper install iproute2 net-tools ethtool iputils traceroute bind-utils \
 wireless-tools iw rfkill wpa_supplicant bluez curl jq
 ```
 
-## AI Setup (Optional)
-
-```bash
-# OpenAI
-export OPENAI_API_KEY="your-api-key"
-
-# Anthropic Claude
-export ANTHROPIC_API_KEY="your-api-key"
-
-# Perplexity AI
-export PERPLEXITY_API_KEY="your-api-key"
-
-# Local AI (Ollama)
-curl -fsSL https://ollama.ai/install.sh | sh
-ollama pull llama2
-```
-
 ## Permissions
 
 Some diagnostic commands require elevated privileges. The script will:
@@ -150,8 +128,6 @@ Some diagnostic commands require elevated privileges. The script will:
 ./radica [OPTIONS]
 
 Options:
-  --ai-enabled                Enable AI troubleshooting features
-  --ai-help SERVICE QUERY     Get AI assistance
   --color-profile PROFILE     Set color profile
   --log-file FILENAME         Enable logging to specified file
   --help, -h                  Show help message
@@ -163,16 +139,9 @@ Color Profiles:
   monochrome    Grayscale colors
   dark         Dark theme optimized
 
-AI Services:
-  openai       OpenAI GPT-4
-  anthropic    Anthropic Claude  
-  perplexity   Perplexity AI
-  local        Local Ollama
-
 Examples:
-  ./radica --ai-enabled --color-profile dark
+  ./radica --color-profile dark
   ./radica --log-file debug_session.log
-  ./radica --ai-help openai "network interface down"
 ```
 
 ---
@@ -186,27 +155,6 @@ Examples:
 | Arch Linux | ✅ Full Support | pacman |
 | openSUSE | ✅ Full Support | zypper |
 | Other Linux | 🔄 Basic Support | Manual |
-
----
-
-## 🤖 AI Integration
-
-RADICA supports multiple AI providers for enhanced troubleshooting:
-
-- **OpenAI GPT-4**: Advanced problem analysis
-- **Anthropic Claude**: Detailed technical explanations  
-- **Perplexity AI**: Real-time web-based solutions
-- **Local Ollama**: Privacy-focused offline AI
-
-### AI Configuration
-```bash
-# Set your preferred AI provider
-export RADICA_AI_PROVIDER="openai"
-export OPENAI_API_KEY="your-api-key-here"
-
-# Or use local Ollama
-export RADICA_AI_PROVIDER="ollama"
-```
 
 ---
 
@@ -254,15 +202,6 @@ apt install shfmt
 # Bash LSP - Plugin for Kate, in conjuction with shfmt.
 snap install bash-language-server --classic
 ```
-Might want some AI...
-Gemini and Copilot versions can be found at the [Snapcraft store](https://snapcraft.io).
-
-```
-snap install copilot-desktop
-snap install gemini-desktop
-
-# Start developing!
-```
 
 ---
 
@@ -291,5 +230,4 @@ Made with ❤️ by [odioski](https://github.com/odioski)
 ---
 
 *Originally conceived by Mr. Omar Daniels*  
-*Developed collaboratively with GitHub Copilot (Anthropic Claude)*  
-*A practical approach to network troubleshooting with modern AI assistance*
+*A practical approach to network troubleshooting*
