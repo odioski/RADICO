@@ -28,5 +28,8 @@ api-keys
 *.swo
 
 # Test files
-test_*.sh
-*test*
+./test_*.sh
+./*test*
+test-api
+
+
