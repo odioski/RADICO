@@ -190,7 +190,6 @@ git clone https://github.com/odioski/RADICO.git
 cd RADICO
 
 # Additional tools...
-
 su
 
 # Kate - Feature Rich IDE
@@ -202,8 +201,6 @@ apt install shfmt
 # Bash LSP - Plugin for Kate, in conjuction with shfmt.
 snap install bash-language-server --classic
 ```
-
----
 
 ## 📞 Support
 
