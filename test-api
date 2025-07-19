@@ -1,6 +1,6 @@
 
 
-export GEMINI_API_KEY=AIzaSyA73ikWJGOyRsDFO1oM0jI2RsGQiUz2B7Y
+export GEMINI_API_KEY="your_api_key_here"
 
 
 # Function to call Gemini API
