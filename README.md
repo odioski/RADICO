@@ -42,7 +42,7 @@
 chmod +x RADICA
 ./radica
 
-# Enable AI features with dark color profile and logging
+# Use dark color profile and logging
 ./radica --color-profile dark --log-file network_debug.log
 ```
 

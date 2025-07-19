@@ -18,26 +18,24 @@
 
 1. [🎯 What is RADICA?](#-what-is-RADICA)
 2. [🎨 Color Profiles](#-color-profiles)
-3. [🤖 AI Services Integration](#-ai-services-integration)
-4. [📊 Logging System](#-logging-system)
-5. [🔧 Usage Examples & Function Reference](#-usage-examples--function-reference)
-6. [🎯 Quick Reference](#-quick-reference)
-7. [📚 Function Architecture](#-function-architecture)
-8. [👨‍💻 Credits & Attribution](#-credits--attribution)
+3. [📊 Logging System](#-logging-system)
+4. [🔧 Usage Examples & Function Reference](#-usage-examples--function-reference)
+5. [🎯 Quick Reference](#-quick-reference)
+6. [📚 Function Architecture](#-function-architecture)
+7. [👨‍💻 Credits & Attribution](#-credits--attribution)
 
 ---
 
 ## 🎯 What is RADICA?
 
-**RADICA** (RADICA Connectivity Troubleshooter) is a sophisticated Bash script designed to revolutionize network troubleshooting on Linux systems. Born from the brilliant mind of **Mr. Omar Daniels** and collaboratively enhanced with **GitHub Copilot**, RADICA transforms complex network diagnostics into an intuitive, AI-powered experience.
+**RADICA** (RADICA Connectivity Troubleshooter) is a sophisticated Bash script designed to revolutionize network troubleshooting on Linux systems. Born from the brilliant mind of **Mr. Omar Daniels**, RADICA transforms complex network diagnostics into an intuitive experience.
 
 ### 🌟 The Vision
 
-Imagine having a network expert at your fingertips 24/7—someone who never gets tired, knows every Linux distribution, speaks the language of packets and protocols, and can instantly consult the world's leading AI minds for the most challenging problems. That's RADICA.
+Imagine having a network expert at your fingertips 24/7—someone who never gets tired, knows every Linux distribution, and speaks the language of packets and protocols. That's RADICA.
 
 ### ✨ What Makes RADICA Revolutionary?
 
-- 🧠 **AI-First Approach**: Seamlessly integrates with OpenAI GPT-4, Anthropic Claude, Perplexity AI, and local Ollama
 - 🎨 **Accessibility Champion**: Five stunning color profiles including high-contrast for visual accessibility
 - 🔍 **Smart Detection**: Automatically identifies your OS, missing tools, and dependency conflicts
 - 📝 **Complete Transparency**: Comprehensive session logging with clean, professional output
@@ -49,22 +47,22 @@ Imagine having a network expert at your fingertips 24/7—someone who never gets
 | Traditional Tools | RADICA Experience |
 |-------------------|------------------|
 | Manual tool installation | Automatic detection & installation |
-| Static troubleshooting | AI-powered analysis & suggestions |
+| Static troubleshooting | Expert analysis & suggestions |
 | Terminal color blindness | Beautiful, accessible color themes |
 | Lost session data | Comprehensive logging system |
 | One-size-fits-all | Customizable to your workflow |
-| Isolated problem solving | Connected to global AI knowledge |
+| Isolated problem solving | Connected to global knowledge |
 
 ### 🚀 Introduction
 
-**RADICA** stands at the intersection of traditional Linux networking tools and cutting-edge artificial intelligence. Whether you're a system administrator troubleshooting enterprise networks, a developer debugging connectivity issues, or a Linux enthusiast learning the ropes, RADICA adapts to your skill level and provides exactly the assistance you need.
+**RADICA** stands at the intersection of traditional Linux networking tools and cutting-edge technology. Whether you're a system administrator troubleshooting enterprise networks, a developer debugging connectivity issues, or a Linux enthusiast learning the ropes, RADICA adapts to your skill level and provides exactly the assistance you need.
 
 ### 🌟 Key Features
 
 | Feature | Description |
 |---------|-------------|
 | **Smart Tool Detection** | Automatically checks for and installs missing network utilities |
-| **AI-Powered Analysis** | Get expert troubleshooting advice from multiple AI services |
+| **Expert Analysis** | Get professional troubleshooting advice |
 | **Color Profiles** | Choose from 5 built-in themes or load your own custom profiles |
 | **Session Logging** | Complete audit trail of all diagnostic steps and results |
 | **Dependency Resolution** | Intelligent package management with conflict resolution |
@@ -98,35 +96,6 @@ RADICA automatically scans these locations for user-defined color profiles:
 ~/.kde/share/apps/konsole/
 ~/.config/konsole/
 ```
-
----
-
-## 🤖 AI Services Integration
-
-### Supported AI Providers
-
-#### 🧠 OpenAI GPT-4
-- **Best for**: Comprehensive troubleshooting analysis
-- **Setup**: `export OPENAI_API_KEY="your-api-key"`
-- **Get Key**: [OpenAI Platform](https://platform.openai.com/api-keys)
-
-#### 🎓 Anthropic Claude
-- **Best for**: Technical deep-dive analysis
-- **Setup**: `export ANTHROPIC_API_KEY="your-api-key"`
-- **Get Key**: [Anthropic Console](https://console.anthropic.com/)
-
-#### 🔍 Perplexity AI
-- **Best for**: Real-time web search + AI analysis
-- **Setup**: `export PERPLEXITY_API_KEY="your-api-key"`
-- **Get Key**: [Perplexity Settings](https://www.perplexity.ai/settings/api)
-
-#### 🏠 Local Ollama
-- **Best for**: Privacy-focused, offline analysis
-- **Setup**: 
-  ```bash
-  curl -fsSL https://ollama.ai/install.sh | sh
-  ollama pull llama2
-  ```
 
 ---
 
@@ -186,7 +155,6 @@ OS: Ubuntu 22.04
 ```
 ================================================
     Connectivity Troubleshooter v2.0
-    Enhanced with AI-Powered Assistance
 ================================================
 Detected OS: Ubuntu 22.04
 
@@ -231,82 +199,15 @@ Available color profiles:
 
 ---
 
-### AI-Powered Troubleshooting
-
-#### **Function**: `call_ai_api()` + `call_openai_api()`
-**Purpose**: Get immediate AI assistance for specific network issues
-
-```bash
-# Direct AI consultation with OpenAI GPT-4
-export OPENAI_API_KEY="sk-your-key-here"
-./radica --ai-help openai "WiFi connects but no internet access"
-```
-**Response format**:
-```
-=== AI Troubleshooting Assistant v1.0 ===
-Query: WiFi connects but no internet access
-Service: openai
-
-🤖 Querying OpenAI GPT-4...
-[AI provides detailed troubleshooting steps]
-```
-
----
-
-#### **Function**: `call_anthropic_api()`
-**Purpose**: Use Claude for technical deep-dive analysis
-
-```bash
-# Technical analysis with Anthropic Claude
-export ANTHROPIC_API_KEY="your-key-here"
-./radica --ai-help anthropic "Bluetooth device won't pair with Ubuntu"
-```
-**Use case**: Complex protocol analysis, detailed configuration guidance
-
----
-
-#### **Function**: `call_perplexity_api()`
-**Purpose**: Real-time web search combined with AI analysis
-
-```bash
-# Current information with web search
-export PERPLEXITY_API_KEY="your-key-here"
-./radica --ai-help perplexity "Network interface keeps dropping on kernel 6.5"
-```
-**Advantage**: Gets latest driver updates, kernel bug reports, current solutions
-
----
-
-#### **Function**: `call_local_ai()`
-**Purpose**: Private, offline AI assistance
-
-```bash
-# Privacy-focused local AI
-./radica --ai-help local "Cannot resolve DNS names"
-```
-**Setup required**:
-```bash
-curl -fsSL https://ollama.ai/install.sh | sh
-ollama pull llama2
-```
-
----
-
 ### Advanced Usage Scenarios
 
-#### **Function**: `prompt_ai_features()` + `run_comprehensive_diagnostics()`
-**Purpose**: Full-featured troubleshooting session with AI integration
+#### **Function**: `run_comprehensive_diagnostics()`
+**Purpose**: Full-featured troubleshooting session
 
-```bash
-# Complete diagnostic session with AI and logging
-./radica --ai-enabled --color-profile dark --log-file debug_session.log
-```
 **Flow**:
 1. Sets dark theme for terminal compatibility
-2. Enables AI assistance throughout session
-3. Logs everything to `debug_session.log`
-4. Runs comprehensive network diagnostics
-5. Offers AI analysis of detected issues
+2. Logs everything to `debug_session.log`
+3. Runs comprehensive network diagnostics
 
 ---
 
@@ -334,7 +235,6 @@ ollama pull llama2
 # 1. Check package availability
 # 2. Resolve dependencies
 # 3. Suggest repository fixes
-# 4. Offer AI assistance for complex issues
 ```
 
 ---
@@ -360,10 +260,6 @@ ollama pull llama2
 #### **Function**: `run_wifi_diagnostics()`
 **Purpose**: WiFi-specific troubleshooting
 
-```bash
-# WiFi troubleshooting with AI assistance
-./radica --ai-help openai "WiFi interface not detected"
-```
 **Diagnostics include**:
 - Wireless interface detection
 - rfkill status checking
@@ -375,10 +271,6 @@ ollama pull llama2
 #### **Function**: `run_bluetooth_diagnostics()`
 **Purpose**: Bluetooth connectivity analysis
 
-```bash
-# Bluetooth issues with technical AI analysis
-./radica --ai-help anthropic "Bluetooth controller not responding"
-```
 **Covers**:
 - Bluetooth service status
 - Controller configuration
@@ -410,8 +302,6 @@ ollama pull llama2
 # Developer mode (dark theme + detailed logging)
 ./radica --color-profile dark --log-file dev_debug.log
 
-# Get immediate AI help
-./radica --ai-help local "describe your issue here"
 ```
 
 ---
@@ -432,11 +322,6 @@ ollama pull llama2
 - `get_package_info()` - Detect package manager
 - `check_tools()` - Verify required tools
 - `check_package_availability()` - Dependency resolution
-
-### AI Integration
-- `call_ai_api()` - Main AI dispatcher
-- `validate_ai_service()` - Service validation
-- `check_ai_availability()` - AI readiness check
 
 ### Logging System
 - `setup_logging()` - Interactive log configuration
@@ -461,7 +346,7 @@ ollama pull llama2
 
 ### 🙏 Acknowledgments
 
-Special thanks to the open source community, Linux networking pioneers, and the AI researchers whose innovations make tools like RADICA possible.
+Special thanks to the open source community and Linux networking pioneers whose innovations make tools like RADICA possible.
 
 ---
 

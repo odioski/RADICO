@@ -17,7 +17,10 @@
 SCRIPT_NAME="$(basename "$0")"
 LOGGING_ENABLED=true
 LOG_FILE="RADICA.LOG"
-COLOR_PROFILE_SET=false
+COLOR_PROFILE_SET=fecho -e "\n${BLUE}=== Starting Connectivity Troubleshooting ===${NC}\n"
+
+# Enhanced connectivity troubleshooting sections
+run_ethernet_diagnostics() {…}
 LOG_FILE_SET=false
 
 # Color profile system - OPTION to choose color schemes
@@ -629,7 +632,6 @@ check_tools
 
 echo -e "\n${BLUE}=== Starting Connectivity Troubleshooting ===${NC}\n"
 
-# Enhanced connectivity troubleshooting sections with AI integration
 run_ethernet_diagnostics() {
     echo_log "\n${CYAN}=== Ethernet Diagnostics ===${NC}"
     
@@ -915,5 +917,4 @@ show_banner
 
 echo -e "\n${GREEN}=== Troubleshooting Complete ===${NC}"
 
-# Show connection report when AI is not enabled
 generate_connection_report

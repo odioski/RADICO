@@ -127,8 +127,6 @@ show_usage() {
     echo -e "  $SCRIPT_NAME [OPTIONS]"
     echo -e ""
     echo -e "${BLUE}Options:${NC}"
-    echo -e "  --ai-enabled     Enable AI troubleshooting features"
-    echo -e "  --ai-help SERVICE QUERY   Get AI assistance"
     echo -e "  --color-profile PROFILE   Set color profile"
     echo -e "  --log-file FILENAME       Enable logging to specified file"
     echo -e "  --help, -h       Show this help message"
@@ -139,12 +137,6 @@ show_usage() {
     echo -e "  high-contrast   High contrast colors"
     echo -e "  monochrome      Grayscale colors"
     echo -e "  dark           Dark theme optimized"
-    echo -e ""
-    echo -e "${BLUE}AI Services:${NC}"
-    echo -e "  openai          OpenAI GPT-4 (requires OPENAI_API_KEY)"
-    echo -e "  anthropic       Anthropic Claude (requires ANTHROPIC_API_KEY)"
-    echo -e "  perplexity      Perplexity AI (requires PERPLEXITY_API_KEY)"
-    echo -e "  local           Local Ollama (requires ollama installation)"
     echo -e ""
     echo -e "${YELLOW}📖 For detailed usage examples and function reference, see NFO.md${NC}"
 }
@@ -392,10 +384,6 @@ check_tools() {
         
         if [ ${#available_packages[@]} -eq 0 ]; then
             echo -e "${RED}No packages available for installation. Check your repositories.${NC}"
-            if [ "$AI_FEATURES_ENABLED" = true ]; then
-                echo -e "${PURPLE}💡 AI Suggestion: Try asking AI for alternative solutions${NC}"
-            fi
-            return 1
         fi
         
         echo -e "\n${BLUE}Installation command for $PKG_MANAGER:${NC}"
@@ -414,18 +402,12 @@ check_tools() {
             else
                 echo -e "${RED}Installation failed. Please check the errors above.${NC}"
                 echo -e "${YELLOW}You may need to run with sudo privileges or check your package repositories.${NC}"
-                if [ "$AI_FEATURES_ENABLED" = true ]; then
-                    echo -e "${PURPLE}💡 AI Suggestion: Get help with installation errors${NC}"
-                fi
                 return 1
             fi
         else
             echo -e "${YELLOW}Skipping installation. Some commands may fail without required tools.${NC}"
             echo -e "${BLUE}To install manually, run:${NC}"
             echo -e "${YELLOW}$PKG_INSTALL ${available_packages[*]}${NC}"
-            if [ "$AI_FEATURES_ENABLED" = true ]; then
-                echo -e "${PURPLE}💡 AI Suggestion: Get help with manual installation${NC}"
-            fi
             return 1
         fi
     fi
@@ -506,338 +488,12 @@ check_package_availability() {
 }
 
 # ============================================================================
-# AI TROUBLESHOOTING MODULE
-# ============================================================================
-
-# AI Module Configuration
-AI_MODULE_VERSION="1.0"
-SUPPORTED_AI_SERVICES=("openai" "anthropic" "perplexity" "local")
-
-# Function to check if AI features are available
-check_ai_availability() {
-    local available_services=()
-    
-    echo -e "${PURPLE}=== AI Module Status Check ===${NC}"
-    
-    # Check for required tools
-    if ! command_exists curl; then
-        echo -e "${RED}✗${NC} curl - required for API calls (install with: apt install curl)"
-        return 1
-    fi
-    
-    if ! command_exists jq; then
-        echo -e "${YELLOW}⚠${NC} jq - recommended for JSON parsing (install with: apt install jq)"
-    else
-        echo -e "${GREEN}✓${NC} jq - available for JSON parsing"
-    fi
-    
-    # Check API keys
-    [ -n "$OPENAI_API_KEY" ] && available_services+=("openai") && echo -e "${GREEN}✓${NC} OpenAI API key detected"
-    [ -n "$ANTHROPIC_API_KEY" ] && available_services+=("anthropic") && echo -e "${GREEN}✓${NC} Anthropic API key detected"
-    [ -n "$PERPLEXITY_API_KEY" ] && available_services+=("perplexity") && echo -e "${GREEN}✓${NC} Perplexity API key detected"
-    
-    # Check local AI
-    if command_exists ollama; then
-        available_services+=("local")
-        echo -e "${GREEN}✓${NC} Ollama detected for local AI"
-    else
-        echo -e "${YELLOW}⚠${NC} Ollama not found (install from: https://ollama.ai)"
-    fi
-    
-    if [ ${#available_services[@]} -eq 0 ]; then
-        echo -e "${RED}No AI services available. Set API keys or install Ollama.${NC}"
-        return 1
-    else
-        echo -e "${GREEN}Available AI services: ${available_services[*]}${NC}"
-        return 0
-    fi
-}
-
-# Function to validate AI service
-validate_ai_service() {
-    local service="$1"
-    local valid=false
-    
-    for supported in "${SUPPORTED_AI_SERVICES[@]}"; do
-        if [ "$service" = "$supported" ]; then
-            valid=true
-            break
-        fi
-    done
-    
-    if [ "$valid" = false ]; then
-        echo -e "${RED}Invalid AI service: $service${NC}"
-        echo -e "${YELLOW}Supported services: ${SUPPORTED_AI_SERVICES[*]}${NC}"
-        return 1
-    fi
-    
-    return 0
-}
-
-# Function to call OpenAI API
-call_openai_api() {
-    local query="$1"
-    
-    if [ -z "$OPENAI_API_KEY" ]; then
-        echo -e "${RED}OpenAI API key not found. Set OPENAI_API_KEY environment variable.${NC}"
-        return 1
-    fi
-    
-    echo -e "${YELLOW}🤖 Querying OpenAI GPT-4...${NC}"
-    
-    local response
-    response=$(curl -s -w "\n%{http_code}" -X POST "https://api.openai.com/v1/chat/completions" \
-        -H "Authorization: Bearer $OPENAI_API_KEY" \
-        -H "Content-Type: application/json" \
-        -d "{
-            \"model\": \"gpt-4\",
-            \"messages\": [
-                {\"role\": \"system\", \"content\": \"You are a Linux network troubleshooting expert. Provide concise, actionable CLI-based solutions.\"},
-                {\"role\": \"user\", \"content\": \"$query\"}
-            ],
-            \"max_tokens\": 800,
-            \"temperature\": 0.3
-        }")
-    
-    local http_code="${response##*$'\n'}"
-    local json_response="${response%$'\n'*}"
-    
-    if [ "$http_code" = "200" ]; then
-        if command_exists jq; then
-            echo "$json_response" | jq -r '.choices[0].message.content' 2>/dev/null || echo "$json_response"
-        else
-            echo "$json_response"
-        fi
-    else
-        echo -e "${RED}API Error (HTTP $http_code). Check your API key and quota.${NC}"
-        return 1
-    fi
-}
-
-# Function to call Anthropic Claude API
-call_anthropic_api() {
-    local query="$1"
-    
-    if [ -z "$ANTHROPIC_API_KEY" ]; then
-        echo -e "${RED}Anthropic API key not found. Set ANTHROPIC_API_KEY environment variable.${NC}"
-        return 1
-    fi
-    
-    echo -e "${YELLOW}🧠 Querying Anthropic Claude...${NC}"
-    
-    local response
-    response=$(curl -s -w "\n%{http_code}" -X POST "https://api.anthropic.com/v1/messages" \
-        -H "x-api-key: $ANTHROPIC_API_KEY" \
-        -H "Content-Type: application/json" \
-        -H "anthropic-version: 2023-06-01" \
-        -d "{
-            \"model\": \"claude-3-sonnet-20240229\",
-            \"max_tokens\": 800,
-            \"system\": \"You are a Linux network troubleshooting expert. Provide concise, actionable CLI-based solutions.\",
-            \"messages\": [{\"role\": \"user\", \"content\": \"$query\"}]
-        }")
-    
-    local http_code="${response##*$'\n'}"
-    local json_response="${response%$'\n'*}"
-    
-    if [ "$http_code" = "200" ]; then
-        if command_exists jq; then
-            echo "$json_response" | jq -r '.content[0].text' 2>/dev/null || echo "$json_response"
-        else
-            echo "$json_response"
-        fi
-    else
-        echo -e "${RED}API Error (HTTP $http_code). Check your API key and quota.${NC}"
-        return 1
-    fi
-}
-
-# Function to call Perplexity API
-call_perplexity_api() {
-    local query="$1"
-    
-    if [ -z "$PERPLEXITY_API_KEY" ]; then
-        echo -e "${RED}Perplexity API key not found. Set PERPLEXITY_API_KEY environment variable.${NC}"
-        return 1
-    fi
-    
-    echo -e "${YELLOW}🔍 Querying Perplexity AI...${NC}"
-    
-    local response
-    response=$(curl -s -w "\n%{http_code}" -X POST "https://api.perplexity.ai/chat/completions" \
-        -H "Authorization: Bearer $PERPLEXITY_API_KEY" \
-        -H "Content-Type: application/json" \
-        -d "{
-            \"model\": \"llama-3.1-sonar-large-128k-online\",
-            \"messages\": [
-                {\"role\": \"system\", \"content\": \"You are a Linux network troubleshooting expert with access to current information. Provide concise, actionable CLI-based solutions.\"},
-                {\"role\": \"user\", \"content\": \"$query\"}
-            ],
-            \"max_tokens\": 800,
-            \"temperature\": 0.3
-        }")
-    
-    local http_code="${response##*$'\n'}"
-    local json_response="${response%$'\n'*}"
-    
-    if [ "$http_code" = "200" ]; then
-        if command_exists jq; then
-            echo "$json_response" | jq -r '.choices[0].message.content' 2>/dev/null || echo "$json_response"
-        else
-            echo "$json_response"
-        fi
-    else
-        echo -e "${RED}API Error (HTTP $http_code). Check your API key and quota.${NC}"
-        return 1
-    fi
-}
-
-# Function to call local Ollama
-call_local_ai() {
-    local query="$1"
-    
-    if ! command_exists ollama; then
-        echo -e "${RED}Ollama not installed. Install from: https://ollama.ai${NC}"
-        return 1
-    fi
-    
-    echo -e "${YELLOW}🏠 Querying Local AI (Ollama)...${NC}"
-    
-    # Check if Ollama service is running
-    if ! pgrep -x "ollama" > /dev/null; then
-        echo -e "${YELLOW}Starting Ollama service...${NC}"
-        ollama serve &
-        sleep 3
-    fi
-    
-    # Try different models in order of preference
-    local models=("llama2" "codellama" "mistral")
-    local model_found=false
-    
-    for model in "${models[@]}"; do
-        if ollama list | grep -q "$model"; then
-            echo -e "${GREEN}Using model: $model${NC}"
-            ollama run "$model" "As a Linux network troubleshooting expert, help with this issue: $query" 2>/dev/null
-            model_found=true
-            break
-        fi
-    done
-    
-    if [ "$model_found" = false ]; then
-        echo -e "${YELLOW}No models found. Installing llama2...${NC}"
-        ollama pull llama2
-        ollama run llama2 "As a Linux network troubleshooting expert, help with this issue: $query"
-    fi
-}
-
-# Main AI dispatcher function
-call_ai_api() {
-    local query="$1"
-    local service="$2"
-    
-    if [ -z "$query" ]; then
-        echo -e "${RED}Error: Query is required${NC}"
-        return 1
-    fi
-    
-    if [ -z "$service" ]; then
-        echo -e "${RED}Error: AI service is required${NC}"
-        echo -e "${YELLOW}Available services: ${SUPPORTED_AI_SERVICES[*]}${NC}"
-        return 1
-    fi
-    
-    if ! validate_ai_service "$service"; then
-        return 1
-    fi
-    
-    echo -e "${BLUE}=== AI Troubleshooting Assistant v$AI_MODULE_VERSION ===${NC}"
-    echo -e "${CYAN}Query: $query${NC}"
-    echo -e "${CYAN}Service: $service${NC}"
-    echo ""
-    
-    case "$service" in
-        "openai")
-            call_openai_api "$query"
-            ;;
-        "anthropic")
-            call_anthropic_api "$query"
-            ;;
-        "perplexity")
-            call_perplexity_api "$query"
-            ;;
-        "local")
-            call_local_ai "$query"
-            ;;
-    esac
-}
-
-# Function to display AI help and setup instructions
-show_ai_help() {
-    echo -e "${PURPLE}=== AI Troubleshooting Module Help ===${NC}"
-    echo -e ""
-    echo -e "${BLUE}Available AI Services:${NC}"
-    echo -e "${GREEN}1. OpenAI GPT-4${NC} - Most comprehensive responses"
-    echo -e "   Setup: export OPENAI_API_KEY='your-api-key'"
-    echo -e "   Get key: https://platform.openai.com/api-keys"
-    echo -e ""
-    echo -e "${GREEN}2. Anthropic Claude${NC} - Excellent technical analysis"
-    echo -e "   Setup: export ANTHROPIC_API_KEY='your-api-key'"
-    echo -e "   Get key: https://console.anthropic.com/"
-    echo -e ""
-    echo -e "${GREEN}3. Perplexity AI${NC} - Real-time web search + AI"
-    echo -e "   Setup: export PERPLEXITY_API_KEY='your-api-key'"
-    echo -e "   Get key: https://www.perplexity.ai/settings/api"
-    echo -e ""
-    echo -e "${GREEN}4. Local Ollama${NC} - Privacy-focused local AI"
-    echo -e "   Setup: curl -fsSL https://ollama.ai/install.sh | sh"
-    echo -e "   Then: ollama pull llama2"
-    echo -e ""
-    echo -e "${YELLOW}📖 For comprehensive usage examples and troubleshooting scenarios, see NFO.md${NC}"
-}
-
-# Function to ask user about AI features
-prompt_ai_features() {
-    if [ "$AI_FEATURES_ENABLED" = true ]; then
-        return 0
-    fi
-    
-    echo -e "\n${PURPLE}=== AI Assistance Available ===${NC}"
-    echo -e "${YELLOW}This script includes AI-powered troubleshooting features.${NC}"
-    echo -e "${BLUE}AI can help analyze network issues and suggest solutions.${NC}"
-    echo -e ""
-    
-    if check_ai_availability >/dev/null 2>&1; then
-        echo -e "${GREEN}AI services are available and ready to use.${NC}"
-        echo -e "${YELLOW}Would you like to enable AI assistance? (y/N)${NC}"
-        read -r response
-        
-        if [[ "$response" =~ ^[Yy]$ ]]; then
-            AI_FEATURES_ENABLED=true
-            echo -e "${GREEN}✓ AI features enabled for this session${NC}"
-        else
-            echo -e "${YELLOW}AI features disabled. You can enable them with --ai-enabled${NC}"
-        fi
-    else
-        echo -e "${YELLOW}AI services not configured. Use --ai-help for setup instructions.${NC}"
-    fi
-}
-
-# ============================================================================
-# END AI MODULE
-# ============================================================================
-
-# ============================================================================
 # COMMAND LINE ARGUMENT PARSING
 # ============================================================================
 
 # Parse command line arguments
 while [[ $# -gt 0 ]]; do
     case $1 in
-        --ai-enabled)
-            AI_FEATURES_ENABLED=true
-            echo -e "${GREEN}✓ AI features enabled${NC}"
-            shift
-            ;;
         --color-profile)
             if [ -n "$2" ]; then
                 set_color_profile "$2"
@@ -957,27 +613,8 @@ echo -e "${BLUE}=== Connectivity Troubleshooter Tool Verification ===${NC}"
 # Run tool verification
 check_tools
 
-# Prompt for AI features if not explicitly enabled
-if [ "$AI_FEATURES_ENABLED" != true ]; then
-    prompt_ai_features
-fi
 
 echo -e "\n${BLUE}=== Starting Connectivity Troubleshooting ===${NC}\n"
-
-# Function to offer AI assistance if enabled
-offer_ai_assistance() {
-    local issue_type="$1"
-    local issue_description="$2"
-    
-    if [ "$AI_FEATURES_ENABLED" = true ]; then
-        echo -e "${PURPLE}💡 AI Suggestion: Use --ai-help for assistance with: $issue_type${NC}"
-        echo -e "${CYAN}   Example: $SCRIPT_NAME --ai-help openai '$issue_description'${NC}"
-    fi
-}
-
-# Enhanced connectivity troubleshooting sections with AI integration
-run_ethernet_diagnostics() {
-    echo -e "${CYAN}=== Ethernet Diagnostics ===${NC}"
     
     # Check if ethernet interface exists (both legacy and modern naming)
     if ! ip link show | grep -E "^[0-9]+: (eth[0-9]+|enp[0-9]+s[0-9]+|eno[0-9]+|ens[0-9]+)" >/dev/null 2>&1; then
@@ -1102,16 +739,6 @@ run_comprehensive_diagnostics() {
     run_wifi_diagnostics  
     echo ""
     run_bluetooth_diagnostics
-    
-    if [ "$AI_FEATURES_ENABLED" = true ]; then
-        echo -e "\n${PURPLE}=== AI Summary Available ===${NC}"
-        echo -e "${YELLOW}Would you like an AI summary of all detected issues? (y/N)${NC}"
-        read -r summary_response
-        
-        if [[ "$summary_response" =~ ^[Yy]$ ]]; then
-            call_ai_api "Provide a summary and prioritized action plan for resolving network connectivity issues found during diagnostics" "openai"
-        fi
-    fi
 }
 
 # Function to generate connection status report
@@ -1273,14 +900,3 @@ generate_connection_report() {
 run_comprehensive_diagnostics
 
 echo -e "\n${GREEN}=== Troubleshooting Complete ===${NC}"
-
-# Show connection report when AI is not enabled
-if [ "$AI_FEATURES_ENABLED" != true ]; then
-    generate_connection_report
-fi
-
-if [ "$AI_FEATURES_ENABLED" = true ]; then
-    echo -e "${PURPLE}💡 AI features were enabled for this session${NC}"
-    echo -e "${CYAN}Use --ai-help SERVICE 'query' for specific AI assistance${NC}"
-    echo -e "${YELLOW}📖 See NFO.md for comprehensive usage examples and documentation${NC}"
-fi
