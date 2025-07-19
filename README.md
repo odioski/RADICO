@@ -194,7 +194,7 @@ cd RADICO
 su
 
 # Kate - Feature Rich IDE
-apt satisfy kate
+apt install kate
 
 # shfmt - Like shellcheck works well w/Kate troubleshooting Shell Scripts (bash,sh,zsh,etc.)
 apt install shfmt
