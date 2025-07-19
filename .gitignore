@@ -1,35 +1,14 @@
-# RADICA Project .gitignore
 
-# Reports directory
-/REPORTS/
-REPORTS/
+.DS_Store
+Thumbs.db
 
-api-keys
-
-# Log files
-*.log
-*.LOG
-
-# Temporary files
-*.tmp
-*.temp
-
-# Backup files
-*.bak
-*~
-
-# System files
-# .DS_Store
-# Thumbs.db
-# Hopefully, we'll notice
-
-# Editor files
-*.swp
-*.swo
-
-# Test files
 ./test_*.sh
 ./*test*
 test-api
+
+venv
+
+*LOG
+*.log
 
 
