@@ -1,5 +1,978 @@
 #!/bin/bash
 
+# ██████╗  █████╗ ██████╗ ██╗ ██████╗ █████╗
+# ██╔══██╗██╔══██╗██╔══██╗██║██╔════╝██╔══██╗
+# ██████╔╝███████║██║  ██║██║██║     ███████║
+# ██╔══██╗██╔══██║██║  ██║██║██║     ██╔══██║
+# ██║  ██║██║  ██║██████╔╝██║╚██████╗██║  ██║
+# ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝ ╚═════╝╚═╝  ╚═╝
+#       Connectivity Troubleshooter v2.0
+
+# RADICA - Connectivity Troubleshooter Script
+#
+# For comprehensive usage examples, feature documentation, and function reference:
+# See NFO.md in the same directory as this script
+
+# Global configuration
+SCRIPT_NAME="$(basename "$0")"
+LOGGING_ENABLED=true
+LOG_FILE="RADICA.LOG"
+COLOR_PROFILE_SET=false
+
+echo -e "\n${BLUE}=== Starting Connectivity Troubleshooting ===${NC}\n"
+
+# Enhanced connectivity troubleshooting sections
+LOG_FILE_SET=false
+
+# Color profile system - OPTION to choose color schemes
+declare -A COLOR_PROFILES
+
+# Default color profile
+COLOR_PROFILES["default"]="RED='\033[0;31m' GREEN='\033[0;32m' YELLOW='\033[1;33m' BLUE='\033[0;34m' PURPLE='\033[0;35m' CYAN='\033[0;36m' NC='\033[0m'"
+
+# Professional color profile (muted)
+COLOR_PROFILES["professional"]="RED='\033[0;91m' GREEN='\033[0;92m' YELLOW='\033[0;93m' BLUE='\033[0;94m' PURPLE='\033[0;95m' CYAN='\033[0;96m' NC='\033[0m'"
+
+# High contrast color profile
+COLOR_PROFILES["high-contrast"]="RED='\033[1;31m' GREEN='\033[1;32m' YELLOW='\033[1;33m' BLUE='\033[1;34m' PURPLE='\033[1;35m' CYAN='\033[1;36m' NC='\033[0m'"
+
+# Monochrome profile
+COLOR_PROFILES["monochrome"]="RED='\033[1;37m' GREEN='\033[0;37m' YELLOW='\033[1;37m' BLUE='\033[0;37m' PURPLE='\033[1;37m' CYAN='\033[0;37m' NC='\033[0m'"
+
+# Dark theme optimized
+COLOR_PROFILES["dark"]="RED='\033[0;196m' GREEN='\033[0;82m' YELLOW='\033[0;226m' BLUE='\033[0;75m' PURPLE='\033[0;135m' CYAN='\033[0;87m' NC='\033[0m'"
+
+# Function to load user color profiles from common locations
+load_user_color_profiles() {
+    local profile_locations=(
+        "$HOME/.config/RADICA/colors"
+        "$HOME/.RADICA_colors"
+        "$HOME/.config/terminal/colors"
+        "$HOME/.local/share/color-schemes"
+        "$HOME/.kde/share/apps/konsole"
+        "$HOME/.config/konsole"
+        "$HOME/.gnome-terminal/profiles"
+    )
+
+    for location in "${profile_locations[@]}"; do
+        if [ -d "$location" ]; then
+            for profile_file in "$location"/*.conf "$location"/*.colorscheme "$location"/*.profile; do
+                if [ -f "$profile_file" ]; then
+                    local profile_name
+                    profile_name=$(basename "$profile_file" | sed 's/\.[^.]*$//')
+                    parse_color_profile "$profile_file" "$profile_name"
+                fi
+            done
+        fi
+    done
+}
+
+# Function to parse color profile files
+parse_color_profile() {
+    local file="$1"
+    local name="$2"
+    local profile_name
+
+    # Try to extract color values from various formats
+    if grep -q "Color" "$file" 2>/dev/null; then
+        # Basic color extraction (simplified)
+        COLOR_PROFILES["$name"]="RED='\033[0;31m' GREEN='\033[0;32m' YELLOW='\033[1;33m' BLUE='\033[0;34m' PURPLE='\033[0;35m' CYAN='\033[0;36m' NC='\033[0m'"
+    fi
+}
+
+# Function to set color profile
+set_color_profile() {
+    local profile="$1"
+
+    if [ -n "${COLOR_PROFILES[$profile]}" ]; then
+        eval "${COLOR_PROFILES[$profile]}"
+        echo -e "${GREEN}Color profile set to: $profile${NC}"
+    else
+        echo -e "${RED}Unknown color profile: $profile. Using default.${NC}"
+        eval "${COLOR_PROFILES[default]}"
+    fi
+}
+
+# Function to choose color profile
+choose_color_profile() {
+    echo -e "\n${CYAN}=== Color Profile Selection ===${NC}"
+    echo -e "${YELLOW}Available color profiles:${NC}"
+    local i=1
+    local profile_list=()
+
+    for profile in "${!COLOR_PROFILES[@]}"; do
+        profile_list+=("$profile")
+        echo -e "${BLUE}$i) $profile${NC}"
+        ((i++))
+    done
+
+    echo -e "${BLUE}0) Skip color selection (use default)${NC}"
+    echo -e ""
+    echo -e "${CYAN}Choose a color profile (0-$((${#profile_list[@]}))): ${NC}"
+    read -r choice
+
+    if [[ "$choice" =~ ^[1-9][0-9]*$ ]] && [ "$choice" -le "${#profile_list[@]}" ]; then
+        local selected_profile="${profile_list[$((choice - 1))]}"
+        set_color_profile "$selected_profile"
+        echo -e "${GREEN}Selected: $selected_profile${NC}"
+    else
+        set_color_profile "default"
+        echo -e "${YELLOW}Using default color profile${NC}"
+    fi
+}
+
+# Initialize color profiles
+load_user_color_profiles
+
+# Set default colors initially
+eval "${COLOR_PROFILES[default]}"
+
+# Function to display ASCII art banner
+show_banner() {
+    echo -e "${CYAN}██████╗  █████╗ ██████╗ ██╗ ██████╗ █████╗${NC}"
+    echo -e "${CYAN}██╔══██╗██╔══██╗██╔══██╗██║██╔════╝██╔══██╗${NC}"
+    echo -e "${CYAN}██████╔╝███████║██║  ██║██║██║     ███████║${NC}"
+    echo -e "${CYAN}██╔══██╗██╔══██║██║  ██║██║██║     ██╔══██║${NC}"
+    echo -e "${CYAN}██║  ██║██║  ██║██████╔╝██║╚██████╗██║  ██║${NC}"
+    echo -e "${CYAN}╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝ ╚═════╝╚═╝  ╚═╝${NC}"
+    echo -e "${CYAN}      Connectivity Troubleshooter v2.0${NC}"
+}
+
+# Function to log ASCII art banner to file
+log_banner() {
+    if [ "$LOGGING_ENABLED" = true ]; then
+        show_banner >>"$LOG_FILE"
+    fi
+}
+
+# Function to show usage information
+show_usage() {
+    echo -e "${BLUE}Usage:${NC}"
+    echo -e "  $SCRIPT_NAME [OPTIONS]"
+    echo -e ""
+    echo -e "${BLUE}Options:${NC}"
+    echo -e "  --color-profile PROFILE   Set color profile"
+    echo -e "  --log-file FILENAME       Enable logging to specified file"
+    echo -e "  --help, -h       Show this help message"
+    echo -e ""
+    echo -e "${BLUE}Color Profiles:${NC}"
+    echo -e "  default         Standard terminal colors"
+    echo -e "  professional    Muted professional colors"
+    echo -e "  high-contrast   High contrast colors"
+    echo -e "  monochrome      Grayscale colors"
+    echo -e "  dark           Dark theme optimized"
+    echo -e ""
+    echo -e "${YELLOW}📖 For detailed usage examples and function reference, see NFO.md${NC}"
+}
+
+# Detect OS
+if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    OS=$NAME
+    VERSION=$VERSION_ID
+elif type lsb_release >/dev/null 2>&1; then
+    OS=$(lsb_release -si)
+    VERSION=$(lsb_release -sr)
+elif [ -f /etc/redhat-release ]; then
+    OS="Red Hat Enterprise Linux"
+    VERSION=$(cat /etc/redhat-release | sed 's/.*release //' | sed 's/ .*//')
+else
+    OS=$(uname -s)
+    VERSION=$(uname -r)
+fi
+
+echo -e "${BLUE}Detected OS:${NC} $OS $VERSION"
+
+# Define required tools and their packages for different distributions
+
+declare -A TOOLS_DEBIAN=(
+    ["ip"]="iproute2"
+    ["ifconfig"]="net-tools"
+    ["ethtool"]="ethtool"
+    ["mii-tool"]="net-tools"
+    ["ping"]="iputils-ping"
+    ["traceroute"]="traceroute"
+    ["nslookup"]="dnsutils"
+    ["dig"]="dnsutils"
+    ["host"]="dnsutils"
+    ["route"]="net-tools"
+    ["tracepath"]="iputils-tracepath"
+    ["mtr"]="mtr-tiny"
+    ["ss"]="iproute2"
+    ["netstat"]="net-tools"
+    ["lspci"]="pciutils"
+    ["lsusb"]="usbutils"
+    ["iwconfig"]="wireless-tools"
+    ["iw"]="iw"
+    ["rfkill"]="rfkill"
+    ["iwlist"]="wireless-tools"
+    ["wpa_passphrase"]="wpasupplicant"
+    ["wpa_supplicant"]="wpasupplicant"
+    ["dhclient"]="isc-dhcp-client"
+    ["hciconfig"]="bluez"
+    ["bluetoothctl"]="bluez"
+    ["hcitool"]="bluez"
+    ["hcidump"]="bluez-hcidump"
+    ["btmon"]="bluez"
+    ["ufw"]="ufw"
+    ["iptables"]="iptables"
+    ["lsof"]="lsof"
+    ["systemctl"]="systemd"
+    ["journalctl"]="systemd"
+)
+
+declare -A TOOLS_REDHAT=(
+    ["ip"]="iproute"
+    ["ifconfig"]="net-tools"
+    ["ethtool"]="ethtool"
+    ["mii-tool"]="net-tools"
+    ["ping"]="iputils"
+    ["traceroute"]="traceroute"
+    ["nslookup"]="bind-utils"
+    ["dig"]="bind-utils"
+    ["host"]="bind-utils"
+    ["route"]="net-tools"
+    ["tracepath"]="iputils"
+    ["mtr"]="mtr"
+    ["ss"]="iproute"
+    ["netstat"]="net-tools"
+    ["lspci"]="pciutils"
+    ["lsusb"]="usbutils"
+    ["iwconfig"]="wireless-tools"
+    ["iw"]="iw"
+    ["rfkill"]="rfkill"
+    ["iwlist"]="wireless-tools"
+    ["wpa_passphrase"]="wpa_supplicant"
+    ["wpa_supplicant"]="wpa_supplicant"
+    ["dhclient"]="dhcp-client"
+    ["hciconfig"]="bluez-utils"
+    ["bluetoothctl"]="bluez"
+    ["hcitool"]="bluez-utils"
+    ["hcidump"]="bluez-hcidump"
+    ["btmon"]="bluez"
+    ["ufw"]="ufw"
+    ["iptables"]="iptables"
+    ["lsof"]="lsof"
+    ["systemctl"]="systemd"
+    ["journalctl"]="systemd"
+)
+
+declare -A TOOLS_ARCH=(
+    ["ip"]="iproute2"
+    ["ifconfig"]="net-tools"
+    ["ethtool"]="ethtool"
+    ["mii-tool"]="net-tools"
+    ["ping"]="iputils"
+    ["traceroute"]="traceroute"
+    ["nslookup"]="bind"
+    ["dig"]="bind"
+    ["host"]="bind"
+    ["route"]="net-tools"
+    ["tracepath"]="iputils"
+    ["mtr"]="mtr"
+    ["ss"]="iproute2"
+    ["netstat"]="net-tools"
+    ["lspci"]="pciutils"
+    ["lsusb"]="usbutils"
+    ["iwconfig"]="wireless_tools"
+    ["iw"]="iw"
+    ["rfkill"]="rfkill"
+    ["iwlist"]="wireless_tools"
+    ["wpa_passphrase"]="wpa_supplicant"
+    ["wpa_supplicant"]="wpa_supplicant"
+    ["dhclient"]="dhcpcd"
+    ["hciconfig"]="bluez-utils"
+    ["bluetoothctl"]="bluez"
+    ["hcitool"]="bluez-utils"
+    ["hcidump"]="bluez-hcidump"
+    ["btmon"]="bluez"
+    ["ufw"]="ufw"
+    ["iptables"]="iptables"
+    ["lsof"]="lsof"
+    ["systemctl"]="systemd"
+    ["journalctl"]="systemd"
+)
+
+# Function to check if a command exists
+command_exists() {
+    command -v "$1" >/dev/null 2>&1
+}
+
+# Function to get package manager and set tools array
+get_package_info() {
+    if command_exists apt-get; then
+        PKG_MANAGER="apt-get"
+        PKG_INSTALL="sudo apt-get install -y"
+        PKG_CHECK="apt-cache"
+        PKG_SATISFY="apt satisfy -s"
+        TOOLS_REF="TOOLS_DEBIAN"
+    elif command_exists yum; then
+        PKG_MANAGER="yum"
+        PKG_INSTALL="sudo yum install -y"
+        PKG_CHECK="yum info"
+        PKG_SATISFY="yum deplist"
+        TOOLS_REF="TOOLS_REDHAT"
+    elif command_exists dnf; then
+        PKG_MANAGER="dnf"
+        PKG_INSTALL="sudo dnf install -y"
+        PKG_CHECK="dnf info"
+        PKG_SATISFY="dnf repoquery --requires"
+        TOOLS_REF="TOOLS_REDHAT"
+    elif command_exists pacman; then
+        PKG_MANAGER="pacman"
+        PKG_INSTALL="sudo pacman -S --noconfirm"
+        PKG_CHECK="pacman -Si"
+        PKG_SATISFY="pacman -Si"
+        TOOLS_REF="TOOLS_ARCH"
+    elif command_exists zypper; then
+        PKG_MANAGER="zypper"
+        PKG_INSTALL="sudo zypper install -y"
+        PKG_CHECK="zypper info"
+        PKG_SATISFY="zypper what-requires"
+        TOOLS_REF="TOOLS_REDHAT"
+    else
+        echo -e "${RED}Unknown package manager. Please install missing tools manually.${NC}"
+        return 1
+    fi
+}
+
+# Function to get tool package name
+get_tool_package() {
+    local tool="$1"
+    case "$TOOLS_REF" in
+    "TOOLS_DEBIAN")
+        echo "${TOOLS_DEBIAN[$tool]}"
+        ;;
+    "TOOLS_REDHAT")
+        echo "${TOOLS_REDHAT[$tool]}"
+        ;;
+    "TOOLS_ARCH")
+        echo "${TOOLS_ARCH[$tool]}"
+        ;;
+    esac
+}
+
+# Check tools and collect missing ones
+check_tools() {
+    local missing_tools=()
+    local missing_packages=()
+
+    echo -e "\n${YELLOW}Checking required tools...${NC}"
+
+    get_package_info
+
+    # Get list of tools to check based on the detected OS
+    local tools_to_check=()
+    case "$TOOLS_REF" in
+    "TOOLS_DEBIAN")
+        tools_to_check=("${!TOOLS_DEBIAN[@]}")
+        ;;
+    "TOOLS_REDHAT")
+        tools_to_check=("${!TOOLS_REDHAT[@]}")
+        ;;
+    "TOOLS_ARCH")
+        tools_to_check=("${!TOOLS_ARCH[@]}")
+        ;;
+    esac
+
+    for tool in "${tools_to_check[@]}"; do
+        if command_exists "$tool"; then
+            echo -e "${GREEN}✓${NC} $tool - installed"
+        else
+            echo -e "${RED}✗${NC} $tool - missing"
+            missing_tools+=("$tool")
+            missing_packages+=("$(get_tool_package "$tool")")
+        fi
+    done
+
+    if [ ${#missing_tools[@]} -eq 0 ]; then
+        echo -e "\n${GREEN}All required tools are installed!${NC}"
+        return 0
+    else
+        echo -e "\n${RED}Missing tools:${NC} ${missing_tools[*]}"
+        echo -e "${YELLOW}Attempting to find installable packages for missing tools...${NC}"
+
+        if [ "$PKG_MANAGER" = "apt-get" ]; then
+            local found_packages=()
+            for tool in "${missing_tools[@]}"; do
+                echo -e "${BLUE}Searching for package for: $tool${NC}"
+                # Search apt-cache for the tool
+                local search_output
+                search_output=$(apt-cache search "^$tool$")
+                if [ -z "$search_output" ]; then
+                    search_output=$(apt-cache search "$tool")
+                fi
+                # Extract package names from output
+                local pkgs
+                pkgs=$(echo "$search_output" | awk '{print $1}')
+                for pkg in $pkgs; do
+                    found_packages+=("$pkg")
+                done
+            done
+            # Remove duplicates
+            local unique_found=()
+            declare -A pkg_seen
+            for pkg in "${found_packages[@]}"; do
+                if [ -n "$pkg" ] && [ -z "${pkg_seen[$pkg]}" ]; then
+                    unique_found+=("$pkg")
+                    pkg_seen[$pkg]=1
+                fi
+            done
+            if [ ${#unique_found[@]} -eq 0 ]; then
+                echo -e "${RED}No installable packages found for missing tools.${NC}"
+                return 1
+            fi
+            echo -e "\n${BLUE}Installation command for apt-get:${NC}"
+            echo -e "${YELLOW}sudo apt install ${unique_found[*]} -y${NC}"
+            echo -e "\n${YELLOW}Would you like to install the found packages now? (y/N)${NC}"
+            read -r response
+            if [[ "$response" =~ ^[Yy]$ ]]; then
+                echo -e "${BLUE}Installing found packages...${NC}"
+                sudo apt install ${unique_found[*]} -y
+                if [ $? -eq 0 ]; then
+                    echo -e "${GREEN}Installation completed successfully!${NC}"
+                    echo -e "${BLUE}Re-checking tools...${NC}"
+                    check_tools
+                else
+                    return 1
+                fi
+            else
+                echo -e "${YELLOW}Skipping installation. Some commands may fail without required tools.${NC}"
+                echo -e "${BLUE}To install manually, run:${NC}"
+                echo -e "${YELLOW}sudo apt install ${unique_found[*]} -y${NC}"
+                return 1
+            fi
+        else
+            # Fallback to previous logic for other package managers
+            # Remove duplicates from packages using associative array
+            declare -A unique_pkgs
+            for pkg in "${missing_packages[@]}"; do
+                unique_pkgs["$pkg"]=1
+            done
+            local unique_packages=("${!unique_pkgs[@]}")
+
+            # Check package availability and dependencies
+            echo -e "\n${BLUE}Verifying package availability...${NC}"
+            local verified_packages
+            verified_packages=$(check_package_availability "${unique_packages[@]}")
+            read -ra available_packages <<<"$verified_packages"
+
+            if [ ${#available_packages[@]} -eq 0 ]; then
+                echo -e "${RED}No packages available for installation. Check your repositories.${NC}"
+                return 1
+            fi
+
+            echo -e "\n${BLUE}Installation command for $PKG_MANAGER:${NC}"
+            echo -e "${YELLOW}$PKG_INSTALL ${available_packages[*]}${NC}"
+
+            echo -e "\n${YELLOW}Would you like to install the available packages now? (y/N)${NC}"
+            read -r response
+
+            if [[ "$response" =~ ^[Yy]$ ]]; then
+                echo -e "${BLUE}Installing available packages...${NC}"
+                if $PKG_INSTALL "${available_packages[@]}"; then
+                    echo -e "${GREEN}Installation completed successfully!${NC}"
+                    echo -e "${BLUE}Re-checking tools...${NC}"
+                    check_tools
+                else
+                    return 1
+                fi
+            else
+                echo -e "${YELLOW}Skipping installation. Some commands may fail without required tools.${NC}"
+                echo -e "${BLUE}To install manually, run:${NC}"
+                echo -e "${YELLOW}$PKG_INSTALL ${available_packages[*]}${NC}"
+                return 1
+            fi
+        fi
+    fi
+}
+
+# Function to check package availability and dependencies
+
+check_package_availability() {
+    local packages=("$@")
+    local available_packages=()
+    local unavailable_packages=()
+    local broken_deps=()
+
+    echo -e "${YELLOW}Checking package availability and dependencies...${NC}"
+
+    for pkg in "${packages[@]}"; do
+        case "$PKG_MANAGER" in
+        "apt-get")
+            if $PKG_CHECK show "$pkg" >/dev/null 2>&1; then
+                echo -e "${GREEN}✓${NC} $pkg - available"
+                # Check if package satisfies dependencies
+                if ! $PKG_SATISFY "$pkg" >/dev/null 2>&1; then
+                    echo -e "${YELLOW}⚠${NC} $pkg - has dependency issues"
+                    broken_deps+=("$pkg")
+                fi
+                available_packages+=("$pkg")
+            else
+                echo -e "${RED}✗${NC} $pkg - not available in repositories"
+                unavailable_packages+=("$pkg")
+            fi
+            ;;
+        "yum" | "dnf")
+            if $PKG_CHECK "$pkg" >/dev/null 2>&1; then
+                echo -e "${GREEN}✓${NC} $pkg - available"
+                available_packages+=("$pkg")
+            else
+                echo -e "${RED}✗${NC} $pkg - not available in repositories"
+                unavailable_packages+=("$pkg")
+            fi
+            ;;
+        "pacman")
+            if $PKG_CHECK "$pkg" >/dev/null 2>&1; then
+                echo -e "${GREEN}✓${NC} $pkg - available"
+                available_packages+=("$pkg")
+            else
+                echo -e "${RED}✗${NC} $pkg - not available in repositories"
+                unavailable_packages+=("$pkg")
+            fi
+            ;;
+        esac
+    done
+
+    if [ ${#unavailable_packages[@]} -gt 0 ]; then
+        echo -e "\n${RED}Unavailable packages:${NC} ${unavailable_packages[*]}"
+        echo -e "${YELLOW}You may need to enable additional repositories or find alternative packages.${NC}"
+    fi
+
+    if [ ${#broken_deps[@]} -gt 0 ]; then
+        echo -e "\n${YELLOW}Packages with dependency issues:${NC} ${broken_deps[*]}"
+        echo -e "${BLUE}Attempting to resolve dependencies...${NC}"
+
+        case "$PKG_MANAGER" in
+        "apt-get")
+            echo -e "${YELLOW}Running: sudo apt-get update && sudo apt-get -f install${NC}"
+            if command_exists apt; then
+                echo -e "${YELLOW}You can also try: sudo apt --fix-broken install${NC}"
+            fi
+            ;;
+        "yum")
+            echo -e "${YELLOW}Running: sudo yum clean all && sudo yum update${NC}"
+            ;;
+        "dnf")
+            echo -e "${YELLOW}Running: sudo dnf clean all && sudo dnf update${NC}"
+            ;;
+        esac
+    fi
+
+    echo "${available_packages[@]}"
+}
+
+# ============================================================================
+# COMMAND LINE ARGUMENT PARSING
+# ============================================================================
+
+# Show banner at script start
+show_banner
+
+# Parse command line arguments
+while [[ $# -gt 0 ]]; do
+    key="$1"
+    case $key in
+    --color-profile)
+        if [ -n "$2" ]; then
+            set_color_profile "$2"
+            COLOR_PROFILE_SET=true
+            shift 2
+        else
+            echo -e "${RED}Error: Color profile name required${NC}"
+            exit 1
+        fi
+        ;;
+    --log-file)
+        LOGGING_ENABLED=true
+        LOG_FILE_SET=true
+        if [ -n "$2" ] && [[ "$2" != --* ]]; then
+            LOG_FILE="$2" # Use user-provided name
+            echo -e "${GREEN}✓ Logging enabled to: $LOG_FILE${NC}"
+            shift 2
+        else
+            LOG_FILE="RADICA.LOG" # Default to RADICA.LOG
+            echo -e "${GREEN}✓ Logging enabled to: $LOG_FILE (default)${NC}"
+            shift
+        fi
+        ;;
+    --help | -h)
+        show_usage
+        exit 0
+        ;;
+    *)
+        echo -e "${RED}Unknown option: $1${NC}"
+        show_usage
+        exit 1
+        ;;
+    esac
+done
+
+# ============================================================================
+# MAIN EXECUTION FLOW
+# ============================================================================
+
+# Log banner to file
+log_banner
+
+# Offer color profile selection if not set via command line
+if [ "$COLOR_PROFILE_SET" != true ]; then
+    choose_color_profile
+fi
+
+# Setup logging if not configured via command line
+if [ "$LOG_FILE_SET" != true ]; then
+    echo -e "\n${CYAN}=== Logging Configuration ===${NC}"
+    echo -e "${GREEN}✓ Logging is enabled by default for RADICA${NC}"
+    echo -e "${BLUE}Current log file: $LOG_FILE${NC}"
+    echo -e ""
+    echo -e "${YELLOW}Options:${NC}"
+    echo -e "1) Keep current settings (${LOG_FILE})"
+    echo -e "2) Change log file name"
+    echo -e "3) Disable logging for this session"
+    echo -e ""
+    echo -e "${BLUE}Choose option (1-3, default: 1): ${NC}"
+    read -r log_choice
+
+    case "${log_choice:-1}" in
+    1)
+        echo -e "${GREEN}✓ Using default logging to: $LOG_FILE${NC}"
+        ;;
+    2)
+        echo -e "${BLUE}Enter new log file name: ${NC}"
+        read -r custom_log_name
+        if [ -n "$custom_log_name" ]; then
+            LOG_FILE="$custom_log_name"
+            echo -e "${GREEN}✓ Log file changed to: $LOG_FILE${NC}"
+        else
+            echo -e "${YELLOW}No name provided, keeping: $LOG_FILE${NC}"
+        fi
+        ;;
+    3)
+        LOGGING_ENABLED=false
+        echo -e "${YELLOW}⚠ Logging disabled for this session${NC}"
+        ;;
+    *)
+        echo -e "${GREEN}✓ Using default logging to: $LOG_FILE${NC}"
+        ;;
+    esac
+
+    if [ "$LOGGING_ENABLED" = true ]; then
+        # Create log file with header
+        {
+            echo "========================================"
+            echo "RADICA Connectivity Troubleshooter Log"
+            echo "Started: $(date)"
+            echo "OS: $OS $VERSION"
+            echo "========================================"
+        } >"$LOG_FILE"
+
+        # Add ASCII banner to log file
+        log_banner
+
+        echo -e "${GREEN}✓ Logging active: $LOG_FILE${NC}"
+
+        # Redirect all output to both console and log file
+        exec > >(tee -a "$LOG_FILE")
+        exec 2>&1
+    fi
+fi
+
+echo -e "${BLUE}=== Connectivity Troubleshooter Tool Verification ===${NC}"
+
+# Run tool verification
+check_tools
+
+echo -e "\n${BLUE}=== Starting Connectivity Troubleshooting ===${NC}\n"
+
+run_ethernet_diagnostics() {
+    echo_log "\n${CYAN}=== Ethernet Diagnostics ===${NC}"
+
+    # Check if ethernet interface exists (both legacy and modern naming)
+    if ! ip link show | grep -E "^[0-9]+: (eth[0-9]+|enp[0-9]+s[0-9]+|eno[0-9]+|ens[0-9]+)" >/dev/null 2>&1; then
+        echo -e "${YELLOW}No ethernet interface found${NC}"
+        return 1
+    fi
+
+    # Basic interface status
+    echo -e "${BLUE}Checking ethernet interfaces...${NC}"
+    ip link show | grep -E "^[0-9]+: (eth[0-9]+|enp[0-9]+s[0-9]+|eno[0-9]+|ens[0-9]+)"
+
+    # Check link status
+    for iface in $(ip link show | grep -E "^[0-9]+: (eth[0-9]+|enp[0-9]+s[0-9]+|eno[0-9]+|ens[0-9]+)" | cut -d: -f2 | tr -d ' '); do
+        echo -e "\n${BLUE}Checking $iface status...${NC}"
+        if command_exists ethtool; then
+            ethtool "$iface" | grep "Link detected"
+        fi
+
+        # Check if interface has IP
+        if ! ip addr show "$iface" | grep -q "inet "; then
+            echo -e "${YELLOW}⚠ No IP address on $iface${NC}"
+        fi
+    done
+}
+
+run_wifi_diagnostics() {
+    echo -e "${CYAN}=== WiFi Diagnostics ===${NC}"
+
+    # Check for wireless interfaces (both legacy and modern naming)
+    if ! ip link show | grep -E "^[0-9]+: (wlan[0-9]+|wlp[0-9]+s[0-9]+|wls[0-9]+|wlo[0-9]+)" >/dev/null 2>&1; then
+        echo -e "${YELLOW}No wireless interface found${NC}"
+        return 1
+    fi
+
+    # Check if rfkill is blocking
+    if command_exists rfkill; then
+        echo -e "${BLUE}Checking rfkill status...${NC}"
+        rfkill list all
+
+        if rfkill list all | grep -q "Soft blocked: yes"; then
+            echo -e "${RED}⚠ Wireless is soft-blocked${NC}"
+        fi
+    fi
+
+    # Check wireless connection
+    for iface in $(ip link show | grep -E "^[0-9]+: (wlan[0-9]+|wlp[0-9]+s[0-9]+|wls[0-9]+|wlo[0-9]+)" | cut -d: -f2 | tr -d ' '); do
+        echo -e "\n${BLUE}Checking $iface status...${NC}"
+        if command_exists iwconfig; then
+            iwconfig "$iface"
+        fi
+
+        # Check if connected to network
+        if command_exists iw; then
+            if ! iw dev "$iface" link | grep -q "Connected"; then
+                echo -e "${YELLOW}⚠ $iface not connected to any network${NC}"
+            fi
+        fi
+    done
+}
+
+run_bluetooth_diagnostics() {
+    echo -e "${CYAN}=== Bluetooth Diagnostics ===${NC}"
+
+    # Check if bluetooth is available
+    if ! command_exists bluetoothctl; then
+        echo -e "${RED}Bluetooth tools not available${NC}"
+        return 1
+    fi
+
+    # Check bluetooth service
+    echo -e "${BLUE}Checking bluetooth service...${NC}"
+    systemctl status bluetooth --no-pager
+
+    # Check bluetooth controller
+    if command_exists hciconfig; then
+        echo -e "\n${BLUE}Checking bluetooth controllers...${NC}"
+        hciconfig -a
+
+        if ! hciconfig | grep -q "UP RUNNING"; then
+            echo -e "${YELLOW}⚠ Bluetooth controller not active${NC}"
+        fi
+    fi
+}
+
+# Function to log messages
+log_message() {
+    local message="$1"
+    local timestamp
+    timestamp=$(date '+%Y-%m-%d %H:%M:%S')
+
+    if [ "$LOGGING_ENABLED" = true ]; then
+        echo "[$timestamp] $message" >>"$LOG_FILE"
+    fi
+}
+
+# Enhanced output function that handles both display and logging
+echo_log() {
+    local message="$1"
+    echo -e "$message"
+
+    if [ "$LOGGING_ENABLED" = true ]; then
+        # Strip ANSI color codes for log file
+        local clean_message
+        clean_message=$(echo -e "$message" | sed 's/\x1b\[[0-9;]*m//g')
+        log_message "$clean_message"
+    fi
+}
+
+# Main troubleshooting execution
+run_comprehensive_diagnostics() {
+    echo -e "${BLUE}=== Comprehensive Network Diagnostics ===${NC}"
+
+    run_ethernet_diagnostics
+    echo ""
+    run_wifi_diagnostics
+    echo ""
+    run_bluetooth_diagnostics
+}
+
+# Function to generate connection status report
+generate_connection_report() {
+    echo -e "\n${CYAN}=== Connection Status Report ===${NC}"
+    echo -e "${BLUE}Interface Status Summary:${NC}"
+    echo -e ""
+
+    # Check Ethernet interfaces (both legacy eth* and modern enp*, eno*, ens* naming)
+    local eth_found=false
+    for iface in $(ip link show 2>/dev/null | grep -E "^[0-9]+: (eth[0-9]+|enp[0-9]+s[0-9]+|eno[0-9]+|ens[0-9]+)" | cut -d: -f2 | tr -d ' '); do
+        eth_found=true
+        local status="disabled"
+        local traffic="nil"
+
+        # Check if interface is up
+        if ip link show "$iface" 2>/dev/null | grep -q "state UP"; then
+            status="enabled"
+
+            # Check for IP address (indicates potential traffic capability)
+            if ip addr show "$iface" 2>/dev/null | grep -q "inet "; then
+                # Check for recent traffic via RX/TX stats
+                local rx_bytes
+                local tx_bytes
+                rx_bytes=$(cat "/sys/class/net/$iface/statistics/rx_bytes" 2>/dev/null || echo "0")
+                tx_bytes=$(cat "/sys/class/net/$iface/statistics/tx_bytes" 2>/dev/null || echo "0")
+
+                if [ "$rx_bytes" -gt 1000 ] || [ "$tx_bytes" -gt 1000 ]; then
+                    traffic="traffic"
+                else
+                    traffic="idle"
+                fi
+            else
+                traffic="idle"
+            fi
+        fi
+
+        echo -e "${YELLOW}📶 Ethernet ($iface):${NC} $status / $traffic"
+    done
+
+    if [ "$eth_found" = false ]; then
+        echo -e "${YELLOW}📶 Ethernet:${NC} disabled / nil"
+    fi
+
+    # Check WiFi interfaces (both legacy wlan* and modern wlp*, wls*, wlo* naming)
+    local wifi_found=false
+    for iface in $(ip link show 2>/dev/null | grep -E "^[0-9]+: (wlan[0-9]+|wlp[0-9]+s[0-9]+|wls[0-9]+|wlo[0-9]+)" | cut -d: -f2 | tr -d ' '); do
+        wifi_found=true
+        local status="disabled"
+        local traffic="nil"
+
+        # Check if interface is up
+        if ip link show "$iface" 2>/dev/null | grep -q "state UP"; then
+            status="enabled"
+
+            # Check if connected to network
+            if command_exists iw && iw dev "$iface" link 2>/dev/null | grep -q "Connected"; then
+                # Check for traffic
+                local rx_bytes
+                local tx_bytes
+                rx_bytes=$(cat "/sys/class/net/$iface/statistics/rx_bytes" 2>/dev/null || echo "0")
+                tx_bytes=$(cat "/sys/class/net/$iface/statistics/tx_bytes" 2>/dev/null || echo "0")
+
+                if [ "$rx_bytes" -gt 1000 ] || [ "$tx_bytes" -gt 1000 ]; then
+                    traffic="traffic"
+                else
+                    traffic="idle"
+                fi
+            else
+                traffic="idle"
+            fi
+        fi
+
+        echo -e "${YELLOW}📡 WiFi ($iface):${NC} $status / $traffic"
+    done
+
+    if [ "$wifi_found" = false ]; then
+        echo -e "${YELLOW}📡 WiFi:${NC} disabled / nil"
+    fi
+
+    # Check Bluetooth
+    local bt_status="disabled"
+    local bt_traffic="nil"
+
+    if command_exists hciconfig; then
+        if hciconfig 2>/dev/null | grep -q "UP RUNNING"; then
+            bt_status="enabled"
+
+            # Check if any devices are connected
+            if command_exists bluetoothctl; then
+                if bluetoothctl devices Connected 2>/dev/null | grep -q "Device"; then
+                    bt_traffic="traffic"
+                else
+                    bt_traffic="idle"
+                fi
+            else
+                bt_traffic="idle"
+            fi
+        fi
+    fi
+
+    echo -e "${YELLOW}🔵 Bluetooth:${NC} $bt_status / $bt_traffic"
+
+    # Check Loopback
+    local lo_status="disabled"
+    local lo_traffic="nil"
+
+    if ip link show lo 2>/dev/null | grep -q "state UNKNOWN"; then
+        lo_status="enabled"
+        local rx_bytes
+        rx_bytes=$(cat "/sys/class/net/lo/statistics/rx_bytes" 2>/dev/null || echo "0")
+        if [ "$rx_bytes" -gt 0 ]; then
+            lo_traffic="traffic"
+        else
+            lo_traffic="idle"
+        fi
+    fi
+
+    echo -e "${YELLOW}🔄 Loopback:${NC} $lo_status / $lo_traffic"
+
+    # Check for VPN interfaces
+    local vpn_found=false
+    for iface in $(ip link show 2>/dev/null | grep -E "(tun|tap|vpn)" | cut -d: -f2 | tr -d ' '); do
+        vpn_found=true
+        local status="disabled"
+        local traffic="nil"
+
+        if ip link show "$iface" 2>/dev/null | grep -q "state UNKNOWN\|state UP"; then
+            status="enabled"
+            local rx_bytes
+            local tx_bytes
+            rx_bytes=$(cat "/sys/class/net/$iface/statistics/rx_bytes" 2>/dev/null || echo "0")
+            tx_bytes=$(cat "/sys/class/net/$iface/statistics/tx_bytes" 2>/dev/null || echo "0")
+
+            if [ "$rx_bytes" -gt 0 ] || [ "$tx_bytes" -gt 0 ]; then
+                traffic="traffic"
+            else
+                traffic="idle"
+            fi
+        fi
+
+        echo -e "${YELLOW}🔒 VPN ($iface):${NC} $status / $traffic"
+    done
+
+    if [ "$vpn_found" = false ]; then
+        echo -e "${YELLOW}🔒 VPN:${NC} disabled / nil"
+    fi
+
+    echo -e ""
+    echo -e "${BLUE}Legend:${NC}"
+    echo -e "  ${GREEN}enabled${NC}  - Interface is up and operational"
+    echo -e "  ${RED}disabled${NC} - Interface is down or unavailable"
+    echo -e "  ${GREEN}traffic${NC}  - Active data transmission detected"
+    echo -e "  ${YELLOW}idle${NC}     - Interface ready but no significant traffic"
+    echo -e "  ${RED}nil${NC}      - No connectivity or interface unavailable"
+}
+
+# Start comprehensive diagnostics
+run_comprehensive_diagnostics
+
+# Show banner before final summary
+echo ""
+show_banner
+
+echo -e "\n${GREEN}=== Troubleshooting Complete ===${NC}"
+
+generate_connection_report
+#!/bin/bash
+
 # ██████╗  █████╗ ██████╗ ██╗ ██████╗ █████╗ 
 # ██╔══██╗██╔══██╗██╔══██╗██║██╔════╝██╔══██╗
 # ██████╔╝███████║██║  ██║██║██║     ███████║
@@ -141,7 +1114,7 @@ show_banner() {
 # Function to log ASCII art banner to file
 log_banner() {
     if [ "$LOGGING_ENABLED" = true ]; then
-         >> "$LOG_FILE"
+         show_banner >> "$LOG_FILE"
     fi
 }
 
