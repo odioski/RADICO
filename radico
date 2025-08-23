@@ -389,47 +389,99 @@ check_tools() {
         return 0
     else
         echo -e "\n${RED}Missing tools:${NC} ${missing_tools[*]}"
-        echo -e "${YELLOW}Required packages:${NC} ${missing_packages[*]}"
+        echo -e "${YELLOW}Attempting to find installable packages for missing tools...${NC}"
 
-        # Remove duplicates from packages using associative array
-        declare -A unique_pkgs
-        for pkg in "${missing_packages[@]}"; do
-            unique_pkgs["$pkg"]=1
-        done
-        local unique_packages=("${!unique_pkgs[@]}")
-
-        # Check package availability and dependencies
-        echo -e "\n${BLUE}Verifying package availability...${NC}"
-        local verified_packages
-        verified_packages=$(check_package_availability "${unique_packages[@]}")
-        read -ra available_packages <<<"$verified_packages"
-
-        if [ ${#available_packages[@]} -eq 0 ]; then
-            echo -e "${RED}No packages available for installation. Check your repositories.${NC}"
-            return 1
-        fi
-
-        echo -e "\n${BLUE}Installation command for $PKG_MANAGER:${NC}"
-        echo -e "${YELLOW}$PKG_INSTALL ${available_packages[*]}${NC}"
-
-        echo -e "\n${YELLOW}Would you like to install the available packages now? (y/N)${NC}"
-        read -r response
-
-        if [[ "$response" =~ ^[Yy]$ ]]; then
-            echo -e "${BLUE}Installing available packages...${NC}"
-            if $PKG_INSTALL "${available_packages[@]}"; then
-                echo -e "${GREEN}Installation completed successfully!${NC}"
-                echo -e "${BLUE}Re-checking tools...${NC}"
-                # Re-run tool check to verify installation
-                check_tools
+        if [ "$PKG_MANAGER" = "apt-get" ]; then
+            local found_packages=()
+            for tool in "${missing_tools[@]}"; do
+                echo -e "${BLUE}Searching for package for: $tool${NC}"
+                # Search apt-cache for the tool
+                local search_output
+                search_output=$(apt-cache search "^$tool$")
+                if [ -z "$search_output" ]; then
+                    search_output=$(apt-cache search "$tool")
+                fi
+                # Extract package names from output
+                local pkgs
+                pkgs=$(echo "$search_output" | awk '{print $1}')
+                for pkg in $pkgs; do
+                    found_packages+=("$pkg")
+                done
+            done
+            # Remove duplicates
+            local unique_found=()
+            declare -A pkg_seen
+            for pkg in "${found_packages[@]}"; do
+                if [ -n "$pkg" ] && [ -z "${pkg_seen[$pkg]}" ]; then
+                    unique_found+=("$pkg")
+                    pkg_seen[$pkg]=1
+                fi
+            done
+            if [ ${#unique_found[@]} -eq 0 ]; then
+                echo -e "${RED}No installable packages found for missing tools.${NC}"
+                return 1
+            fi
+            echo -e "\n${BLUE}Installation command for apt-get:${NC}"
+            echo -e "${YELLOW}sudo apt install ${unique_found[*]} -y${NC}"
+            echo -e "\n${YELLOW}Would you like to install the found packages now? (y/N)${NC}"
+            read -r response
+            if [[ "$response" =~ ^[Yy]$ ]]; then
+                echo -e "${BLUE}Installing found packages...${NC}"
+                sudo apt install ${unique_found[*]} -y
+                if [ $? -eq 0 ]; then
+                    echo -e "${GREEN}Installation completed successfully!${NC}"
+                    echo -e "${BLUE}Re-checking tools...${NC}"
+                    check_tools
+                else
+                    return 1
+                fi
             else
+                echo -e "${YELLOW}Skipping installation. Some commands may fail without required tools.${NC}"
+                echo -e "${BLUE}To install manually, run:${NC}"
+                echo -e "${YELLOW}sudo apt install ${unique_found[*]} -y${NC}"
                 return 1
             fi
         else
-            echo -e "${YELLOW}Skipping installation. Some commands may fail without required tools.${NC}"
-            echo -e "${BLUE}To install manually, run:${NC}"
+            # Fallback to previous logic for other package managers
+            # Remove duplicates from packages using associative array
+            declare -A unique_pkgs
+            for pkg in "${missing_packages[@]}"; do
+                unique_pkgs["$pkg"]=1
+            done
+            local unique_packages=("${!unique_pkgs[@]}")
+
+            # Check package availability and dependencies
+            echo -e "\n${BLUE}Verifying package availability...${NC}"
+            local verified_packages
+            verified_packages=$(check_package_availability "${unique_packages[@]}")
+            read -ra available_packages <<<"$verified_packages"
+
+            if [ ${#available_packages[@]} -eq 0 ]; then
+                echo -e "${RED}No packages available for installation. Check your repositories.${NC}"
+                return 1
+            fi
+
+            echo -e "\n${BLUE}Installation command for $PKG_MANAGER:${NC}"
             echo -e "${YELLOW}$PKG_INSTALL ${available_packages[*]}${NC}"
-            return 1
+
+            echo -e "\n${YELLOW}Would you like to install the available packages now? (y/N)${NC}"
+            read -r response
+
+            if [[ "$response" =~ ^[Yy]$ ]]; then
+                echo -e "${BLUE}Installing available packages...${NC}"
+                if $PKG_INSTALL "${available_packages[@]}"; then
+                    echo -e "${GREEN}Installation completed successfully!${NC}"
+                    echo -e "${BLUE}Re-checking tools...${NC}"
+                    check_tools
+                else
+                    return 1
+                fi
+            else
+                echo -e "${YELLOW}Skipping installation. Some commands may fail without required tools.${NC}"
+                echo -e "${BLUE}To install manually, run:${NC}"
+                echo -e "${YELLOW}$PKG_INSTALL ${available_packages[*]}${NC}"
+                return 1
+            fi
         fi
     fi
 }

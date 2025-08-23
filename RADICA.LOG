@@ -1,0 +1,344 @@
+========================================
+RADICA Connectivity Troubleshooter Log
+Started: Sat Aug 23 05:32:16 AM CDT 2025
+OS: Ubuntu 24.04
+========================================
+[0;87m██████╗  █████╗ ██████╗ ██╗ ██████╗ █████╗[0m
+[0;87m██╔══██╗██╔══██╗██╔══██╗██║██╔════╝██╔══██╗[0m
+[0;87m██████╔╝███████║██║  ██║██║██║     ███████║[0m
+[0;87m██╔══██╗██╔══██║██║  ██║██║██║     ██╔══██║[0m
+[0;87m██║  ██║██║  ██║██████╔╝██║╚██████╗██║  ██║[0m
+[0;87m╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝ ╚═════╝╚═╝  ╚═╝[0m
+[0;87m      Connectivity Troubleshooter v2.0[0m
+[0;82m✓ Logging active: RADICA.LOG[0m
+[0;75m=== Connectivity Troubleshooter Tool Verification ===[0m
+
+[0;226mChecking required tools...[0m
+[0;82m✓[0m ifconfig - installed
+[0;82m✓[0m netstat - installed
+[0;82m✓[0m iptables - installed
+[0;82m✓[0m hcitool - installed
+[0;82m✓[0m iwconfig - installed
+[0;82m✓[0m hciconfig - installed
+[0;82m✓[0m ip - installed
+[0;196m✗[0m iw - missing
+[0;75m=== Connectivity Troubleshooter Tool Verification ===[0m
+
+[0;226mChecking required tools...[0m
+[0;82m✓[0m ifconfig - installed
+[0;82m✓[0m netstat - installed
+[0;82m✓[0m iptables - installed
+[0;82m✓[0m hcitool - installed
+[0;82m✓[0m iwconfig - installed
+[0;82m✓[0m hciconfig - installed
+[0;82m✓[0m ip - installed
+[0;196m✗[0m iw - missing
+[0;82m✓[0m lsof - installed
+[0;82m✓[0m lsof - installed
+[0;82m✓[0m ufw - installed
+[0;82m✓[0m btmon - installed
+[0;82m✓[0m ufw - installed
+[0;196m✗[0m traceroute - missing
+[0;82m✓[0m btmon - installed
+[0;196m✗[0m traceroute - missing
+[0;82m✓[0m journalctl - installed
+[0;82m✓[0m journalctl - installed
+[0;82m✓[0m mii-tool - installed
+[0;196m✗[0m dhclient - missing
+[0;82m✓[0m mii-tool - installed
+[0;196m✗[0m dhclient - missing
+[0;82m✓[0m mtr - installed
+[0;82m✓[0m mtr - installed
+[0;82m✓[0m ss - installed
+[0;82m✓[0m bluetoothctl - installed
+[0;82m✓[0m wpa_supplicant - installed
+[0;82m✓[0m lsusb - installed
+[0;82m✓[0m ss - installed
+[0;82m✓[0m bluetoothctl - installed
+[0;82m✓[0m wpa_supplicant - installed
+[0;82m✓[0m lsusb - installed
+[0;82m✓[0m wpa_passphrase - installed
+[0;82m✓[0m systemctl - installed
+[0;82m✓[0m dig - installed
+[0;82m✓[0m tracepath - installed
+[0;82m✓[0m wpa_passphrase - installed
+[0;82m✓[0m systemctl - installed
+[0;82m✓[0m dig - installed
+[0;82m✓[0m tracepath - installed
+[0;82m✓[0m ping - installed
+[0;82m✓[0m ping - installed
+[0;82m✓[0m ethtool - installed
+[0;82m✓[0m ethtool - installed
+[0;82m✓[0m nslookup - installed
+[0;82m✓[0m nslookup - installed
+[0;82m✓[0m route - installed
+[0;82m✓[0m route - installed
+[0;82m✓[0m iwlist - installed
+[0;82m✓[0m iwlist - installed
+[0;82m✓[0m host - installed
+[0;82m✓[0m host - installed
+[0;196m✗[0m hcidump - missing
+[0;196m✗[0m hcidump - missing
+[0;82m✓[0m lspci - installed
+[0;82m✓[0m rfkill - installed
+
+[0;196mMissing tools:[0m iw traceroute dhclient hcidump
+[0;226mRequired packages:[0m iw traceroute isc-dhcp-client bluez-hcidump
+
+[0;75mVerifying package availability...[0m
+[0;82m✓[0m lspci - installed
+[0;82m✓[0m rfkill - installed
+
+[0;196mMissing tools:[0m iw traceroute dhclient hcidump
+[0;226mRequired packages:[0m iw traceroute isc-dhcp-client bluez-hcidump
+
+[0;75mVerifying package availability...[0m
+
+[0;75mInstallation command for apt-get:[0m
+[0;226msudo apt-get install -y [0;226mChecking package availability and dependencies...[0m[0m
+
+[0;226mWould you like to install the available packages now? (y/N)[0m
+
+[0;75mInstallation command for apt-get:[0m
+[0;226msudo apt-get install -y [0;226mChecking package availability and dependencies...[0m[0m
+
+[0;226mWould you like to install the available packages now? (y/N)[0m
+[0;226mSkipping installation. Some commands may fail without required tools.[0m
+[0;75mTo install manually, run:[0m
+[0;226msudo apt-get install -y [0;226mChecking package availability and dependencies...[0m[0m
+[0;226mSkipping installation. Some commands may fail without required tools.[0m
+[0;75mTo install manually, run:[0m
+[0;226msudo apt-get install -y [0;226mChecking package availability and dependencies...[0m[0m
+
+
+[0;75m=== Starting Connectivity Troubleshooting ===[0m
+[0;75m=== Starting Connectivity Troubleshooting ===[0m
+
+
+[0;75m=== Comprehensive Network Diagnostics ===[0m
+
+[0;87m=== Ethernet Diagnostics ===[0m
+[0;75m=== Comprehensive Network Diagnostics ===[0m
+
+[0;87m=== Ethernet Diagnostics ===[0m
+[2025-08-23 05:32:24] 
+=== Ethernet Diagnostics ===
+[0;75mChecking ethernet interfaces...[0m
+[0;75mChecking ethernet interfaces...[0m
+2: enp1s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
+2: enp1s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
+
+[0;75mChecking enp1s0 status...[0m
+
+[0;75mChecking enp1s0 status...[0m
+netlink error: Operation not permitted
+netlink error: Operation not permitted
+	Link detected: yes
+	Link detected: yes
+
+[0;87m=== WiFi Diagnostics ===[0m
+
+[0;87m=== WiFi Diagnostics ===[0m
+[0;75mChecking rfkill status...[0m
+[0;75mChecking rfkill status...[0m
+0: hci0: Bluetooth
+	Soft blocked: no
+	Hard blocked: no
+1: phy0: Wireless LAN
+	Soft blocked: no
+	Hard blocked: no
+0: hci0: Bluetooth
+	Soft blocked: no
+	Hard blocked: no
+1: phy0: Wireless LAN
+	Soft blocked: no
+	Hard blocked: no
+
+[0;75mChecking wlp2s0 status...[0m
+
+[0;75mChecking wlp2s0 status...[0m
+wlp2s0    IEEE 802.11  ESSID:off/any  
+          Mode:Managed  Access Point: Not-Associated   Tx-Power=20 dBm   
+          Retry short limit:7   RTS thr:off   Fragment thr:off
+          Power Management:on
+          
+wlp2s0    IEEE 802.11  ESSID:off/any  
+          Mode:Managed  Access Point: Not-Associated   Tx-Power=20 dBm   
+          Retry short limit:7   RTS thr:off   Fragment thr:off
+          Power Management:on
+          
+
+
+[0;87m=== Bluetooth Diagnostics ===[0m
+[0;87m=== Bluetooth Diagnostics ===[0m
+[0;75mChecking bluetooth service...[0m
+[0;75mChecking bluetooth service...[0m
+● bluetooth.service - Bluetooth service
+     Loaded: loaded (/usr/lib/systemd/system/bluetooth.service; enabled; preset: enabled)
+     Active: active (running) since Sat 2025-08-23 01:44:07 CDT; 3h 48min ago
+       Docs: man:bluetoothd(8)
+   Main PID: 1052 (bluetoothd)
+     Status: "Running"
+      Tasks: 1 (limit: 18702)
+     Memory: 3.3M (peak: 3.9M)
+        CPU: 94ms
+     CGroup: /system.slice/bluetooth.service
+             └─1052 /usr/libexec/bluetooth/bluetoothd
+
+Aug 23 01:47:35 Kubuntu-Workstation bluetoothd[1052]: Endpoint registered: sender=:1.141 path=/MediaEndpoint/A2DPSource/aptx_ll_1
+Aug 23 01:47:35 Kubuntu-Workstation bluetoothd[1052]: Endpoint registered: sender=:1.141 path=/MediaEndpoint/A2DPSource/aptx_ll_0
+Aug 23 01:47:35 Kubuntu-Workstation bluetoothd[1052]: Endpoint registered: sender=:1.141 path=/MediaEndpoint/A2DPSource/aptx_ll_duplex_1
+Aug 23 01:47:35 Kubuntu-Workstation bluetoothd[1052]: Endpoint registered: sender=:1.141 path=/MediaEndpoint/A2DPSource/aptx_ll_duplex_0
+Aug 23 01:47:35 Kubuntu-Workstation bluetoothd[1052]: Endpoint registered: sender=:1.141 path=/MediaEndpoint/A2DPSource/faststream
+Aug 23 01:47:35 Kubuntu-Workstation bluetoothd[1052]: Endpoint registered: sender=:1.141 path=/MediaEndpoint/A2DPSource/faststream_duplex
+Aug 23 01:47:35 Kubuntu-Workstation bluetoothd[1052]: Endpoint registered: sender=:1.141 path=/MediaEndpoint/A2DPSink/opus_05
+Aug 23 01:47:35 Kubuntu-Workstation bluetoothd[1052]: Endpoint registered: sender=:1.141 path=/MediaEndpoint/A2DPSource/opus_05
+Aug 23 01:47:35 Kubuntu-Workstation bluetoothd[1052]: Endpoint registered: sender=:1.141 path=/MediaEndpoint/A2DPSink/opus_05_duplex
+Aug 23 01:47:35 Kubuntu-Workstation bluetoothd[1052]: Endpoint registered: sender=:1.141 path=/MediaEndpoint/A2DPSource/opus_05_duplex
+● bluetooth.service - Bluetooth service
+     Loaded: loaded (/usr/lib/systemd/system/bluetooth.service; enabled; preset: enabled)
+     Active: active (running) since Sat 2025-08-23 01:44:07 CDT; 3h 48min ago
+       Docs: man:bluetoothd(8)
+   Main PID: 1052 (bluetoothd)
+     Status: "Running"
+      Tasks: 1 (limit: 18702)
+     Memory: 3.3M (peak: 3.9M)
+        CPU: 94ms
+     CGroup: /system.slice/bluetooth.service
+             └─1052 /usr/libexec/bluetooth/bluetoothd
+
+Aug 23 01:47:35 Kubuntu-Workstation bluetoothd[1052]: Endpoint registered: sender=:1.141 path=/MediaEndpoint/A2DPSource/aptx_ll_1
+Aug 23 01:47:35 Kubuntu-Workstation bluetoothd[1052]: Endpoint registered: sender=:1.141 path=/MediaEndpoint/A2DPSource/aptx_ll_0
+Aug 23 01:47:35 Kubuntu-Workstation bluetoothd[1052]: Endpoint registered: sender=:1.141 path=/MediaEndpoint/A2DPSource/aptx_ll_duplex_1
+Aug 23 01:47:35 Kubuntu-Workstation bluetoothd[1052]: Endpoint registered: sender=:1.141 path=/MediaEndpoint/A2DPSource/aptx_ll_duplex_0
+Aug 23 01:47:35 Kubuntu-Workstation bluetoothd[1052]: Endpoint registered: sender=:1.141 path=/MediaEndpoint/A2DPSource/faststream
+Aug 23 01:47:35 Kubuntu-Workstation bluetoothd[1052]: Endpoint registered: sender=:1.141 path=/MediaEndpoint/A2DPSource/faststream_duplex
+Aug 23 01:47:35 Kubuntu-Workstation bluetoothd[1052]: Endpoint registered: sender=:1.141 path=/MediaEndpoint/A2DPSink/opus_05
+Aug 23 01:47:35 Kubuntu-Workstation bluetoothd[1052]: Endpoint registered: sender=:1.141 path=/MediaEndpoint/A2DPSource/opus_05
+Aug 23 01:47:35 Kubuntu-Workstation bluetoothd[1052]: Endpoint registered: sender=:1.141 path=/MediaEndpoint/A2DPSink/opus_05_duplex
+Aug 23 01:47:35 Kubuntu-Workstation bluetoothd[1052]: Endpoint registered: sender=:1.141 path=/MediaEndpoint/A2DPSource/opus_05_duplex
+
+[0;75mChecking bluetooth controllers...[0m
+
+[0;75mChecking bluetooth controllers...[0m
+hci0:	Type: Primary  Bus: USB
+	BD Address: 6C:05:D3:43:35:68  ACL MTU: 1021:8  SCO MTU: 255:12
+	UP RUNNING 
+	RX bytes:2551 acl:0 sco:0 events:283 errors:0
+	TX bytes:50400 acl:0 sco:0 commands:283 errors:0
+	Features: 0xff 0xff 0xff 0xfe 0xdb 0xfd 0x7b 0x87
+	Packet type: DM1 DM3 DM5 DH1 DH3 DH5 HV1 HV2 HV3 
+	Link policy: RSWITCH HOLD SNIFF PARK 
+	Link mode: PERIPHERAL ACCEPT 
+	Name: 'Kubuntu-Workstation'
+	Class: 0x7c0104
+	Service Classes: Rendering, Capturing, Object Transfer, Audio, Telephony
+	Device Class: Computer, Desktop workstation
+	HCI Version: 4.2 (0x8)  Revision: 0x75b8
+	LMP Version: 4.2 (0x8)  Subversion: 0xf098
+	Manufacturer: Realtek Semiconductor Corporation (93)
+
+
+[0;87m██████╗  █████╗ ██████╗ ██╗ ██████╗ █████╗[0m
+[0;87m██╔══██╗██╔══██╗██╔══██╗██║██╔════╝██╔══██╗[0m
+[0;87m██████╔╝███████║██║  ██║██║██║     ███████║[0m
+[0;87m██╔══██╗██╔══██║██║  ██║██║██║     ██╔══██║[0m
+[0;87m██║  ██║██║  ██║██████╔╝██║╚██████╗██║  ██║[0m
+[0;87m╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝ ╚═════╝╚═╝  ╚═╝[0m
+[0;87m      Connectivity Troubleshooter v2.0[0m
+
+[0;82m=== Troubleshooting Complete ===[0m
+
+[0;87m=== Connection Status Report ===[0m
+[0;75mInterface Status Summary:[0m
+
+hci0:	Type: Primary  Bus: USB
+	BD Address: 6C:05:D3:43:35:68  ACL MTU: 1021:8  SCO MTU: 255:12
+	UP RUNNING 
+	RX bytes:2551 acl:0 sco:0 events:283 errors:0
+	TX bytes:50400 acl:0 sco:0 commands:283 errors:0
+	Features: 0xff 0xff 0xff 0xfe 0xdb 0xfd 0x7b 0x87
+	Packet type: DM1 DM3 DM5 DH1 DH3 DH5 HV1 HV2 HV3 
+	Link policy: RSWITCH HOLD SNIFF PARK 
+	Link mode: PERIPHERAL ACCEPT 
+	Name: 'Kubuntu-Workstation'
+	Class: 0x7c0104
+	Service Classes: Rendering, Capturing, Object Transfer, Audio, Telephony
+	Device Class: Computer, Desktop workstation
+	HCI Version: 4.2 (0x8)  Revision: 0x75b8
+	LMP Version: 4.2 (0x8)  Subversion: 0xf098
+	Manufacturer: Realtek Semiconductor Corporation (93)
+
+
+[0;87m██████╗  █████╗ ██████╗ ██╗ ██████╗ █████╗[0m
+[0;87m██╔══██╗██╔══██╗██╔══██╗██║██╔════╝██╔══██╗[0m
+[0;87m██████╔╝███████║██║  ██║██║██║     ███████║[0m
+[0;87m██╔══██╗██╔══██║██║  ██║██║██║     ██╔══██║[0m
+[0;87m██║  ██║██║  ██║██████╔╝██║╚██████╗██║  ██║[0m
+[0;87m╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝ ╚═════╝╚═╝  ╚═╝[0m
+[0;87m      Connectivity Troubleshooter v2.0[0m
+
+[0;82m=== Troubleshooting Complete ===[0m
+
+[0;87m=== Connection Status Report ===[0m
+[0;75mInterface Status Summary:[0m
+
+[0;226m📶 Ethernet (enp1s0):[0m enabled / traffic
+[0;226m📶 Ethernet (enp1s0):[0m enabled / traffic
+[0;226m📡 WiFi (wlp2s0):[0m disabled / nil
+[0;226m📡 WiFi (wlp2s0):[0m disabled / nil
+[0;226m🔵 Bluetooth:[0m enabled / idle
+[0;226m🔵 Bluetooth:[0m enabled / idle
+[0;226m🔄 Loopback:[0m enabled / traffic
+[0;226m🔄 Loopback:[0m enabled / traffic
+[0;226m🔒 VPN:[0m disabled / nil
+[0;226m🔒 VPN:[0m disabled / nil
+
+[0;75mLegend:[0m
+  [0;82menabled[0m  - Interface is up and operational
+  [0;196mdisabled[0m - Interface is down or unavailable
+  [0;82mtraffic[0m  - Active data transmission detected
+
+[0;75mLegend:[0m
+  [0;82menabled[0m  - Interface is up and operational
+  [0;196mdisabled[0m - Interface is down or unavailable
+  [0;82mtraffic[0m  - Active data transmission detected
+  [0;226midle[0m     - Interface ready but no significant traffic
+  [0;226midle[0m     - Interface ready but no significant traffic
+  [0;196mnil[0m      - No connectivity or interface unavailable
+  [0;196mnil[0m      - No connectivity or interface unavailable
+[0;36m██████╗  █████╗ ██████╗ ██╗ ██████╗ █████╗[0m
+[0;36m██╔══██╗██╔══██╗██╔══██╗██║██╔════╝██╔══██╗[0m
+[0;36m██████╔╝███████║██║  ██║██║██║     ███████║[0m
+[0;36m██╔══██╗██╔══██║██║  ██║██║██║     ██╔══██║[0m
+[0;36m██║  ██║██║  ██║██████╔╝██║╚██████╗██║  ██║[0m
+[0;36m╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝ ╚═════╝╚═╝  ╚═╝[0m
+[0;36m      Connectivity Troubleshooter v2.0[0m
+[0;36m██████╗  █████╗ ██████╗ ██╗ ██████╗ █████╗[0m
+[0;36m██╔══██╗██╔══██╗██╔══██╗██║██╔════╝██╔══██╗[0m
+[0;36m██████╔╝███████║██║  ██║██║██║     ███████║[0m
+[0;36m██╔══██╗██╔══██║██║  ██║██║██║     ██╔══██║[0m
+[0;36m██║  ██║██║  ██║██████╔╝██║╚██████╗██║  ██║[0m
+[0;36m╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝ ╚═════╝╚═╝  ╚═╝[0m
+[0;36m      Connectivity Troubleshooter v2.0[0m
+[0;36m██████╗  █████╗ ██████╗ ██╗ ██████╗ █████╗[0m
+[0;36m██╔══██╗██╔══██╗██╔══██╗██║██╔════╝██╔══██╗[0m
+[0;36m██████╔╝███████║██║  ██║██║██║     ███████║[0m
+[0;36m██╔══██╗██╔══██║██║  ██║██║██║     ██╔══██║[0m
+[0;36m██║  ██║██║  ██║██████╔╝██║╚██████╗██║  ██║[0m
+[0;36m╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝ ╚═════╝╚═╝  ╚═╝[0m
+[0;36m      Connectivity Troubleshooter v2.0[0m
+[0;36m██████╗  █████╗ ██████╗ ██╗ ██████╗ █████╗[0m
+[0;36m██╔══██╗██╔══██╗██╔══██╗██║██╔════╝██╔══██╗[0m
+[0;36m██████╔╝███████║██║  ██║██║██║     ███████║[0m
+[0;36m██╔══██╗██╔══██║██║  ██║██║██║     ██╔══██║[0m
+[0;36m██║  ██║██║  ██║██████╔╝██║╚██████╗██║  ██║[0m
+[0;36m╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝ ╚═════╝╚═╝  ╚═╝[0m
+[0;36m      Connectivity Troubleshooter v2.0[0m
+[0;36m██████╗  █████╗ ██████╗ ██╗ ██████╗ █████╗[0m
+[0;36m██╔══██╗██╔══██╗██╔══██╗██║██╔════╝██╔══██╗[0m
+[0;36m██████╔╝███████║██║  ██║██║██║     ███████║[0m
+[0;36m██╔══██╗██╔══██║██║  ██║██║██║     ██╔══██║[0m
+[0;36m██║  ██║██║  ██║██████╔╝██║╚██████╗██║  ██║[0m
+[0;36m╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝ ╚═════╝╚═╝  ╚═╝[0m
+[0;36m      Connectivity Troubleshooter v2.0[0m
