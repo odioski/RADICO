@@ -184,7 +184,8 @@ We welcome contributions to RADICA! Here's how you can help:
 **Fork** the repository
 **Open** a Pull Request
 
-### Development Setup
+## 💪🏿 Development Setup
+
 ```bash
 git clone https://github.com/odioski/RADICO.git
 cd RADICO
@@ -200,6 +201,13 @@ apt install shfmt
 
 # Bash LSP - Plugin for Kate, in conjuction with shfmt.
 snap install bash-language-server --classic
+
+# Fish - With Fish, if good enough or simplyt knowledgeable enough, you can skip the forementioned and possibly speed up your script dev time. This is due to intellisense like features (highly developed) available within the Fish shell.
+
+mostly likely is already installed in most Linux.
+
+apt install fish
+
 ```
 
 ## 📞 Support
