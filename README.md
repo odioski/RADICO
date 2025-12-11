@@ -186,10 +186,9 @@ We welcome contributions to RADICA! Here's how you can help:
 
 ## 💪🏾 Development Setup
 
-```bash
-git clone https://github.com/odioski/RADICO.git
-cd RADICO
-su
+      git clone https://github.com/odioski/RADICO.git
+      cd RADICO
+      su
 
 - AAdditional tools...
 
@@ -211,8 +210,6 @@ apt install fish
 # you can always just apt info (new_lib) and cross-check.
 # like ...
 apt info shfmt kate fish && snap info bash-language-server
-
-```
 
 ## 📞 Support
 
