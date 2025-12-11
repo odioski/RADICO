@@ -211,8 +211,8 @@ and possibly speed up or shorten your dev time. This is due to intellisense like
 
       apt install fish
 
-As a reminder, if unsure about any of these or any lib you're about to add/download,
-you can always just info $(new_lib) and cross-check.
+As a reminder, if unsure about any of these or any lib you're about to add on/download/install,
+you should really just info $(new_lib) and cross-check.
 
 like ...
 
