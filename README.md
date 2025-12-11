@@ -202,7 +202,7 @@ apt install shfmt
 # Bash LSP (Language Server Processo/Protocol) - Plugin for Kate, in conjuction with shfmt.
 snap install bash-language-server --classic
 
-# Fish (CMD/Shell)- With Fish, if good enough or knowledgeable enough, you can skip the forementioned
+# Fish (CMD/Shell) - With Fish, if good enough or knowledgeable enough, you can skip the forementioned
 # and possibly speed up or shorten your dev time. This is due to intellisense like features
 # (highly developed) available within the Fish shell.
 apt install fish
