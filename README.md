@@ -203,10 +203,10 @@ apt install shfmt
 snap install bash-language-server --classic
 
 # Fish - With Fish, if good enough or knowledgeable enough, you can skip the forementioned
-and possibly speed up your script dev time. This is due to intellisense like features
-(highly developed) available within the Fish shell.
+# and possibly speed up your script dev time. This is due to intellisense like features
+# (highly developed) available within the Fish shell.
 
-mostly likely is already installed in most Linux.
+# mostly likely is already installed in most Linux.
 
 apt install fish
 
