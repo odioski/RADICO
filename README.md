@@ -191,7 +191,7 @@ git clone https://github.com/odioski/RADICO.git
 cd RADICO
 su
 
-# Additional tools...
+- AAdditional tools...
 
 # Kate - Feature Rich IDE
       apt install kate
