@@ -196,10 +196,10 @@ su
 # Kate - Feature Rich IDE
 apt install kate
 
-# shfmt - Like shellcheck works well w/Kate troubleshooting Shell Scripts (bash,sh,zsh,etc.)
+# shfmt (Shell Format) - Like shellcheck works well w/Kate troubleshooting Shell Scripts (bash,sh,zsh,etc.)
 apt install shfmt
 
-# Bash LSP - Plugin for Kate, in conjuction with shfmt.
+# Bash LSP (Language Server Processor) - Plugin for Kate, in conjuction with shfmt.
 snap install bash-language-server --classic
 
 # Fish - With Fish, if good enough or knowledgeable enough, you can skip the forementioned
