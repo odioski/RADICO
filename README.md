@@ -210,7 +210,7 @@ apt install fish
 # As a reminder, if unsure about any of these or any lib you're aobut to download,
 # you can always just apt info (new_lib) and cross-check.
 # like ...
-apt info shfmt kate fish
+apt info shfmt kate fish && snap info bash-language-server
 
 ```
 
