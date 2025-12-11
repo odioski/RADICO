@@ -233,6 +233,8 @@ Made with ❤️ by [odioski](https://github.com/odioski)
 
 ---
 
-*Originally conceived by Mr. Omar Daniels, the TELCO, and crew*
+*Originally conceived by Mr. Omar Daniels, the TELCO, and crew.*
+
+*Copilot assisted development.*
 
 *A practical approach to network troubleshooting*
