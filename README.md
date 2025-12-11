@@ -184,7 +184,7 @@ We welcome contributions to RADICA! Here's how you can help:
 **Fork** the repository
 **Open** a Pull Request
 
-## 💪🏿 Development Setup
+## 💪🏾 Development Setup
 
 ```bash
 git clone https://github.com/odioski/RADICO.git
