@@ -207,6 +207,13 @@ snap install bash-language-server --classic
 # (highly developed) available within the Fish shell.
 apt install fish
 
+# As a reminder, if unsure about any of these or any lib you're aobut to download,
+# you can always just apt info (new_lib) to to cross-check.
+# like ...
+apt info shfmt kate fish
+
+
+
 ```
 
 ## 📞 Support
