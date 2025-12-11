@@ -202,7 +202,7 @@ apt install shfmt
 # Bash LSP - Plugin for Kate, in conjuction with shfmt.
 snap install bash-language-server --classic
 
-# Fish - With Fish, if good enough or simplyt knowledgeable enough, you can skip the forementioned and possibly speed up your script dev time. This is due to intellisense like features (highly developed) available within the Fish shell.
+# Fish - With Fish, if good enough or knowledgeable enough, you can skip the forementioned and possibly speed up your script dev time. This is due to intellisense like features (highly developed) available within the Fish shell.
 
 mostly likely is already installed in most Linux.
 
