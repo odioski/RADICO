@@ -189,9 +189,9 @@ We welcome contributions to RADICA! Here's how you can help:
 ```bash
 git clone https://github.com/odioski/RADICO.git
 cd RADICO
+su
 
 # Additional tools...
-su
 
 # Kate - Feature Rich IDE
 apt install kate
