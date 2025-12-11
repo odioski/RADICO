@@ -210,6 +210,7 @@ and possibly speed up and/or shorten your dev time. This is due to intellisense 
 (highly developed) made available within the Fish shell.
 
       apt install fish
+      
 Just so you know,
 *Fish is Fish. Fish is not Kate w/shellcheck.*
 
