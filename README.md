@@ -194,13 +194,13 @@ su
 # Additional tools...
 
 # Kate - Feature Rich IDE
-apt install kate
+      apt install kate
 
 # shfmt (Shell Format) - Like shellcheck works well w/Kate troubleshooting Shell Scripts (bash,sh,zsh,etc.)
-apt install shfmt
+      apt install shfmt
 
 # Bash LSP (Bash Language Server Processor/Protocol) - Plugin for Kate, in conjuction with shfmt.
-snap install bash-language-server --classic
+      snap install bash-language-server --classic
 
 # Fish (CMD/Shell) - With Fish, if good enough or knowledgeable enough, you can skip the forementioned
 # and possibly speed up or shorten your dev time. This is due to intellisense like features
