@@ -235,6 +235,6 @@ Made with ❤️ by [odioski](https://github.com/odioski)
 
 *Originally conceived by Mr. Omar Daniels, the TELCO, and crew.*
 
-*Copilot assisted development.*
+*AI assisted (Copilot - Claude) development.*
 
 *A practical approach to network troubleshooting*
