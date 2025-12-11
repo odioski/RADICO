@@ -207,7 +207,6 @@ snap install bash-language-server --classic
 # (highly developed) available within the Fish shell.
 
 # mostly likely is already installed in most Linux.
-
 apt install fish
 
 ```
