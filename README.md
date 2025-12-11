@@ -199,7 +199,7 @@ apt install kate
 # shfmt (Shell Format) - Like shellcheck works well w/Kate troubleshooting Shell Scripts (bash,sh,zsh,etc.)
 apt install shfmt
 
-# Bash LSP (Language Server Processor/Protocol) - Plugin for Kate, in conjuction with shfmt.
+# Bash LSP (Bash Language Server Processor/Protocol) - Plugin for Kate, in conjuction with shfmt.
 snap install bash-language-server --classic
 
 # Fish (CMD/Shell) - With Fish, if good enough or knowledgeable enough, you can skip the forementioned
