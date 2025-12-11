@@ -213,7 +213,7 @@ and possibly speed up and/or shorten your dev time. This is due to intellisense 
       
 Just so you know,
 
-*Fish is Fish. Fish is not Kate w/shellcheck.*
+*Fish is Fish, its own unique shell. Fish is not Kate w/shellcheck.*
 
 As a reminder, if ever unsure about any of this or any other library you're about to add on/download/install,
 you really should query the $(new_lib) via info:option(s) and cross-check.
