@@ -216,7 +216,7 @@ Just so you know,
 *Fish is Fish, its own unique shell. Fish is not Kate w/shellcheck.*
 
 As a reminder, if ever unsure about any of this or any other library you're about to add on/download/install,
-you really should query the $(new_lib) via info:option(s) and cross-check.
+you really should query the $(new_lib) via info option, if such switch is part of the repository, and cross-check.
 
 like ...
 
