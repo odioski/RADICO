@@ -210,8 +210,8 @@ and possibly speed up and/or shorten your dev time. This is due to intellisense 
 (highly developed) made available within the Fish shell.
 
       apt install fish
-
-*Fish is Fish. Fish is not shellcheck w/Kate.*
+Just so you know,
+*Fish is Fish. Fish is not Kate w/shellcheck.*
 
 As a reminder, if ever unsure about any of this or any other library you're about to add on/download/install,
 you really should query the $(new_lib) via info and cross-check.
