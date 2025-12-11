@@ -205,9 +205,9 @@ Bash LSP (Bash Language Server Processor/Protocol) - Plugin for Kate, in conjuct
       snap install bash-language-server --classic
 
 
-Fish (CMD/Shell) - With Fish, if good enough or knowledgeable enough, you can skip the forementioned
+Fish (CMD|CLI/Shell) - With Fish, if good enough or knowledgeable enough, you can skip the forementioned
 and possibly speed up or shorten your dev time. This is due to intellisense like features
-(highly developed) available within the Fish shell.
+(highly developed) made available within the Fish shell.
 
       apt install fish
 
