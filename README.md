@@ -42,6 +42,7 @@
 
 git clone https://github.com/odioski/RADICO.git
 chmod +x -R RADICA/
+cd RADICA
 ./radico or ./radica
 
 # Use dark color profile and logging
