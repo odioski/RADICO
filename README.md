@@ -39,7 +39,9 @@
 ### Basic Usage
 ```bash
 # Download and run RADICA
-chmod +x RADICA
+
+git clone https://github.com/odioski/RADICO.git
+chmod +x -R RADICA/
 ./radica
 
 # Use dark color profile and logging
